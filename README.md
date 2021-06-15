@@ -4,7 +4,7 @@
 
 ## Integrantes
 - Luis Gutiérrez
-- Daniel Ayala
+- Marcos Ayala
 - Alexandra Shulca
 
 ----
