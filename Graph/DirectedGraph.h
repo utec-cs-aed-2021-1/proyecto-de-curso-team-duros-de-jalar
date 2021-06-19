@@ -2,7 +2,7 @@
 #define NONDIRECTEDGRAPH_H
 
 #include "graph.h"
-
+#include <iostream>
 
 template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE>{
@@ -86,6 +86,48 @@ bool DirectedGraph<TV, TE>::deleteEdge(string id) {
 
 
     return true;
+}
+
+template<typename TV,typename TE>
+bool UnDirectedGraph<TV,TE>:: empty(){
+    return this->vertexes.size() == 0;
+}
+
+template <typename TV,typename TE>
+void UnDirectedGraph<TV,TE>::clear(){
+    while (!this->vertexes.empty()){
+        auto i = *this->vertexes.begin();
+        deleteVertex(i.first);
+
+    }
+}
+
+template<typename TV,typename TE>
+bool UnDirectedGraph<TV,TE>::findById(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end()) return false;
+    return true;
+}
+
+template <typename TV,typename TE>
+void UnDirectedGraph<TV,TE>::displayVertex(string id) {
+    if(this->vertexes.find(id) == this->vertexes.end())
+        return;
+
+    auto  all_edges =(this->vertexes[id])->edges;
+    auto ids = id;
+    for(auto i: all_edges){
+        for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
+            if (it->second == (*i).vertexes[1]) ids = it->first;
+        }
+
+        std::cout<<"weight from vertex " << id << " to vertex " <<  ids << " is " << (*i).weight <<endl;
+    }
+}
+template<typename TV,typename TE>
+void UnDirectedGraph<TV,TE>::display(){
+    for(auto i: this->vertexes){
+        displayVertex(i.first);
+    }
 }
 
 #endif
