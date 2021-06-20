@@ -13,11 +13,13 @@ class UnDirectedGraph : public Graph<TV, TE>{
     bool deleteEdge(string id) override;
     /*
     TE &operator()(string start, string end) override;
+     */
+
     float density() override;
     bool isDense(float threshold = 0.5) override;
     bool isConnected() override;
     bool isStronglyConnected() throw() override;
-     */
+
     bool empty() override;
     void clear() override;
 
@@ -135,6 +137,22 @@ void UnDirectedGraph<TV,TE>::display(){
     for(auto i: this->vertexes){
         displayVertex(i.first);
     }
+}
+
+template<typename TV, typename TE>
+float UnDirectedGraph<TV, TE>::density() {
+
+}
+
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::isDense(float threshold ){
+    return this->density() > threshold;
+
+}
+
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::isConnected() {
+
 }
 
 

@@ -10,19 +10,22 @@ class DirectedGraph : public Graph<TV, TE>{
     bool createEdge(string id1, string id2, TE w) override ;
     bool deleteVertex(string id) override;
     bool deleteEdge(string id) override;
-    /*
-    TE &operator()(string start, string end) override;
+
     float density() override;
     bool isDense(float threshold = 0.5) override;
     bool isConnected() override;
     bool isStronglyConnected() throw() override;
+
+    /*
+    TE &operator()(string start, string end) override;
+  */
     bool empty() override;
     void clear() override;
 
     void displayVertex(string id) override;
     bool findById(string id) override;
     void display() override;
-     */
+
 };
 
 template<typename TV, typename TE>
@@ -89,12 +92,12 @@ bool DirectedGraph<TV, TE>::deleteEdge(string id) {
 }
 
 template<typename TV,typename TE>
-bool UnDirectedGraph<TV,TE>:: empty(){
+bool DirectedGraph<TV,TE>:: empty(){
     return this->vertexes.size() == 0;
 }
 
 template <typename TV,typename TE>
-void UnDirectedGraph<TV,TE>::clear(){
+void DirectedGraph<TV,TE>::clear(){
     while (!this->vertexes.empty()){
         auto i = *this->vertexes.begin();
         deleteVertex(i.first);
@@ -103,13 +106,13 @@ void UnDirectedGraph<TV,TE>::clear(){
 }
 
 template<typename TV,typename TE>
-bool UnDirectedGraph<TV,TE>::findById(string id) {
+bool DirectedGraph<TV,TE>::findById(string id) {
     if (this->vertexes.find(id) == this->vertexes.end()) return false;
     return true;
 }
 
 template <typename TV,typename TE>
-void UnDirectedGraph<TV,TE>::displayVertex(string id) {
+void DirectedGraph<TV,TE>::displayVertex(string id) {
     if(this->vertexes.find(id) == this->vertexes.end())
         return;
 
@@ -124,10 +127,22 @@ void UnDirectedGraph<TV,TE>::displayVertex(string id) {
     }
 }
 template<typename TV,typename TE>
-void UnDirectedGraph<TV,TE>::display(){
+void DirectedGraph<TV,TE>::display(){
     for(auto i: this->vertexes){
         displayVertex(i.first);
     }
 }
+
+template<typename TV, typename TE>
+float DirectedGraph<TV, TE>::density() {}
+
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::isDense(float threshold ) {}
+
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::isConnected() {}
+
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::isStronglyConnected() throw() {}
 
 #endif

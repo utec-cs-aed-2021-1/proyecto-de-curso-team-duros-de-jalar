@@ -34,7 +34,9 @@ template<typename TV, typename TE>
 class Graph{
 protected:
     std::unordered_map<string, Vertex<TV, TE>*>  vertexes;
-    
+    int numEdges = 0;
+
+
 public:
     Graph() =default;
 
