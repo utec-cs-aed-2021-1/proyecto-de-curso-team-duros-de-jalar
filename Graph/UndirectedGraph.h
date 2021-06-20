@@ -7,19 +7,24 @@
 
 template<typename TV, typename TE>
 class UnDirectedGraph : public Graph<TV, TE>{
+
+public:
+    int E = 0;
     bool insertVertex(string id, TV vertex) override;
     bool createEdge(string id1, string id2, TE w) override ;
     bool deleteVertex(string id) override;
     bool deleteEdge(string id) override;
-    /*
-    TE &operator()(string start, string end) override;
+
+
+
+     float density() override;
+     bool isDense(float threshold = 0.5) override;
+
+    /*    TE &operator()(string start, string end) override;
+
+     bool isConnected() override;
+     bool isStronglyConnected() throw() override;
      */
-
-    float density() override;
-    bool isDense(float threshold = 0.5) override;
-    bool isConnected() override;
-    bool isStronglyConnected() throw() override;
-
     bool empty() override;
     void clear() override;
 
@@ -57,8 +62,8 @@ bool UnDirectedGraph<TV, TE>::createEdge(string id1, string id2, TE w) {
     new_edge1->vertexes[0]= this->vertexes[id2];
     new_edge1->weight = w;
 
-
     this->vertexes[id2]->edges.push_back(new_edge1);
+    E++;
     return true;
 }
 
@@ -87,13 +92,12 @@ bool UnDirectedGraph<TV, TE>::deleteEdge(string id) {
         for(auto i = (get_goal_vertex->edges).begin(); i != (get_goal_vertex->edges).end(); i++){
             if((*i)->vertexes[1] == get_start_vertex){
                 (get_goal_vertex->edges).erase(i);
+                E--;
                 break;
             }
         }
         all_edges.pop_front();
     }
-
-
     return true;
 }
 
@@ -141,8 +145,11 @@ void UnDirectedGraph<TV,TE>::display(){
 
 template<typename TV, typename TE>
 float UnDirectedGraph<TV, TE>::density() {
+    int V =  this->vertexes.size();
+    return 2*E/((float)V*(V-1));
 
 }
+
 
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::isDense(float threshold ){
@@ -154,6 +161,5 @@ template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::isConnected() {
 
 }
-
 
 #endif

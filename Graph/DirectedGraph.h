@@ -136,8 +136,12 @@ void DirectedGraph<TV,TE>::display(){
 template<typename TV, typename TE>
 float DirectedGraph<TV, TE>::density() {}
 
+
 template<typename TV, typename TE>
-bool DirectedGraph<TV, TE>::isDense(float threshold ) {}
+bool DirectedGraph<TV, TE>::isDense(float threshold ) {
+    return this->density() > threshold;
+
+}
 
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::isConnected() {}
