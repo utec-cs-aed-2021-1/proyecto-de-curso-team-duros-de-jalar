@@ -173,10 +173,10 @@ bool UnDirectedGraph<TV, TE>::isConnected() {
     int numVertex =  this->vertexes.size();
     int matrix [numVertex][numVertex];
     int i = 0;
-    for (auto itfilas = this->vertexes.begin(); itfilas != this->vertexes.end(); ++itfilas){
+    for (auto itRows = this->vertexes.begin(); itRows != this->vertexes.end(); ++itRows){
         int j =0;
-        for (auto itcolumnas = this->vertexes.begin(); itcolumnas != this->vertexes.end(); ++itcolumnas){
-            if (verify(*itfilas,*itcolumnas)){
+        for (auto itColumn = this->vertexes.begin(); itColumn != this->vertexes.end(); ++itColumn){
+            if (verify(*itRows,*itColumn)){
                 matrix[i][j]=1;
             }
             else{
