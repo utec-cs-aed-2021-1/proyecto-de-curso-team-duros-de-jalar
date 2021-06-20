@@ -20,8 +20,11 @@ int main(){
     graph.deleteVertex("B");
 
     cout<<graph.density()<<endl;
-
     graph.display();
+
+    graph.isConnected();
+
+
 
     return 0;
 }

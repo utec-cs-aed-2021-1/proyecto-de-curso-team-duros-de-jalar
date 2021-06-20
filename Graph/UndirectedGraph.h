@@ -5,6 +5,7 @@
 #include <iostream>
 #include "graph.h"
 
+
 template<typename TV, typename TE>
 class UnDirectedGraph : public Graph<TV, TE>{
 
@@ -14,15 +15,14 @@ public:
     bool createEdge(string id1, string id2, TE w) override ;
     bool deleteVertex(string id) override;
     bool deleteEdge(string id) override;
-
-
-
      float density() override;
      bool isDense(float threshold = 0.5) override;
+     bool isConnected() override;
+     bool verify( pair<string, Vertex<TV, TE>*> i, pair<string, Vertex<TV, TE>*> j );
+
 
     /*    TE &operator()(string start, string end) override;
 
-     bool isConnected() override;
      bool isStronglyConnected() throw() override;
      */
     bool empty() override;
@@ -158,8 +158,43 @@ bool UnDirectedGraph<TV, TE>::isDense(float threshold ){
 }
 
 template<typename TV, typename TE>
-bool UnDirectedGraph<TV, TE>::isConnected() {
-
+bool UnDirectedGraph<TV, TE>::verify( pair<string, Vertex<TV, TE>*> i, pair<string, Vertex<TV, TE>*> j ){
+    auto  all_edges =i.second->edges;
+    for(auto k : all_edges){
+        if(k->vertexes[0] == j.second || k->vertexes[1] == j.second){
+            return true;
+        }
+    }
+        return false;
 }
+
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::isConnected() {
+    int numVertex =  this->vertexes.size();
+    int matrix [numVertex][numVertex];
+    int i = 0;
+    for (auto itfilas = this->vertexes.begin(); itfilas != this->vertexes.end(); ++itfilas){
+        int j =0;
+        for (auto itcolumnas = this->vertexes.begin(); itcolumnas != this->vertexes.end(); ++itcolumnas){
+            if (verify(*itfilas,*itcolumnas)){
+                matrix[i][j]=1;
+            }
+            else{
+                matrix[i][j]=0;}
+            j++;
+        }
+        i++;
+    }
+
+    cout<<numVertex<<endl;
+    for(int i= 0; i< this->vertexes.size(); i++){
+        for(int j= 0; j< this->vertexes.size(); j++){
+            cout<<"\t"<<matrix[i][j];
+
+        }
+    cout<<endl;
+    }
+}
+
 
 #endif

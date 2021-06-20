@@ -45,10 +45,11 @@ public:
     virtual bool deleteEdge(string id) = 0;
     virtual bool isDense(float threshold = 0.5) = 0;
     virtual float density() = 0;
+    virtual bool isConnected()= 0;
+
     /*
         virtual TE &operator()(string start, string end)= 0;
 
-     virtual bool isConnected()= 0;
     virtual bool isStronglyConnected() throw();
     */
     virtual bool empty() = 0;
