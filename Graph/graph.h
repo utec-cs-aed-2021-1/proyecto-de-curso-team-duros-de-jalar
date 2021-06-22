@@ -33,10 +33,11 @@ struct Vertex {
 template<typename TV, typename TE>
 class Graph {
 protected:
-    std::unordered_map<string, Vertex<TV, TE> *> vertexes;
 
 
 public:
+    std::unordered_map<string, Vertex<TV, TE> *> vertexes;
+    
     Graph() = default;
 
     virtual bool insertVertex(string id, TV vertex) = 0;
