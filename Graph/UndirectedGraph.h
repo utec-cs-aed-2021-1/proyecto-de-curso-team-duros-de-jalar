@@ -208,12 +208,12 @@ bool UnDirectedGraph<TV, TE>::isConnected() {
 
 template<typename TV, typename TE>
 TE &UnDirectedGraph<TV, TE>::operator()(string start, string end) {
-    if (this->vertexes.find(start) != this->vertexes.end())
+    if (!findById(start))
         throw out_of_range("Vertex not found");
-    auto all_edges = (this->vertexes[start])->edges;
-    for (auto it = all_edges.begin(); it != all_edges.end(); ++it) {
-        if ((*it)->vertexes[0]->id == end || (*it)->vertexes[1]->id == end) {
-            return (*it)->weight;
+    auto par = this->vertexes[start]->edges;
+    for (auto it : par) {
+        if (it->vertexes[0] == this->vertexes[end] || it->vertexes[1] == this->vertexes[end]) {
+            return it->weight;
         }
     }
     throw std::out_of_range("Edge not found");
