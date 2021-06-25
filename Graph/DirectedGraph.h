@@ -25,9 +25,9 @@ public:
 
     //bool isStronglyConnected() throw() override;
 
-    /*
+    
     TE &operator()(string start, string end) override;
-  */
+  
     bool empty() override;
 
     void clear() override;
@@ -161,6 +161,19 @@ bool DirectedGraph<TV, TE>::isDense(float threshold) {
 
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::isConnected() {}
+
+template<typename TV, typename TE>
+TE &DirectedGraph<TV, TE>::operator()(string start, string end) {
+    if (!findById(start))
+        throw out_of_range("Vertex not found");
+    auto par = this->vertexes[start]->edges;
+    for (auto it : par) {
+        if (it->vertexes[0] == this->vertexes[end] || it->vertexes[1] == this->vertexes[end]) {
+            return it->weight;
+        }
+    }
+    throw std::out_of_range("Edge not found");
+}
 
 /*
 template<typename TV, typename TE>
