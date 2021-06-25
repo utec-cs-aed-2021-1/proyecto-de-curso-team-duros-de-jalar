@@ -53,10 +53,10 @@ public:
     virtual float density() = 0;
 
     virtual bool isConnected() = 0;
-/*
+
     virtual TE &operator()(string start, string end) = 0;
 
-    virtual bool isStronglyConnected() throw();
+/*    virtual bool isStronglyConnected() throw()= 0;
     */
     virtual bool empty() = 0;
 
