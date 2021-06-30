@@ -39,6 +39,11 @@ public:
     bool findById(string id) override;
 
     void display() override;
+    
+    unordered_map<string, Vertex<TV, TE> *> getVertexes(){
+
+        return this->vertexes;
+    }
 
 };
 
@@ -219,5 +224,9 @@ TE &UnDirectedGraph<TV, TE>::operator()(string start, string end) {
     throw std::out_of_range("Edge not found");
 }
 
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::isStronglyConnected()throw()  {
+    throw("Function not supported for undirected graph");
+}
 
 #endif
