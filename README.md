@@ -86,8 +86,196 @@ bool UnDirectedGraph<TV, TE>::createEdge(string id1, string id2, TE w) {
     return true;
 }
 ```
-Verificamos si ambos vértices existen en el grafo. En caso existan ambos, entonces 
-procederemos a crear una arista que conecte el vértice id1 hacia el vértice id2, y viceversa.  
+createEdge en Undirected graph verifica si los vértices que se desean 
+conectar existen en el grafo. Si existen, se conectan entre ambos;
+es decir, el id1 se conecta con el id2 y viceversa. Finalmente se
+incrementa el tamaño de edges y retorna true.
+
+```cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::createEdge(string id1, string id2, TE w) {
+    if (this->vertexes.find(id1) == this->vertexes.end() && this->vertexes.find(id2) == this->vertexes.end())
+        return false;
+
+    auto *new_edge = new Edge<TV, TE>;
+    new_edge->vertexes[0] = this->vertexes[id1];
+    new_edge->vertexes[1] = this->vertexes[id2];
+    new_edge->weight = w;
+
+    this->vertexes[id1]->edges.push_back(new_edge);
+    E++;
+    return true;
+}
+```
+La función createEdge en Directed graph verifica si los vértices que se desean conectar existen en el grafo. Si existen, se conectan unilateralmente; es decir, el id1 se conecta con el id2.
+Finalmente se inserta en el vector de edges el nuevo edge y retorna true.
+
+
+```cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::deleteVertex(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end())
+        return false;
+    deleteEdge(id);
+    for (auto i = this->vertexes.begin(); i != this->vertexes.end(); i++) { //Revisa cada vértice a excepción del que se va a eliminar
+        if ((*i).second != this->vertexes[id]) {
+            auto list_of_edges = (*i).second->edges;
+
+            for (auto j = list_of_edges.begin(); j != list_of_edges.end(); j++) { //Busco si existe una arista que conecte con el vértice id y la borro
+                if ((*j)->vertexes[1] == this->vertexes[id]) {
+                    (list_of_edges).erase(j);
+                    break;
+                }
+            }
+        }
+    }
+    this->vertexes.erase(id);
+    return true;
+}
+```
+La función deleteVertex en DirectedGraph recibe el id del vértice que se desea eliminar. En primer lugar, verifica si el vértice existe en el grafo, si no existe retorna false; caso contrario, procede a iterar por todos los
+vértices (excluyendo al que se desea eliminar) y verifica si está conectados con el vértice buscado, en caso existiera una arista, se elimina.
+Cuando no existan aristas, se elimina el vértice sin complicaciones.
+
+```cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::deleteVertex(string id) {
+if (this->vertexes.find(id) == this->vertexes.end())
+return false;
+
+deleteEdge(id);
+this->vertexes.erase(id);
+
+return true;
+}
+```
+El deleteVertex para el undirected graph, verifica si existe el vértice que se desea 
+eliminar, si existe se llama a la función deleteEdge para la eliminación de las 
+aristas que se conectan al vértice. Finalmente, se elimina el vértice aislado.
+
+```cpp
+
+```
+
+```cpp
+```
+
+```cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::empty() {
+    return this->vertexes.size() == 0;
+}
+```
+La función empty se encarga de verificar si el grafo se encuentra vacío o cuenta con algún vértice insertado.
+
+```cpp
+template<typename TV, typename TE>
+void DirectedGraph<TV, TE>::clear() {
+    while (!this->vertexes.empty()) {
+        auto i = *this->vertexes.begin();
+        deleteVertex(i.first);
+
+    }
+}
+```
+El objetivo de clear es, mientras el vector de vértices no esté vacío, toma el vértice
+ que se encuentra al inicio del vector y llama a la función deleteVertex.
+
+
+```cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::findById(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end()) return false;
+    return true;
+}
+```
+El findById es un booleano que retorna verdadero en caso se encuentre 
+un vector con el Id solicitado; caso contrario, retorna false.
+
+````cpp
+template<typename TV, typename TE>
+void DirectedGraph<TV, TE>::displayVertex(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end())
+        return;
+
+    auto all_edges = (this->vertexes[id])->edges;
+    auto ids = id;
+    for (auto i: all_edges) {
+        for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
+            if (it->second == (*i).vertexes[1]) ids = it->first;
+        }
+
+        std::cout << "weight from vertex " << id << " to vertex " << ids << " is " << (*i).weight << endl;
+    }
+}
+````
+displayVertex muestra en consola el peso de las aristas conectadas
+desde el vértice solicitado hasta los vértices conectados a este.
+````cpp
+template<typename TV, typename TE>
+void DirectedGraph<TV, TE>::display() {
+    for (auto i: this->vertexes) {
+        displayVertex(i.first);
+    }
+}
+````
+La función display recorre el contenedor vertexes y por cada vértice, llama a la función displayVertex y muestra en pantalla todas las 
+aristas y sus respectivos vértices que estan conectados dentro del grafo.
+
+````c++
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::isConnected() {
+    for(auto &j : this->vertexes){
+        std::unordered_set<string> visited;
+        std::stack<pair<string, Vertex<TV, TE> *>> pila;
+    
+    
+    
+    
+        visited.insert(j.first); //PREGUNTAR AL PROFE
+    
+    for (auto i : j.second->edges) {
+    
+        Vertex<TV, TE> *ax = i->vertexes[1];
+        if (visited.find(ax->id) == visited.end()) {
+        pila.push(make_pair(j.first, ax));
+        }
+    }
+    
+    
+    while (!pila.empty()) {
+        pair<string, Vertex<TV, TE> *> res = pila.top();
+        pila.pop();
+        string id;
+        Vertex<TV, TE> *to_insert;
+        id = res.first;
+        to_insert = res.second;
+        visited.insert(to_insert);
+    
+    
+        for (auto i : to_insert->edges) {
+            Vertex<TV, TE> *ax = i->vertexes[1];
+            if (visited.find(ax->id) == visited.end()) {
+                pila.push(make_pair(to_insert->id, ax));
+            }
+        }
+    }
+        if (visited.size() == this->vertexes.size()){return  true;}
+    }
+    return false;
+}
+````
+La funcion isconected tiene como objetivo, comprobar si desde el vértice solicitado
+se puede llegar a todos los vertices del grafo. Par esta implementcación, implementamos 
+una estuctura de código similar a la del bfs, anexa las aristas anexadas al vértice de inicio
+para saber a qué vértices está conectado. Luego verifica si esos vértices ya se han visitado,
+si no lo han sido, se añaden a la pila y se marca como visitado hasta verificar todos los vértices.
+Finalmente, si el tamaño de la pila es igual a la cantidad de vértices, retorna true.
+
+````c++
+
+````
+
 
 
 ### Algorithms:
