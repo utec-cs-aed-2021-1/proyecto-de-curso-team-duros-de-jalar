@@ -4,6 +4,8 @@
 #include <list>
 #include <vector>
 #include <unordered_map>
+#include <functional>
+#include<queue>
 
 using namespace std;
 
@@ -26,6 +28,7 @@ struct Edge {
 
 template<typename TV, typename TE>
 struct Vertex {
+    string id;
     TV data;
     std::list<Edge<TV, TE> *> edges;
 };
@@ -37,6 +40,7 @@ protected:
 
 public:
     std::unordered_map<string, Vertex<TV, TE> *> vertexes;
+
     
     Graph() = default;
 

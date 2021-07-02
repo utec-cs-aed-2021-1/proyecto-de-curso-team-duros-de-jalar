@@ -223,10 +223,10 @@ TE &UnDirectedGraph<TV, TE>::operator()(string start, string end) {
     }
     throw std::out_of_range("Edge not found");
 }
-
+/*
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::isStronglyConnected()throw()  {
     throw("Function not supported for undirected graph");
 }
-
+*/
 #endif
