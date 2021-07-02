@@ -43,6 +43,52 @@ bool empty(); // If the graph is empty
 
 void clear(); // Clears the graph
 ```
+###Especificaciones del algoritmo de los métodos del Grafo NO DIRIGIDO (UnDirectedGraph)
+```cpp
+template<typename TV, typename TE>
+    bool insertVertex(string id, TV vertex) {
+    if (this->vertexes.find(id) != this->vertexes.end())
+        return false;
+    
+    auto *new_vertex = new Vertex<TV, TE>;
+    new_vertex->data = vertex;
+    new_vertex->id = id;
+    this->vertexes[id] = new_vertex;
+    
+    return true;
+}
+```
+Para insertar un nuevo vértice, principalmente, necesitamos verificar si existe un otro con el mismo id. 
+En caso, no exista un vértice así, entonces creamos un objeto Vertex, le asignamos la data y un id, para finalmente 
+insertarlo en el unordered_map. 
+
+```cpp
+
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::createEdge(string id1, string id2, TE w) {
+    if (this->vertexes.find(id1) == this->vertexes.end() && this->vertexes.find(id2) == this->vertexes.end())
+        return false;
+    
+    auto *new_edge = new Edge<TV, TE>;
+    new_edge->vertexes[0] = this->vertexes[id1];
+    new_edge->vertexes[1] = this->vertexes[id2];
+    new_edge->weight = w;
+    
+    this->vertexes[id1]->edges.push_back(new_edge);
+    
+    auto *new_edge1 = new Edge<TV, TE>;
+    new_edge1->vertexes[1] = this->vertexes[id1];
+    new_edge1->vertexes[0] = this->vertexes[id2];
+    new_edge1->weight = w;
+
+    this->vertexes[id2]->edges.push_back(new_edge1);
+    E++;
+    return true;
+}
+```
+Verificamos si ambos vértices existen en el grafo. En caso existan ambos, entonces 
+procederemos a crear una arista que conecte el vértice id1 hacia el vértice id2, y viceversa.  
+
 
 ### Algorithms:
 ```cpp
