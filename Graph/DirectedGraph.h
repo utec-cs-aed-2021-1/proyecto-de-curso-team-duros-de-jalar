@@ -3,6 +3,8 @@
 
 #include "graph.h"
 #include <iostream>
+#include <stack>
+#include<unordered_set>
 
 template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE> {
@@ -47,6 +49,7 @@ bool DirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
 
     auto *new_vertex = new Vertex<TV, TE>;
     new_vertex->data = vertex;
+    new_vertex->id = id;
     this->vertexes[id] = new_vertex;
 
     return true;
@@ -160,7 +163,46 @@ bool DirectedGraph<TV, TE>::isDense(float threshold) {
 }
 
 template<typename TV, typename TE>
-bool DirectedGraph<TV, TE>::isConnected() {}
+bool DirectedGraph<TV, TE>::isConnected() {
+    for(auto &j : this->vertexes){
+        std::unordered_set<string> visited;
+        std::stack<pair<string, Vertex<TV, TE> *>> pila;
+
+
+
+
+        visited.insert(j.first); //PREGUNTAR AL PROFE
+
+        for (auto i : j.second->edges) {
+
+            Vertex<TV, TE> *ax = i->vertexes[1];
+            if (visited.find(ax->id) == visited.end()) {
+                pila.push(make_pair(j.first, ax));
+            }
+        }
+
+
+        while (!pila.empty()) {
+            pair<string, Vertex<TV, TE> *> res = pila.top();
+            pila.pop();
+            string id;
+            Vertex<TV, TE> *to_insert;
+            id = res.first;
+            to_insert = res.second;
+            visited.insert(to_insert);
+
+
+            for (auto i : to_insert->edges) {
+                Vertex<TV, TE> *ax = i->vertexes[1];
+                if (visited.find(ax->id) == visited.end()) {
+                    pila.push(make_pair(to_insert->id, ax));
+                }
+            }
+        }
+        if (visited.size() == this->vertexes.size()){return  true;}
+    }
+    return false;
+}
 
 template<typename TV, typename TE>
 TE &DirectedGraph<TV, TE>::operator()(string start, string end) {
@@ -177,6 +219,8 @@ TE &DirectedGraph<TV, TE>::operator()(string start, string end) {
 
 /*
 template<typename TV, typename TE>
-bool DirectedGraph<TV, TE>::isStronglyConnected() throw() {}
+bool DirectedGraph<TV, TE>::isStronglyConnected() throw() {
+
+ }
 */
 #endif
