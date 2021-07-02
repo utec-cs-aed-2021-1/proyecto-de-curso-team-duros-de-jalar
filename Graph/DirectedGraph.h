@@ -3,8 +3,7 @@
 
 #include "graph.h"
 #include <iostream>
-#include <stack>
-#include<unordered_set>
+
 
 template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE> {
@@ -17,7 +16,10 @@ public:
 
     bool deleteVertex(string id) override;
 
-    bool deleteEdge(string id) override;
+    bool deleteEdge(string start, string end) override;
+
+    bool deleteEdges(string id) override;
+
 
     float density() override;
 
@@ -25,7 +27,7 @@ public:
 
     bool isConnected() override;
 
-    //bool isStronglyConnected() throw() override;
+    bool isStronglyConnected() throw() override;
 
     
     TE &operator()(string start, string end) override;
@@ -74,7 +76,7 @@ template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::deleteVertex(string id) {
     if (this->vertexes.find(id) == this->vertexes.end())
         return false;
-    deleteEdge(id);
+    deleteEdges(id);
     for (auto i = this->vertexes.begin(); i != this->vertexes.end(); i++) { //Revisa cada vértice a excepción del que se va a eliminar
         if ((*i).second != this->vertexes[id]) {
             auto list_of_edges = (*i).second->edges;
@@ -92,19 +94,37 @@ bool DirectedGraph<TV, TE>::deleteVertex(string id) {
 }
 
 template<typename TV, typename TE>
-bool DirectedGraph<TV, TE>::deleteEdge(string id) {
+bool DirectedGraph<TV, TE>::deleteEdges(string id) {
     if (this->vertexes.find(id) == this->vertexes.end())
         return false;
 
-    auto all_edges = (this->vertexes[id])->edges;
+    auto all_edges = &(this->vertexes[id])->edges;
 
-    while (!all_edges.empty()) { // Elimino aristas hasta que la lista de adyacencia quede vacía
+    while (!all_edges->empty()) { // Elimino aristas hasta que la lista de adyacencia quede vacía
         E--;
-        all_edges.pop_front();
+        all_edges->pop_front();
     }
 
     return true;
 }
+
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::deleteEdge(string start, string end) {
+    if (this->vertexes.find(start) == this->vertexes.end() && this->vertexes.find(end) == this->vertexes.end())
+        return false;
+
+    auto all_edges = &(this->vertexes[start])->edges;
+    for(auto i = all_edges->begin(); i!=all_edges->end(); i++){
+        if(((*i)->vertexes[1])->id == end){
+            all_edges->erase(i);
+            return true;
+        }
+    }
+    E--;
+
+    return false;
+}
+
 
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::empty() {
@@ -159,43 +179,33 @@ float DirectedGraph<TV, TE>::density() {
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::isDense(float threshold) {
     return this->density() > threshold;
-
 }
 
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::isConnected() {
     for(auto &j : this->vertexes){
         std::unordered_set<string> visited;
-        std::stack<pair<string, Vertex<TV, TE> *>> pila;
+        std::stack<Vertex<TV, TE> *> pila;
 
-
-
-
-        visited.insert(j.first); //PREGUNTAR AL PROFE
+        visited.insert(j.first);
 
         for (auto i : j.second->edges) {
-
             Vertex<TV, TE> *ax = i->vertexes[1];
             if (visited.find(ax->id) == visited.end()) {
-                pila.push(make_pair(j.first, ax));
+                pila.push(ax);
             }
         }
 
 
         while (!pila.empty()) {
-            pair<string, Vertex<TV, TE> *> res = pila.top();
+            Vertex<TV, TE> * to_insert = pila.top();
             pila.pop();
-            string id;
-            Vertex<TV, TE> *to_insert;
-            id = res.first;
-            to_insert = res.second;
-            visited.insert(to_insert);
-
+            visited.insert(to_insert->id);
 
             for (auto i : to_insert->edges) {
                 Vertex<TV, TE> *ax = i->vertexes[1];
                 if (visited.find(ax->id) == visited.end()) {
-                    pila.push(make_pair(to_insert->id, ax));
+                    pila.push(ax);
                 }
             }
         }
@@ -217,10 +227,39 @@ TE &DirectedGraph<TV, TE>::operator()(string start, string end) {
     throw std::out_of_range("Edge not found");
 }
 
-/*
+
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::isStronglyConnected() throw() {
+    for(auto &j : this->vertexes){
+        std::unordered_set<string> visited;
+        std::stack<Vertex<TV, TE> *> pila;
 
+        visited.insert(j.first);
+
+        for (auto i : j.second->edges) {
+            Vertex<TV, TE> *ax = i->vertexes[1];
+            if (visited.find(ax->id) == visited.end()) {
+                pila.push(ax);
+            }
+        }
+
+
+        while (!pila.empty()) {
+            Vertex<TV, TE> * to_insert = pila.top();
+            pila.pop();
+            visited.insert(to_insert->id);
+
+            for (auto i : to_insert->edges) {
+                Vertex<TV, TE> *ax = i->vertexes[1];
+                if (visited.find(ax->id) == visited.end()) {
+                    pila.push(ax);
+                }
+            }
+        }
+        if (visited.size() != this->vertexes.size()){return false;}
+    }
+    return true;
  }
-*/
+
+
 #endif

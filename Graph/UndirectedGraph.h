@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <set>
 #include "graph.h"
 
 
@@ -18,7 +19,8 @@ public:
 
     bool deleteVertex(string id) override;
 
-    bool deleteEdge(string id) override;
+    bool deleteEdge(string start, string end) override;
+    bool deleteEdges(string id) override;
 
     float density() override;
 
@@ -41,7 +43,6 @@ public:
     void display() override;
     
     unordered_map<string, Vertex<TV, TE> *> getVertexes(){
-
         return this->vertexes;
     }
 
@@ -54,6 +55,7 @@ bool UnDirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
 
     auto *new_vertex = new Vertex<TV, TE>;
     new_vertex->data = vertex;
+    new_vertex->id = id;
     this->vertexes[id] = new_vertex;
 
     return true;
@@ -86,35 +88,56 @@ bool UnDirectedGraph<TV, TE>::deleteVertex(string id) {
     if (this->vertexes.find(id) == this->vertexes.end())
         return false;
 
-    deleteEdge(id);
+    deleteEdges(id);
     this->vertexes.erase(id);
 
     return true;
 }
 
 template<typename TV, typename TE>
-bool UnDirectedGraph<TV, TE>::deleteEdge(string id) {
+bool UnDirectedGraph<TV, TE>::deleteEdges(string id) {
     if (this->vertexes.find(id) == this->vertexes.end())
         return false;
 
-    auto all_edges = (this->vertexes[id])->edges;
+    auto all_edges = &(this->vertexes[id])->edges;
 
-    while (!all_edges.empty()) { //Borrar las aristas de los vértices que conectan con el vértice
-        auto get_start_vertex = (*all_edges.begin())->vertexes[0];
-        auto get_goal_vertex = (*all_edges.begin())->vertexes[1];
+    while (!all_edges->empty()) {
+        auto get_start_vertex = (*all_edges->begin())->vertexes[0];
+        auto get_goal_vertex = (*all_edges->begin())->vertexes[1];
 
-        for (auto i = (get_goal_vertex->edges).begin(); i != (get_goal_vertex->edges).end(); i++) {
+        for (auto i = (get_goal_vertex->edges)->begin(); i != (get_goal_vertex->edges)->end(); i++) {
             if ((*i)->vertexes[1] == get_start_vertex) {
-                (get_goal_vertex->edges).erase(i);
+                (get_goal_vertex->edges)->erase(i);
                 E--;
                 break;
             }
         }
-        all_edges.pop_front();
+        all_edges->pop_front();
     }
     return true;
 }
 
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
+
+
+    auto all_edges = &(this->vertexes[start])->edges;
+    for (auto i = all_edges->begin(); i != all_edges->end(); i++) {
+        if (((*i)->vertexes[1])->id == end) {
+            all_edges->erase(i);
+            return true;
+        }
+    }
+
+    auto all_edges1 = &(this->vertexes[end])->edges;
+    for (auto i = all_edges1->begin(); i != all_edges1->end(); i++) {
+        if (((*i)->vertexes[1])->id == start) {
+            all_edges1->erase(i);
+            return true;
+        }
+    }
+    E--;
+}
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::empty() {
     return this->vertexes.size() == 0;
@@ -185,30 +208,32 @@ bool UnDirectedGraph<TV, TE>::verify(pair<string, Vertex<TV, TE> *> i, pair<stri
 
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::isConnected() {
-    int numVertex = this->vertexes.size();
-    int matrix[numVertex][numVertex];
-    int i = 0;
-    for (auto itRows = this->vertexes.begin(); itRows != this->vertexes.end(); ++itRows) {
-        int j = 0;
-        for (auto itColumn = this->vertexes.begin(); itColumn != this->vertexes.end(); ++itColumn) {
-            if (verify(*itRows, *itColumn)) {
-                matrix[i][j] = 1;
-            } else {
-                matrix[i][j] = 0;
+    std::set<string> visited;
+    std::stack<Vertex<TV, TE>* > pila;
+
+    string fid = (*this->vertexes.begin()).first;
+    visited.insert(fid);
+
+    for (auto i : (*this->vertexes.begin()).second->edges) {
+        Vertex<TV, TE> *ax = i->vertexes[1];
+        if (visited.find(ax->id) == visited.end()) {
+            pila.push(ax);
+        }
+    }
+
+    while (!pila.empty()) {
+        Vertex<TV, TE> *to_insert = pila.top();
+        pila.pop();
+        visited.insert(to_insert->id);
+
+        for (auto i : to_insert->edges) {
+            Vertex<TV, TE> *ax = i->vertexes[1];
+            if (visited.find(ax->id) == visited.end()) {
+                pila.push(ax);
             }
-            j++;
         }
-        i++;
     }
-
-    cout << numVertex << endl;
-    for (int i = 0; i < this->vertexes.size(); i++) {
-        for (int j = 0; j < this->vertexes.size(); j++) {
-            cout << "\t" << matrix[i][j];
-
-        }
-        cout << endl;
-    }
+    if (visited.size() == this->vertexes.size()){return true;}
 }
 
 template<typename TV, typename TE>
