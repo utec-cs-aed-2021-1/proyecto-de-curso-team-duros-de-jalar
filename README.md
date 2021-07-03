@@ -8,6 +8,14 @@
 - Marcos Ayala [Marcos-1001]
 - Alexandra Shulca [Alexandra-SR]
 
+## Profesor 🦾
+
+- Heider Sanchez Enriquez
+
+## Asistentes de docencia
+- Paolo Morey Tutiven
+- Jorge Castillo Migone
+
 ----
 
 ## Objetivos Principales :dart:
@@ -17,10 +25,9 @@ El proyecto del curso consiste en implementar una estructura de datos de grafo y
 ## Comenzando 🚀
 
 ### Pre-requisitos 📋
+* [C++ 17](https://nuwen.net/mingw.html) 
+* [Graphviz](https://graphviz.org/download/)
 
-```
-C++ 17
-```
 
 ### Despliegue 📦
 
@@ -63,7 +70,7 @@ bool empty(); // If the graph is empty
 void clear(); // Clears the graph
 ```
 
-##  GRAFO NO DIRIGIDO 💯
+##  Grafo no dirigido 💯
 
 ### Especificaciones de los métodos (UnDirectedGraph)
 ```cpp
@@ -132,7 +139,7 @@ eliminar, si existe se llama a la función deleteEdge para la eliminación de la
 aristas que se conectan al vértice. Finalmente, se elimina el vértice aislado.
 
 
-##  GRAFO DIRIGIDO 🔝
+##  Grafo dirigido 🔝
 
 ### Especificaciones de los métodos (DirectedGraph)
 
