@@ -305,7 +305,7 @@ UndirectedGraph<char, int> result = astar.apply();
 
 ```
 
-### >kruskal.h
+### kruskal.h
 ````cpp
 UnDirectedGraph<TV, TE> apply(){
         this->minimal();
