@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <set>
 #include "graph.h"
 #include <set>
 #include <fstream>
@@ -40,6 +41,10 @@ public:
     bool findById(string id) override;
 
     void display() override;
+    
+    unordered_map<string, Vertex<TV, TE> *> getVertexes(){
+        return this->vertexes;
+    }
 
     void display_file(ofstream &filename);
 
@@ -47,10 +52,6 @@ public:
 
     bool isStronglyConnected() throw() ;
 
-    unordered_map<string, Vertex<TV, TE> *> getVertexes(){
-
-        return this->vertexes;
-    }
 
 };
 
@@ -125,12 +126,36 @@ bool UnDirectedGraph<TV, TE>::deleteEdges(string id) {
 }
 
 template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::deleteEdges(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end())
+        return false;
+
+    auto all_edges = &(this->vertexes[id])->edges;
+
+    while (!all_edges->empty()) {
+        auto get_start_vertex = (*all_edges->begin())->vertexes[0];
+        auto get_goal_vertex = (*all_edges->begin())->vertexes[1];
+
+        for (auto i = (get_goal_vertex->edges).begin(); i != (get_goal_vertex->edges).end(); i++) {
+            if ((*i)->vertexes[1] == get_start_vertex) {
+                (get_goal_vertex->edges).erase(i);
+                E--;
+                break;
+            }
+        }
+        all_edges->pop_front();
+    }
+    return true;
+}
+
+template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
 
     auto all_edges = &(this->vertexes[start])->edges;
     for (auto i = all_edges->begin(); i != all_edges->end(); i++) {
         if (((*i)->vertexes[1])->id == end) {
             all_edges->erase(i);
+            return true;
         }
     }
 
@@ -138,11 +163,12 @@ bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
     for (auto i = all_edges1->begin(); i != all_edges1->end(); i++) {
         if (((*i)->vertexes[1])->id == start) {
             all_edges1->erase(i);
+            return true;
         }
     }
     E--;
-    return true;
 }
+
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::empty() {
     return this->vertexes.size() == 0;

@@ -16,19 +16,10 @@
       <change beforePath="$PROJECT_DIR$/Graph/Algorithms/bfs.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/bfs.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Graph/Algorithms/dfs.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/dfs.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Graph/Algorithms/kruskal.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/kruskal.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/prim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/prim.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Graph/DirectedGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/DirectedGraph.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Graph/UndirectedGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/UndirectedGraph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Graph/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/graph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -98,7 +89,7 @@
       <workItem from="1624751964493" duration="1460000" />
       <workItem from="1624995779806" duration="23294000" />
       <workItem from="1625076127349" duration="117000" />
-      <workItem from="1625243090344" duration="14564000" />
+      <workItem from="1625243090344" duration="15322000" />
     </task>
     <servers />
   </component>

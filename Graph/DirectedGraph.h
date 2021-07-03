@@ -5,6 +5,7 @@
 #include "graph.h"
 #include <iostream>
 
+
 template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE> {
 public:
@@ -19,6 +20,7 @@ public:
     bool deleteEdge(string start, string end) override;
 
     bool deleteEdges(string id) override;
+
     float density() override;
 
     bool isDense(float threshold = 0.5) override;
@@ -42,7 +44,6 @@ public:
     bool findById(string id) override;
 
     void display() override;
-
 
 };
 
@@ -127,6 +128,7 @@ bool DirectedGraph<TV, TE>::deleteEdge(string start, string end) {
     return false;
 }
 
+
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::empty() {
     return this->vertexes.size() == 0;
@@ -207,9 +209,7 @@ float DirectedGraph<TV, TE>::density() {
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::isDense(float threshold) {
     return this->density() > threshold;
-
 }
-
 
 
 template<typename TV, typename TE>

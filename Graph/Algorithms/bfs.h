@@ -51,5 +51,5 @@ public:
     DirectedGraph<TV,TE>* apply(){
         return G;
     }
-
+    
 };
