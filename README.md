@@ -62,7 +62,10 @@ bool empty(); // If the graph is empty
 
 void clear(); // Clears the graph
 ```
-### Especificaciones del algoritmo de los métodos del Grafo NO DIRIGIDO (UnDirectedGraph)
+
+##  GRAFO NO DIRIGIDO 💯
+
+### Especificaciones de los métodos (UnDirectedGraph)
 ```cpp
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
@@ -110,6 +113,29 @@ conectar existen en el grafo. Si existen, se conectan entre ambos;
 es decir, el id1 se conecta con el id2 y viceversa. Finalmente se
 incrementa el tamaño de edges y retorna true.
 
+
+```cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::deleteVertex(string id) {
+if (this->vertexes.find(id) == this->vertexes.end())
+return false;
+
+deleteEdge(id);
+this->vertexes.erase(id);
+
+return true;
+}
+```
+
+El deleteVertex para el undirected graph, verifica si existe el vértice que se desea
+eliminar, si existe se llama a la función deleteEdge para la eliminación de las
+aristas que se conectan al vértice. Finalmente, se elimina el vértice aislado.
+
+
+##  GRAFO DIRIGIDO 🔝
+
+### Especificaciones de los métodos (DirectedGraph)
+
 ```cpp
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::createEdge(string id1, string id2, TE w) {
@@ -155,23 +181,6 @@ bool DirectedGraph<TV, TE>::deleteVertex(string id) {
 La función deleteVertex en DirectedGraph recibe el id del vértice que se desea eliminar. En primer lugar, verifica si el vértice existe en el grafo, si no existe retorna false; caso contrario, procede a iterar por todos los
 vértices (excluyendo al que se desea eliminar) y verifica si está conectados con el vértice buscado, en caso existiera una arista, se elimina.
 Cuando no existan aristas, se elimina el vértice sin complicaciones.
-
-```cpp
-template<typename TV, typename TE>
-bool UnDirectedGraph<TV, TE>::deleteVertex(string id) {
-if (this->vertexes.find(id) == this->vertexes.end())
-return false;
-
-deleteEdge(id);
-this->vertexes.erase(id);
-
-return true;
-}
-```
-
-El deleteVertex para el undirected graph, verifica si existe el vértice que se desea 
-eliminar, si existe se llama a la función deleteEdge para la eliminación de las 
-aristas que se conectan al vértice. Finalmente, se elimina el vértice aislado.
 
 
 ```cpp
