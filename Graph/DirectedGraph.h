@@ -273,7 +273,6 @@ bool DirectedGraph<TV, TE>::isConnected() {
             }
         }
 
-
         while (!pila.empty()) {
             Vertex<TV, TE> * to_insert = pila.top();
             pila.pop();
