@@ -62,7 +62,7 @@ bool empty(); // If the graph is empty
 
 void clear(); // Clears the graph
 ```
-###Especificaciones del algoritmo de los métodos del Grafo NO DIRIGIDO (UnDirectedGraph)
+### Especificaciones del algoritmo de los métodos del Grafo NO DIRIGIDO (UnDirectedGraph)
 ```cpp
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
