@@ -1,7 +1,7 @@
 #include <stack>
 #include <unordered_set>
-#include "DirectedGraph.h"
-#include "UndirectedGraph.h"
+#include "../DirectedGraph.h"
+#include "../UndirectedGraph.h"
 using namespace std;
 
 

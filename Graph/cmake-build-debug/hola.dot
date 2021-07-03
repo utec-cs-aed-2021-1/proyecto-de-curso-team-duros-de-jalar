@@ -1,8 +1,0 @@
-graph graph1{ 
-B -- A [label = "9"];
-A -- C [label = "3"];
-A -- D [label = "8"];
-A -- B [label = "9"];
-D -- A [label = "8"];
-C -- A [label = "3"];
- } 

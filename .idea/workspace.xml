@@ -13,7 +13,14 @@
   <component name="ChangeListManager">
     <list default="true" id="5d7c6535-c983-4ee9-b003-ff5e06c53fd3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/bfs.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/bfs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/dfs.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/dfs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/UndirectedGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/UndirectedGraph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/hola.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +47,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
   </component>
   <component name="RecentsManager">
@@ -83,7 +91,7 @@
       <workItem from="1624995779806" duration="23294000" />
       <workItem from="1625076127349" duration="117000" />
       <workItem from="1625243090344" duration="18610000" />
-      <workItem from="1625337612161" duration="906000" />
+      <workItem from="1625337612161" duration="10235000" />
     </task>
     <servers />
   </component>

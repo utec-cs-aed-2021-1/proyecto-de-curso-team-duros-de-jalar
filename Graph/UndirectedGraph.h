@@ -125,28 +125,6 @@ bool UnDirectedGraph<TV, TE>::deleteEdges(string id) {
     return true;
 }
 
-template<typename TV, typename TE>
-bool UnDirectedGraph<TV, TE>::deleteEdges(string id) {
-    if (this->vertexes.find(id) == this->vertexes.end())
-        return false;
-
-    auto all_edges = &(this->vertexes[id])->edges;
-
-    while (!all_edges->empty()) {
-        auto get_start_vertex = (*all_edges->begin())->vertexes[0];
-        auto get_goal_vertex = (*all_edges->begin())->vertexes[1];
-
-        for (auto i = (get_goal_vertex->edges).begin(); i != (get_goal_vertex->edges).end(); i++) {
-            if ((*i)->vertexes[1] == get_start_vertex) {
-                (get_goal_vertex->edges).erase(i);
-                E--;
-                break;
-            }
-        }
-        all_edges->pop_front();
-    }
-    return true;
-}
 
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
