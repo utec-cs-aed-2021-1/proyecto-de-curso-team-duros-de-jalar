@@ -71,19 +71,19 @@ void clear(); // Clears the graph
 ```
 ## Pruebas 
 
-<figure class="image" align="center">
+### Grafo 1 dirigido
+<figure align="center" class="image">
   <img src="Graph/cmake-build-debug/graph1.png">
-  <figcaption  align="center"> Grafo 1 dirigido </figcaption>
 </figure>
 
+### Grafo 2 dirigido
 <figure class="image" align="center">
   <img src="Graph/cmake-build-debug/graph2.png">
-  <figcaption  align="center"> Grafo 2 dirigido </figcaption>
 </figure>
 
+### Grafo 3 dirigido
 <figure class="image" align="center">
   <img src="Graph/cmake-build-debug/graph3.png">
-  <figcaption  align="center"> Grafo 3 dirigido </figcaption>
 </figure>
 
 
