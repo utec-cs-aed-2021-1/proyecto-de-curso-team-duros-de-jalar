@@ -80,7 +80,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h">
+		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/bfs.h">
+			<Option target="CLIONPROYECT"/>
+		</Unit>
+		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dfs.h">
+			<Option target="CLIONPROYECT"/>
+		</Unit>
+		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dsarray.h">
+			<Option target="CLIONPROYECT"/>
+		</Unit>
+		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/kruskal.h">
 			<Option target="CLIONPROYECT"/>
 		</Unit>
 		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h">

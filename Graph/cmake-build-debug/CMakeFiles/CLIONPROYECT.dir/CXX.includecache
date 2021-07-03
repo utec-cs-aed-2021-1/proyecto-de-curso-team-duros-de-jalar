@@ -6,7 +6,47 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/bfs.h
+queue
+-
+unordered_set
+-
+../DirectedGraph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
+../UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dfs.h
+stack
+-
+unordered_set
+-
+../DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
+../UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dsarray.h
+iostream
+-
+vector
+-
+algorithm
+-
+iostream
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/kruskal.h
+../UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
+../graph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
+dsarray.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dsarray.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
+set
+-
 graph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
 iostream
@@ -17,6 +57,10 @@ iostream
 -
 graph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
+set
+-
+fstream
+-
 
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
 list
@@ -24,6 +68,14 @@ list
 vector
 -
 unordered_map
+-
+functional
+-
+queue
+-
+stack
+-
+unordered_set
 -
 
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/main.cpp
@@ -35,4 +87,14 @@ DirectedGraph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
 graph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
+Algorithms/kruskal.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/kruskal.h
+Algorithms/dfs.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dfs.h
+Algorithms/bfs.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/bfs.h
+iostream
+-
+fstream
+-
 
