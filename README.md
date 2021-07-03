@@ -69,6 +69,23 @@ bool empty(); // If the graph is empty
 
 void clear(); // Clears the graph
 ```
+## Pruebas 
+
+<figure class="image" align="center">
+  <img src="Graph/cmake-build-debug/graph1.png">
+  <figcaption  align="center"> Grafo 1 dirigido </figcaption>
+</figure>
+
+<figure class="image" align="center">
+  <img src="Graph/cmake-build-debug/graph2.png">
+  <figcaption  align="center"> Grafo 2 dirigido </figcaption>
+</figure>
+
+<figure class="image" align="center">
+  <img src="Graph/cmake-build-debug/graph3.png">
+  <figcaption  align="center"> Grafo 3 dirigido </figcaption>
+</figure>
+
 
 ##  Grafo no dirigido 💯
 

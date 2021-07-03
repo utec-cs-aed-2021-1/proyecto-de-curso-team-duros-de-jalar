@@ -80,8 +80,69 @@ int main() {
 */
 
 
-    /*GRAPH 2*/
-/*  graph.insertVertex("A", 1);
+
+/*GRAPH 2*/
+/*    graph.insertVertex("A", 1);
+    graph.insertVertex("B", 2);
+    graph.insertVertex("C", 3);
+    graph.insertVertex("D", 4);
+    graph.insertVertex("E", 5);
+    graph.insertVertex("F", 6);
+    graph.insertVertex("G", 7);
+    graph.insertVertex("H", 8);
+    graph.insertVertex("I", 9);
+    graph.insertVertex("J", 10);
+    graph.insertVertex("K", 11);
+    graph.insertVertex("L", 12);
+    graph.insertVertex("M", 13);
+    graph.insertVertex("N", 14);
+    graph.insertVertex("O", 15);
+    graph.insertVertex("P", 16);
+    graph.insertVertex("Q", 17);
+    graph.insertVertex("R", 18);
+
+   graph.createEdge("B", "A", 80);
+
+   graph.createEdge("C", "D", 13);
+
+   graph.createEdge("D", "C", 45);
+
+   graph.createEdge("E", "A", 21);
+   graph.createEdge("E", "H", 69);
+
+   graph.createEdge("F", "G", 17);
+   graph.createEdge("F", "I", 52);
+
+   graph.createEdge("G", "D", 89);
+
+   graph.createEdge("H", "I", 71);
+   graph.createEdge("H", "L", 34);
+
+   graph.createEdge("I", "J", 15);
+
+   graph.createEdge("J", "H", 21);
+   graph.createEdge("J", "L", 17);
+   graph.createEdge("J", "P", 13);
+
+   graph.createEdge("K", "D", 28);
+   graph.createEdge("K", "R", 27);
+
+   graph.createEdge("L", "H", 19);
+   graph.createEdge("L", "I", 21);
+   graph.createEdge("L", "P", 21);
+
+   graph.createEdge("M", "J", 11);
+   graph.createEdge("M", "N", 27);
+
+   graph.createEdge("N", "K", 20);
+
+   graph.createEdge("O", "P", 30);
+
+   graph.createEdge("Q", "P", 62);
+*/
+
+    /*GRAPH 3*/
+  graph.insertVertex("A", 1);
     graph.insertVertex("B", 2);
     graph.insertVertex("C", 3);
     graph.insertVertex("D", 4);
@@ -160,72 +221,12 @@ int main() {
 
     graph.createEdge("R", "G", 10);
     graph.createEdge("R", "Q", 35);
-*/
 
 
-/*GRAPH 3*/
-/*    graph.insertVertex("A", 1);
-    graph.insertVertex("B", 2);
-    graph.insertVertex("C", 3);
-    graph.insertVertex("D", 4);
-    graph.insertVertex("E", 5);
-    graph.insertVertex("F", 6);
-    graph.insertVertex("G", 7);
-    graph.insertVertex("H", 8);
-    graph.insertVertex("I", 9);
-    graph.insertVertex("J", 10);
-    graph.insertVertex("K", 11);
-    graph.insertVertex("L", 12);
-    graph.insertVertex("M", 13);
-    graph.insertVertex("N", 14);
-    graph.insertVertex("O", 15);
-    graph.insertVertex("P", 16);
-    graph.insertVertex("Q", 17);
-    graph.insertVertex("R", 18);
-
-   graph.createEdge("B", "A", 80);
-
-   graph.createEdge("C", "D", 13);
-
-   graph.createEdge("D", "C", 45);
-
-   graph.createEdge("E", "A", 21);
-   graph.createEdge("E", "H", 69);
-
-   graph.createEdge("F", "G", 17);
-   graph.createEdge("F", "I", 52);
-
-   graph.createEdge("G", "D", 89);
-
-   graph.createEdge("H", "I", 71);
-   graph.createEdge("H", "L", 34);
-
-   graph.createEdge("I", "J", 15);
-
-   graph.createEdge("J", "H", 21);
-   graph.createEdge("J", "L", 17);
-   graph.createEdge("J", "P", 13);
-
-   graph.createEdge("K", "D", 28);
-   graph.createEdge("K", "R", 27);
-
-   graph.createEdge("L", "H", 19);
-   graph.createEdge("L", "I", 21);
-   graph.createEdge("L", "P", 21);
-
-   graph.createEdge("M", "J", 11);
-   graph.createEdge("M", "N", 27);
-
-   graph.createEdge("N", "K", 20);
-
-   graph.createEdge("O", "P", 30);
-
-   graph.createEdge("Q", "P", 62);
-*/
 
     // Create and open a text file
     ofstream MyFile;
-    MyFile.open("graph1.dot");
+    MyFile.open("graph3.dot");
     graph.display_file(MyFile);
     // Close the file
     MyFile.close();
