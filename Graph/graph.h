@@ -71,6 +71,8 @@ public:
     virtual bool findById(string id) = 0;
 
     virtual void display() = 0;
+    
+    ~Graph() = default;
 
 };
 
