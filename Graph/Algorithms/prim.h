@@ -1,8 +1,19 @@
 #include "queue"
-#include "../DirectedGraph.h"
+#include "UndirectedGraph.h"
 #include <unordered_map>
 #include <tuple>
 using namespace std;
+
+
+typedef tuple<string ,int,string> par;
+struct Compare{
+    bool operator()(const par& a, const par& b){
+        if(get<1>(a) > get<1>(b)){
+            return true;
+        }
+        return false;
+    }
+};
 
 
 
@@ -10,69 +21,60 @@ template<typename TV,typename TE>
 class prim{
 
 private:
-    DirectedGraph<TV,TE>* G;
+    UnDirectedGraph<TV,TE>* primm;
+    int cost;
 
 public:
     prim() = default;
-    prim(Graph<TV,TE>* &grafo,string id){
-        auto tamanio = grafo->vertexes.size();
-        unordered_map<string,int> vertex;
-        G = new DirectedGraph<TV,TE>;
-        unordered_map<string,tuple<string,int,bool>> padres;
+    prim(Graph<TV,TE>* &grafo,const string& id){
 
+        priority_queue<par, vector<par>, Compare> cont;
+        unordered_set<string> visited;
+        primm = new UnDirectedGraph<TV,TE>;
 
-        for(auto i: grafo->vertexes){
-            if (i.first == id){
-                tuple<string,int,bool> aux (id,-1, true);
-                padres[id] = aux;
+        primm->insertVertex(id,grafo->vertexes[id]->data);
+        visited.insert(id);
 
-            }
-            else{
-                tuple<string,int,bool> aux (i.first,INT32_MAX,false);
-                padres[i.first] = aux;
+        Vertex<TV,TE>* temp = grafo->vertexes[id];
+        for(auto i: temp->edges){
+            Vertex<TV,TE>* ax = i->vertexes[1];
+            if(visited.find(ax->id) ==visited.end()){
+                cont.push(make_tuple(id,i->weight,ax->id));
             }
         }
-        for(auto i:  grafo->vertexes){
-            auto x = i.second->data;
-            vertex[i.first] = x;
-        }
-        auto aux = grafo->vertexes[id];
-        string ax;
-        for (int tam = 0; tam < tamanio; ++tam) {
-            for (auto i:aux->edges) {
-                ax = i->vertexes[1]->id;
-                auto pesop = i->weight;
-                auto x = padres[ax];
-                if (get<1>(x)  > pesop && !get<2>(x)) {
-                    tuple<string,int,bool> temp(id,pesop,true);
-                    padres[ax] = temp;
+
+        cost =0;
+
+        while (!cont.empty()){
+            string origin = get<0>(cont.top());
+            int mcost  = get<1>(cont.top());
+            string idd = get<2>(cont.top());
+            cont.pop();
+
+            if(visited.find(idd) == visited.end()){
+                cost += mcost;
+                visited.insert(idd);
+                primm->insertVertex(idd, grafo->vertexes[idd]->data);
+                primm->createEdge(origin,idd, mcost);
+                Vertex<TV,TE>* nuevo = grafo->vertexes[idd];
+
+                for(auto i: nuevo->edges){
+                    Vertex<TV,TE>* ax = i->vertexes[1];
+                    if(visited.find(ax->id) ==visited.end()){
+
+                        cont.push(make_tuple(idd,i->weight,ax->id));
+                    }
                 }
+            }
 
-            }
-            id = ax;
-            aux = grafo->vertexes[id];
-        }
-
-        for (auto i:padres) {
-            auto x = i.second;
-            if(get<1>(x) == -1){
-
-                G->insertVertex(i.first,vertex[i.first]);
-            }
-            else if (get<0>(x) != i.first && get<1>(x) < INT32_MAX && G->findById(get<0>(x))){
-                G->insertVertex(i.first,vertex[i.first]);
-                G->createEdge(get<0>(x),i.first,get<1>(x));
-            }
-            else if (get<0>(x) != i.first && get<1>(x) < INT32_MAX && !G->findById(get<0>(x))){
-                G->insertVertex(i.first,vertex[i.first]);
-                G->insertVertex(get<0>(x),vertex[i.first]);
-                G->createEdge(get<0>(x),i.first,get<1>(x));
-            }
         }
 
     }
 
-    DirectedGraph<TV,TE>* apply(){
-        return G;
+    UnDirectedGraph<TV,TE>* apply(){
+        return primm;
+    }
+    int mstcost(){
+        return cost;
     }
 };
