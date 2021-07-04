@@ -101,6 +101,9 @@
 		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/main.cpp">
 			<Option target="CLIONPROYECT"/>
 		</Unit>
+		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/menu.h">
+			<Option target="CLIONPROYECT"/>
+		</Unit>
 		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

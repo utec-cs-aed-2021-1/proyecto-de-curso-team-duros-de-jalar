@@ -20,8 +20,8 @@ public:
             auto all_edges = i.second->edges;
             for(auto k: all_edges ){
                 EdgeE<TV, TE> e;
-                e.u = convert(k->vertexes[0]->data);
-                e.v = convert(k->vertexes[1]->data);
+                e.u = convert(k->vertexes[0]->id);
+                e.v = convert(k->vertexes[1]->id);
                 e.weight = k->weight;
                 edges.push_back(e);
                 n++;
@@ -33,11 +33,11 @@ public:
             MakeSet(i);
     }
 
-    int convert(TV data){
+    int convert(string id){
         int i = 0;
         for (auto k: aux_graph->getVertexes())
         {
-            if (k.second->data == data)
+            if (k.second->id == id)
                 return i;
             i++;
         }

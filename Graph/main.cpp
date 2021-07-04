@@ -5,17 +5,54 @@
 #include "Algorithms\kruskal.h"
 #include "Algorithms\dfs.h"
 #include "Algorithms\bfs.h"
-
-using namespace std;
-#include <iostream>
+#include "menu.h"
 #include <fstream>
+
 using namespace std;
 
 int main() {
 
 
-    DirectedGraph<int, float> graph;
-    /*Undirected graph */
+    UnDirectedGraph<int, float>* graph = new UnDirectedGraph<int,float> ;
+
+    graph->insertVertex("A", 1);
+    graph->insertVertex("B", 2);
+    graph->insertVertex("C", 3);
+    graph->insertVertex("D", 4);
+    graph->insertVertex("E", 4);
+    graph->insertVertex("F", 4);
+    graph->insertVertex("G", 4);
+    graph->insertVertex("H", 4);
+
+    graph->createEdge("A", "B", 1);
+    graph->createEdge("A", "D", 5);
+    graph->createEdge("A", "C", 3);
+    graph->createEdge("B", "D", 6);
+    graph->createEdge("C", "D", 4);
+    graph->createEdge("C", "E", 7);
+    graph->createEdge("D", "F", 2);
+    graph->createEdge("E", "G", 5);
+    graph->createEdge("E", "F", 9);
+    graph->createEdge("G", "H", 8);
+    graph->createEdge("H", "F", 3);
+
+
+    Kruskal<int,float> gk(graph);    /*Undirected graph */
+    UnDirectedGraph<int, float> result = gk.apply();//return a tree
+
+    // Create and open a text file
+    ofstream MyFile;
+    MyFile.open("prueba1.dot");
+    graph->display_file(MyFile);
+    // Close the file
+    MyFile.close();
+
+    // Create and open a text file
+    ofstream MyFile2;
+    MyFile2.open("prueba2.dot");
+    result.display_file(MyFile2);
+    // Close the file
+    MyFile.close();
 
     /*GRAPH 1*/
 /*
@@ -142,7 +179,7 @@ int main() {
 */
 
     /*GRAPH 3*/
-  graph.insertVertex("A", 1);
+/*  graph.insertVertex("A", 1);
     graph.insertVertex("B", 2);
     graph.insertVertex("C", 3);
     graph.insertVertex("D", 4);
@@ -223,13 +260,8 @@ int main() {
     graph.createEdge("R", "Q", 35);
 
 
+*/
 
-    // Create and open a text file
-    ofstream MyFile;
-    MyFile.open("graph3.dot");
-    graph.display_file(MyFile);
-    // Close the file
-    MyFile.close();
 
 
     /* Graph<int, float>* graph = new UnDirectedGraph<int,float>;
@@ -263,6 +295,29 @@ int main() {
     return 0;
 }
 
+/*
+int main() {
+
+    Menu menu;
+    menu.correr_menu();
+    if(menu.input_Case == 1){
+        cout<<"case1();"<<endl;
+    }
+    else if(menu.input_Case == 2 ){
+        cout<<"case2();"<<endl;
+    }else if (menu.input_Case == 3){
+        cout<<"case3();"<<endl;
+    }else{
+        return 0;
+    }
+
+
+    return 0;
+}
+ */
+
+
+/*------------------------------------------------*/
 /*
     UnDirectedGraph<int, float> graph;
 
