@@ -308,7 +308,7 @@ bool DirectedGraph<TV, TE>::isConnected() {
 
 La funcion isconected tiene como objetivo, comprobar si desde el vértice solicitado
 se puede llegar a todos los vertices del grafo. Par esta implementcación, implementamos 
-una estuctura de código similar a la del bfs, anexa las aristas anexadas al vértice de inicio
+una estuctura de código similar a la del dfs, anexa las aristas anexadas al vértice de inicio
 para saber a qué vértices está conectado. Luego verifica si esos vértices ya se han visitado,
 si no lo han sido, se añaden a la pila y se marca como visitado hasta verificar todos los vértices.
 Finalmente, si el tamaño de la pila es igual a la cantidad de vértices, retorna true.
@@ -361,6 +361,119 @@ UnDirectedGraph<TV, TE> apply(){
    }
 
 ````
+### bfs.h
+````cpp
+template<typename TV, typename TE>
+class bfs{
+private:
+    DirectedGraph<TV,TE>* G;
+public:
+    bfs() = default;
+    bfs(Graph<TV,TE>* &grafo, string vertexid) {
+        std::unordered_set<string> visited;
+        std::queue<pair<string ,Vertex<TV,TE>*>> cola;
+
+        auto aux = grafo->vertexes[vertexid];
+        G = new DirectedGraph<TV,TE>;
+        G->insertVertex(vertexid, aux->data);
+        visited.insert(vertexid);
+
+        for(auto i : aux->edges){
+            Vertex<TV,TE>* ax = i->vertexes[1];
+            if(visited.find(ax->id) ==visited.end()){
+                cola.push(make_pair( aux->id, ax));
+            }
+        }
+
+
+
+        while(!cola.empty()){
+            pair<string ,Vertex<TV,TE>*> res = cola.front();
+            cola.pop();
+            string id; Vertex<TV,TE>* to_insert;
+            id = res.first;
+            to_insert = res.second;
+
+            if(visited.find(to_insert->id) ==visited.end()) {
+                visited.insert(to_insert->id);
+                G->insertVertex(to_insert->id, to_insert->data);
+                G->createEdge(id, to_insert->id, 1);
+            }
+
+            for(auto i : to_insert->edges){
+                Vertex<TV,TE>* ax = i->vertexes[1];
+            if(visited.find(ax->id) ==visited.end()){
+                    cola.push(make_pair(to_insert->id,ax));
+                }
+            }
+        }
+    }
+
+    DirectedGraph<TV,TE>* apply(){
+        return G;
+    }
+
+};
+````
+Utilizamos un unordered_set para guardar los id's de los vértices visitados, un queue que almacenará un pair que contendrá los vértices adyacentes junto al actual con el id del actual vértice, y un grafo dirigido, el cual será el nuevo grafo que se va a retornar. Durante cada iteración se verifica si existe el vértice actual en el contenedor de los vértices visitados, siendo el caso de que no exista, este se inserta en visited, el grafo y se crea una arista entre el vértice y de su adyacente. Luego, se explora e inserta los vértices adyacentes que aún no están en visited.
+
+### dfs.h
+````cpp
+
+template<typename TV, typename TE>
+class dfs{
+private:
+    DirectedGraph<TV,TE>* G;
+public:
+    dfs() = default;
+    dfs(Graph<TV,TE>* &grafo, string vertexid) {
+        std::unordered_set<string> visited;
+        std::stack<pair<string ,Vertex<TV,TE>*>> pila;
+
+        auto aux = grafo->vertexes[vertexid];
+        G = new DirectedGraph<TV,TE>;
+        G->insertVertex(vertexid, aux->data);
+
+        visited.insert(vertexid); //PREGUNTAR AL PROFE
+
+        for(auto& i : aux->edges){
+            Vertex<TV,TE>* ax = i->vertexes[1];
+            if(visited.find(ax->id) ==visited.end()){
+                pila.push(make_pair( aux->id, ax));
+            }
+        }
+
+        while(!pila.empty()){
+            pair<string ,Vertex<TV,TE>*> res = pila.top();
+            pila.pop();
+            string id; Vertex<TV,TE>* to_insert;
+            id = res.first;
+            to_insert = res.second;
+
+            if(visited.find(to_insert->id) ==visited.end()) {
+                visited.insert(to_insert->id);
+                G->insertVertex(to_insert->id, to_insert->data);
+                G->createEdge(id, to_insert->id, 1);
+            }
+
+            for(auto& i : to_insert->edges){
+                Vertex<TV,TE>* ax = i->vertexes[1];
+                if(visited.find(ax->id) ==visited.end()){
+                    pila.push(make_pair(to_insert->id,ax));
+                }
+            }
+        }
+    }
+
+    DirectedGraph<TV,TE>* apply(){
+        return G;
+    }
+
+};
+````
+El dfs tiene la misma estructura que el bfs; sin embargo, se distingue de este por usar un stack en lugar de queue.
+
+
 
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
