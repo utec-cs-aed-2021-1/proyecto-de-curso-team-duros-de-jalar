@@ -45,6 +45,9 @@ public:
 
     void display() override;
 
+    ~DirectedGraph();
+
+
 };
 
 template<typename TV, typename TE>
@@ -289,5 +292,13 @@ bool DirectedGraph<TV, TE>::isConnected() {
     }
     return false;
 }
+
+template<typename TV, typename TE>
+DirectedGraph<TV, TE>::~DirectedGraph() {
+    while(this->vertexes.size()){
+        deleteVertex((*this->vertexes.begin()).first);
+    }
+}
+
 
 #endif
