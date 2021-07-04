@@ -70,8 +70,12 @@ public:
 
     virtual bool findById(string id) = 0;
 
+    virtual bool isStronglyConnected() throw() = 0;
+
     virtual void display() = 0;
-    
+
+    virtual void display_file(ofstream &filename) = 0;
+
     ~Graph() = default;
 
 };

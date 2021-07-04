@@ -1,7 +1,9 @@
+#ifndef DSARRAY_H
+#define DSARRAY_H
+
 #include <iostream>
 #include<vector>
 #include <algorithm>
-#include <iostream>
 using namespace std;
 vector<int> parent;
 vector<int> rankA;
@@ -42,3 +44,5 @@ struct EdgeE {
         return weight < other.weight;
     }
 };
+
+#endif

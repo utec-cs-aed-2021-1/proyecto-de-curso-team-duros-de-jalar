@@ -1,9 +1,8 @@
 #include "queue"
-#include "DirectedGraph.h"
+#include "../DirectedGraph.h"
 #include <unordered_map>
 #include <tuple>
 using namespace std;
-
 
 
 
@@ -20,7 +19,6 @@ public:
         unordered_map<string,int> vertex;
         G = new DirectedGraph<TV,TE>;
         unordered_map<string,tuple<string,int,bool>> padres;
-
 
 
         for(auto i: grafo->vertexes){

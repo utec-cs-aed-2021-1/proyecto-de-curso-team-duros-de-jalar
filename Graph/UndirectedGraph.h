@@ -22,6 +22,7 @@ public:
     bool deleteVertex(string id) override;
 
     bool deleteEdge(string start, string end) override;
+
     bool deleteEdges(string id) override;
 
     float density() override;
@@ -50,9 +51,9 @@ public:
 
     void displayVertexFile(ofstream &filename, string id);
 
-    bool isStronglyConnected() throw() ;
-    ~UnDirectedGraph();
+    bool isStronglyConnected() throw();
 
+    ~UnDirectedGraph();
 
 
 };
@@ -282,7 +283,8 @@ bool UnDirectedGraph<TV, TE>::isConnected() {
 
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::isStronglyConnected()throw()  {
-    throw("Function not supported for undirected graph");
+    if(this->isConnected()){return true;}
+    else{return false;}
 }
 
 template<typename TV, typename TE>

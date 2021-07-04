@@ -1,3 +1,6 @@
+#ifndef KRUSKAL_H
+#define KRUSKAL_H
+
 #include "..\UndirectedGraph.h"
 #include "..\graph.h"
 #include "dsarray.h"
@@ -9,14 +12,14 @@ private:
     vector<EdgeE<TV, TE>> edges;
     vector<EdgeE<TV, TE>> result;
     UnDirectedGraph<TV, TE>* G;
-    UnDirectedGraph<TV, TE>* aux_graph;
+    Graph<TV,TE>* aux_graph;
 public:
-
-    Kruskal(UnDirectedGraph<TV, TE>* graph){
+    Kruskal()  = default;
+    Kruskal(Graph<TV,TE>* &graph){
         aux_graph = graph;
         this->cost = 0;
         n =0;
-        for (auto i: graph->getVertexes()) {
+        for (auto i: graph->vertexes) {
             auto all_edges = i.second->edges;
             for(auto k: all_edges ){
                 EdgeE<TV, TE> e;
@@ -35,7 +38,7 @@ public:
 
     int convert(string id){
         int i = 0;
-        for (auto k: aux_graph->getVertexes())
+        for (auto k: aux_graph->vertexes)
         {
             if (k.second->id == id)
                 return i;
@@ -57,15 +60,15 @@ public:
 
     }
 
-    UnDirectedGraph<TV, TE> apply(){
+    UnDirectedGraph<TV, TE>* apply(){
         this->minimal();
         G = new UnDirectedGraph<TV, TE>();
-        for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->getVertexes())
+        for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->vertexes)
             G->insertVertex(vertex.first, vertex.second->data);
         for (auto edge : result){
             string aux1 , aux2;
             int k =0;
-            for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->getVertexes()){
+            for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->vertexes){
                 if (k == edge.u)
                     aux1 = vertex.first;
                 if(k == edge.v)
@@ -74,6 +77,8 @@ public:
             }
             G->createEdge(aux1, aux2, edge.weight);
         }
-        return *G;
+        return G;
     }
 };
+
+#endif

@@ -5,6 +5,7 @@ CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Algorithms/bfs.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Algorithms/dfs.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Algorithms/dsarray.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Algorithms/kruskal.h
+CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Algorithms/prim.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../DirectedGraph.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../UndirectedGraph.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../graph.h

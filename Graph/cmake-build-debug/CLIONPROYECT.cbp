@@ -92,6 +92,9 @@
 		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/kruskal.h">
 			<Option target="CLIONPROYECT"/>
 		</Unit>
+		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/prim.h">
+			<Option target="CLIONPROYECT"/>
+		</Unit>
 		<Unit filename="C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h">
 			<Option target="CLIONPROYECT"/>
 		</Unit>
