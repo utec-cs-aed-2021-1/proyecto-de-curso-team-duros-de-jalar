@@ -73,17 +73,17 @@ void clear(); // Clears the graph
 
 ### Grafo 1 dirigido
 <figure align="center" class="image">
-  <img src="Graph/cmake-build-debug/graph1.png" width="70%" height="60%">
+  <img src="Graph/cmake-build-debug/graph1.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
 ### Grafo 2 dirigido
 <figure class="image" align="center">
-  <img src="Graph/cmake-build-debug/graph2.png" width="70%" height="100%">
+  <img src="Graph/cmake-build-debug/graph2.png" width="70%" height="100%" style="text-align:center;">
 </figure>
 
 ### Grafo 3 dirigido
 <figure class="image" align="center">
-  <img src="Graph/cmake-build-debug/graph3.png" width="70%" height="60%">
+  <img src="Graph/cmake-build-debug/graph3.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
 
