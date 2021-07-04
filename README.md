@@ -78,7 +78,7 @@ void clear(); // Clears the graph
 
 ### Grafo 2 dirigido
 <figure class="image" align="center">
-  <img src="Graph/cmake-build-debug/graph2.png">
+  <img src="Graph/cmake-build-debug/graph2.png" width="50%" height="80%">
 </figure>
 
 ### Grafo 3 dirigido
