@@ -51,6 +51,8 @@ public:
     void displayVertexFile(ofstream &filename, string id);
 
     bool isStronglyConnected() throw() ;
+    ~UnDirectedGraph();
+
 
 
 };
@@ -282,4 +284,13 @@ template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::isStronglyConnected()throw()  {
     throw("Function not supported for undirected graph");
 }
+
+template<typename TV, typename TE>
+UnDirectedGraph<TV, TE>::~UnDirectedGraph() {
+    while(this->vertexes.size()){
+        deleteVertex((*this->vertexes.begin()).first);
+    }
+}
+
+
 #endif
