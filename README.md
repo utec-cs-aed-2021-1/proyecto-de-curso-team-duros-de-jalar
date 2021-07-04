@@ -340,15 +340,27 @@ UndirectedGraph<char, int> result = astar.apply();
 
 ### kruskal.h
 ````cpp
-UnDirectedGraph<TV, TE> apply(){
+void minimal(){
+        sort(edges.begin(), edges.end());
+        int k= 0;
+        for (EdgeE<TV, TE> e : edges) {
+            if (Find(e.u) != Find(e.v)) {
+                cost += e.weight;
+                result.push_back(e);
+                Union(e.u, e.v);
+            }
+        }
+}
+
+UnDirectedGraph<TV, TE>* apply(){
         this->minimal();
         G = new UnDirectedGraph<TV, TE>();
-        for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->getVertexes())
+        for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->vertexes)
             G->insertVertex(vertex.first, vertex.second->data);
         for (auto edge : result){
             string aux1 , aux2;
             int k =0;
-            for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->getVertexes()){
+            for(pair<string, Vertex<TV, TE> *> vertex: aux_graph->vertexes){
                 if (k == edge.u)
                     aux1 = vertex.first;
                 if(k == edge.v)
@@ -357,10 +369,15 @@ UnDirectedGraph<TV, TE> apply(){
             }
             G->createEdge(aux1, aux2, edge.weight);
         }
-        return *G;
-   }
-
+        return G;
+}
 ````
+En la implemtación de kruskal usamos Disjoin Sets. 
+Ordenamos todas las aristas en orden creciente según sus pesos. Ponemos cada vértice en su set
+llamando a MakeSet. Iteramos por todas las aristas ordenandas y por cada una de las aristas 
+determinamos si el vértice de fin pertenece a un set diferente, realizando llamadas a Find(). 
+Por último, realizamos Union de los sets (Union by rank). 
+
 ### bfs.h
 ````cpp
 template<typename TV, typename TE>

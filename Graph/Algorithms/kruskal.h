@@ -57,7 +57,6 @@ public:
                 Union(e.u, e.v);
             }
         }
-
     }
 
     UnDirectedGraph<TV, TE>* apply(){
