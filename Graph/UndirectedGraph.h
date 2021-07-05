@@ -175,7 +175,7 @@ void UnDirectedGraph<TV, TE>::displayVertex(string id){
     auto data = this->vertexes[id];
     auto all_edges = (this->vertexes[id])->edges;
     auto ids = id;
-    cout<<"connections to vertex "<< data->id << " with key " << data->data<<endl;
+    cout<<"connections to vertex "<< data->id << " with data " << data->data<<endl;
     for (auto i: all_edges) {
         for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
             if (it->second == (*i).vertexes[1]) ids = it->first;
