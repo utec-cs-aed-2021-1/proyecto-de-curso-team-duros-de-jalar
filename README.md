@@ -90,6 +90,7 @@ void clear(); // Clears the graph
 ##  Grafo no dirigido 💯
 
 ### Especificaciones de los métodos (UnDirectedGraph)
+
 ```cpp
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
@@ -150,15 +151,251 @@ this->vertexes.erase(id);
 return true;
 }
 ```
-
 El deleteVertex para el undirected graph, verifica si existe el vértice que se desea
 eliminar, si existe se llama a la función deleteEdge para la eliminación de las
 aristas que se conectan al vértice. Finalmente, se elimina el vértice aislado.
+```cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::deleteEdges(string id) {
+if (this->vertexes.find(id) == this->vertexes.end())
+return false;
+
+    auto all_edges = &(this->vertexes[id])->edges;
+
+    while (!all_edges->empty()) {
+        auto get_start_vertex = (*all_edges->begin())->vertexes[0];
+        auto get_goal_vertex = (*all_edges->begin())->vertexes[1];
+
+        for (auto i = (get_goal_vertex->edges).begin(); i != (get_goal_vertex->edges).end(); i++) {
+            if ((*i)->vertexes[1] == get_start_vertex) {
+                (get_goal_vertex->edges).erase(i);
+                E--;
+                break;
+            }
+        }
+        all_edges->pop_front();
+    }
+    return true;
+}
+```
+deleteEdges se encarga de aislar un vertice para poder realizar una correcta eliminacion de datos.
+Para esto primero revisa si el vértice a eliminar existe en el grafo, si es el caso, se procede a eliminar 
+todas las aristas conectadas a este de forma iterativa hasta que no quede ninguna arista y retorna true.
+```cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
+
+    auto all_edges = &(this->vertexes[start])->edges;
+    for (auto i = all_edges->begin(); i != all_edges->end(); i++) {
+        if (((*i)->vertexes[1])->id == end) {
+            all_edges->erase(i);
+            return true;
+        }
+    }
+
+    auto all_edges1 = &(this->vertexes[end])->edges;
+    for (auto i = all_edges1->begin(); i != all_edges1->end(); i++) {
+        if (((*i)->vertexes[1])->id == start) {
+            all_edges1->erase(i);
+            return true;
+        }
+    }
+    E--;
+}
+```
+Similar al deleteEdges, el deleteEdge realiza la misma acción pero únicamente para una arista
+específica; es decir, si la arista está conectada por la variable "start" y "end" se elimina.
+Caso contrario sigue buscando entre las aristas de "start" hasta hallar una que coincida para eliminarla.
+Si no existe ninguna, retornará false.
+
+```cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::empty() {
+    return this->vertexes.size() == 0;
+}
+```
+La función empty se encarga de verificar si el grafo se encuentra vacío o cuenta con algún vértice insertado.
+
+```cpp
+template<typename TV, typename TE>
+void UnDirectedGraph<TV, TE>::clear() {
+    while (!this->vertexes.empty()) {
+        auto i = *this->vertexes.begin();
+        deleteVertex(i.first);
+
+    }
+}
+```
+El objetivo de clear es, mientras el vector de vértices no esté vacío, toma el vértice
+que se encuentra al inicio del vector y llama a la función deleteVertex.
+```cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::findById(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end()) return false;
+    return true;
+}
+```
+
+El findById es una función booleana que retorna verdadero en caso se encuentre
+un vector con el Id solicitado; caso contrario, retorna false.
 
 
+````cpp
+template<typename TV, typename TE>
+void UnDirectedGraph<TV, TE>::displayVertexFile(ofstream &filename, string id) {
+    if (this->vertexes.find(id) == this->vertexes.end())
+        return;
+
+    auto all_edges = (this->vertexes[id])->edges;
+    auto ids = id;
+    for (auto i: all_edges) {
+        for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
+            if (it->second == (*i).vertexes[1]) ids = it->first;
+        }
+
+        filename << id <<" -- "<< ids << " [label = \""<< (*i).weight<<"\"];"<<endl;
+    }
+}
+````
+Esta función se encarga de guardar los vértices
+y las aristas que se conectan a un vértice que funciona como padre del grafo que se indica en la declaración de la función
+en la dirección del filename.
+
+
+
+````cpp
+template<typename TV, typename TE>
+void UnDirectedGraph<TV, TE>::display_file(ofstream &filename){
+
+    filename <<"digraph graph1{ "<<endl;
+    for (auto i: this->vertexes) {
+        displayVertexFile(filename, i.first);
+    }
+    filename <<" } ";
+}
+````
+Lo que hace esta función es llamar iterativamente a diplayVertexFile, de esta manera,
+el archivo va a contener todas las aristas del grafo y sus conexiones para poder realizar un display más adalante.
+
+
+````cpp
+template<typename TV, typename TE>
+void UnDirectedGraph<TV, TE>::display() {
+    for (auto i: this->vertexes) {
+        displayVertex(i.first);
+    }
+}
+````
+
+La función display recorre el contenedor vertexes y por cada vértice, llama a la función displayVertex y muestra en pantalla todas las
+aristas y sus respectivos vértices que estan conectados dentro del grafo.
+
+
+````cpp
+template<typename TV, typename TE>
+float UnDirectedGraph<TV, TE>::density() {
+    int V = this->vertexes.size();
+    return 2 * E / ((float) V * (V - 1));
+}
+````
+Esta función nos permite calcular la densidad del grafo siguiendo la ecuación 2 * (cantidad de aristas)/(cantidad de vertices) * (cantidad de vertices - 1)
+
+
+
+````cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::isDense(float threshold) {
+    return this->density() > threshold;
+}
+````
+isDense verifica si la densidad del grafo es mayor threshold
+
+````cpp
+template<typename TV, typename TE>
+TE &UnDirectedGraph<TV, TE>::operator()(string start, string end) {
+    if (!findById(start))
+        throw out_of_range("Vertex not found");
+    auto par = this->vertexes[start]->edges;
+    for (auto it : par) {
+        if (it->vertexes[0] == this->vertexes[end] || it->vertexes[1] == this->vertexes[end]) {
+            return it->weight;
+        }
+    }
+    throw std::out_of_range("Edge not found");
+}
+````
+Para iniciar la función, se debe comprobar si el vértice de inicio existe en el grafo, caso contrario,
+se retorna el error "fuera de rango". Si el vértice existe se procede a iterar por las aristas que están conectadas
+con el vértice de inicio y comprueban si el otro vértice es el "end" para poder retornar el peso de la arista.
+Si no se encuentra ningún vértice que coincida con el "end", lanza un error de "Edge not found".
+````cpp
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::isStronglyConnected() throw() {
+    if(this->isConnected()){return true;}
+    else{return false;}
+}
+````
+Debido a que las conexiones entre los vértices en el UnDirectedGraph son bidireccionales, desde
+un vértice siempre se podrá llegar a todos los vértices dentro del grafo. Por lo tanto, la función
+siempre retornará true.
+
+````c++
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::isConnected() {
+    std::set<string> visited;
+    std::stack<Vertex<TV, TE>* > pila;
+
+    string fid = (*this->vertexes.begin()).first;
+    visited.insert(fid);
+
+    for (auto i : (*this->vertexes.begin()).second->edges) {
+        Vertex<TV, TE> *ax = i->vertexes[1];
+        if (visited.find(ax->id) == visited.end()) {
+            pila.push(ax);
+        }
+    }
+
+    while (!pila.empty()) {
+        Vertex<TV, TE> *to_insert = pila.top();
+        pila.pop();
+        visited.insert(to_insert->id);
+
+    for (auto i : to_insert->edges) {
+        Vertex<TV, TE> *ax = i->vertexes[1];
+        if (visited.find(ax->id) == visited.end()) {
+            pila.push(ax);
+        }
+    }
+}
+if (visited.size() == this->vertexes.size()){return true;}
+}
+````
+
+La funcion isconected tiene como objetivo, comprobar si desde el vértice solicitado
+se puede llegar a todos los vertices del grafo. Par esta implementcación, implementamos
+una estuctura de código similar a la del dfs, anexa las aristas anexadas al vértice de inicio
+para saber a qué vértices está conectado. Luego verifica si esos vértices ya se han visitado,
+si no lo han sido, se añaden a la pila y se marca como visitado hasta verificar todos los vértices.
+Finalmente, si el tamaño de la pila es igual a la cantidad de vértices, retorna true.
 ##  Grafo dirigido 🔝
 
 ### Especificaciones de los métodos (DirectedGraph)
+````cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
+    if (this->vertexes.find(id) != this->vertexes.end())
+        return false;
+
+    auto *new_vertex = new Vertex<TV, TE>;
+    new_vertex->data = vertex;
+    new_vertex->id = id;
+    this->vertexes[id] = new_vertex;
+
+    return true;
+}
+````
+La función, insertVertex verifica primero si existe algún vértice con id igual al que se desea
+ingresar, si es así, se añade un vértice nuevo con el peso e id solicitado.
 
 ```cpp
 template<typename TV, typename TE>
@@ -206,6 +443,25 @@ La función deleteVertex en DirectedGraph recibe el id del vértice que se desea
 vértices (excluyendo al que se desea eliminar) y verifica si está conectados con el vértice buscado, en caso existiera una arista, se elimina.
 Cuando no existan aristas, se elimina el vértice sin complicaciones.
 
+````cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::deleteEdges(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end())
+        return false;
+
+    auto all_edges = &(this->vertexes[id])->edges;
+
+    while (!all_edges->empty()) { // Elimino aristas hasta que la lista de adyacencia quede vacía
+        E--;
+        all_edges->pop_front();
+    }
+
+    return true;
+}
+````
+El deleteEdges se encarga de eliminar todas las aristas conectadas a un vértice, para poder aislarlo y, posteriormente, eliminarlo.
+Sin embargo, antes de realizar dicha acción, se debe verificar que dicho vértice que se desea aislar existe en el grafo, caso contrario, retorna que no se logró
+realizar la acción.
 
 ```cpp
 template<typename TV, typename TE>
@@ -262,6 +518,43 @@ desde el vértice solicitado hasta los vértices conectados a este.
 
 ````cpp
 template<typename TV, typename TE>
+void DirectedGraph<TV, TE>::displayVertexFile(ofstream &filename, string id) {
+    if (this->vertexes.find(id) == this->vertexes.end())
+        return;
+
+    auto all_edges = (this->vertexes[id])->edges;
+    auto ids = id;
+    for (auto i: all_edges) {
+        for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
+            if (it->second == (*i).vertexes[1]) ids = it->first;
+        }
+
+        filename << id <<" -> "<< ids << " [label = \""<< (*i).weight<<"\"];"<<endl;
+    }
+}
+````
+Esta función se encarga de, en una dirección de archivo ingresada, guardar los vértices 
+y las aristas que se conectan a un vértice que funciona como padre del grafo que se indica en la declaración de la función.
+
+ 
+
+````cpp
+template<typename TV, typename TE>
+void DirectedGraph<TV, TE>::display_file(ofstream &filename){
+
+    filename <<"digraph graph1{ "<<endl;
+    for (auto i: this->vertexes) {
+        displayVertexFile(filename, i.first);
+    }
+    filename <<" } ";
+}
+````
+Lo que hace esta función es llamar iterativamente a la función explicada anteriormente, de esta manera,
+el archivo va a contener todas las aristas del grafo y sus conexiones para poder realizar un display más adalante.
+
+
+````cpp
+template<typename TV, typename TE>
 void DirectedGraph<TV, TE>::display() {
     for (auto i: this->vertexes) {
         displayVertex(i.first);
@@ -271,6 +564,82 @@ void DirectedGraph<TV, TE>::display() {
 
 La función display recorre el contenedor vertexes y por cada vértice, llama a la función displayVertex y muestra en pantalla todas las 
 aristas y sus respectivos vértices que estan conectados dentro del grafo.
+
+
+````cpp
+template<typename TV, typename TE>
+float DirectedGraph<TV, TE>::density() {
+    int V = this->vertexes.size();
+    return 2 * E / ((float) V * (V - 1));
+}
+````
+Esta función nos permite calcular la densidad del grafo siguiendo la ecuación 2 * (cantidad de aristas)/(cantidad de vertices) * (cantidad de vertices - 1)
+
+
+````cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::isDense(float threshold) {
+    return this->density() > threshold;
+}
+````
+isDense verifica si la densidad del grafo es mayor threshold
+
+````cpp
+template<typename TV, typename TE>
+TE &DirectedGraph<TV, TE>::operator()(string start, string end) {
+    if (!findById(start))
+        throw out_of_range("Vertex not found");
+    auto par = this->vertexes[start]->edges;
+    for (auto it : par) {
+        if (it->vertexes[0] == this->vertexes[end] || it->vertexes[1] == this->vertexes[end]) {
+            return it->weight;
+        }
+    }
+    throw std::out_of_range("Edge not found");
+}
+````
+Para iniciar la función, se debe comprobar si el vértice de inicio existe en el grafo, caso contrario,
+se retorna el error "fuera de rango". Si el vértice existe se procede a iterar por las aristas que están conectadas
+con el vértice de inicio y comprueban si el otro vértice es el "end" para poder retornar el peso de la arista.
+Si no se encuentra ningún vértice que coincida con el "end", lanza un error de "Edge not found".
+````cpp
+template<typename TV, typename TE>
+bool DirectedGraph<TV, TE>::isStronglyConnected() throw() {
+    for(auto &j : this->vertexes){
+        std::unordered_set<string> visited;
+        std::stack<Vertex<TV, TE> *> pila;
+
+        visited.insert(j.first);
+
+        for (auto i : j.second->edges) {
+            Vertex<TV, TE> *ax = i->vertexes[1];
+            if (visited.find(ax->id) == visited.end()) {
+                pila.push(ax);
+            }
+        }
+
+
+        while (!pila.empty()) {
+            Vertex<TV, TE> * to_insert = pila.top();
+            pila.pop();
+            visited.insert(to_insert->id);
+
+            for (auto i : to_insert->edges) {
+                Vertex<TV, TE> *ax = i->vertexes[1];
+                if (visited.find(ax->id) == visited.end()) {
+                    pila.push(ax);
+                }
+            }
+        }
+        if (visited.size() != this->vertexes.size()){return false;}
+    }
+    return true;
+}
+````
+Esta función de complejidad de O(n^2) se encarga de verificar vértice por vértice, todas las aristas que los conectan
+con el objetivo de verificar si desde un vértice se puede llegar a recorrer todo el grafo.
+Si alguno de los vértices no logra recorrer todo el grafo, retorna false. Caso contrario, el grafo puede recorrerse
+completamente por cualquier vértice perteneciente a este, retorna true.
 
 ````c++
 template<typename TV, typename TE>
@@ -312,11 +681,6 @@ una estuctura de código similar a la del dfs, anexa las aristas anexadas al vé
 para saber a qué vértices está conectado. Luego verifica si esos vértices ya se han visitado,
 si no lo han sido, se añaden a la pila y se marca como visitado hasta verificar todos los vértices.
 Finalmente, si el tamaño de la pila es igual a la cantidad de vértices, retorna true.
-
-````c++
-
-````
-
 
 
 ### Algorithms:
@@ -490,7 +854,60 @@ public:
 ````
 El dfs tiene la misma estructura que el bfs; sin embargo, se distingue de este por usar un stack en lugar de queue.
 
+###Prim
+```` cpp
+prim(Graph<TV,TE>* &grafo,const string& id){
 
+        priority_queue<par, vector<par>, Compare> cont;
+        unordered_set<string> visited;
+        primm = new UnDirectedGraph<TV,TE>;
+
+        primm->insertVertex(id,grafo->vertexes[id]->data);
+        visited.insert(id);
+
+        Vertex<TV,TE>* temp = grafo->vertexes[id];
+        for(auto i: temp->edges){
+            Vertex<TV,TE>* ax = i->vertexes[1];
+            if(visited.find(ax->id) ==visited.end()){
+                cont.push(make_tuple(id,i->weight,ax->id));
+            }
+        }
+
+        cost =0;
+
+        while (!cont.empty()){
+            string origin = get<0>(cont.top());
+            int mcost  = get<1>(cont.top());
+            string idd = get<2>(cont.top());
+            cont.pop();
+
+            if(visited.find(idd) == visited.end()){
+                cost += mcost;
+                visited.insert(idd);
+                primm->insertVertex(idd, grafo->vertexes[idd]->data);
+                primm->createEdge(origin,idd, mcost);
+                Vertex<TV,TE>* nuevo = grafo->vertexes[idd];
+
+                for(auto i: nuevo->edges){
+                    Vertex<TV,TE>* ax = i->vertexes[1];
+                    if(visited.find(ax->id) ==visited.end()){
+
+                        cont.push(make_tuple(idd,i->weight,ax->id));
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    UnDirectedGraph<TV,TE>* apply(){
+        return primm;
+    }
+    int mstcost(){
+        return cost;
+    }
+````
 
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
