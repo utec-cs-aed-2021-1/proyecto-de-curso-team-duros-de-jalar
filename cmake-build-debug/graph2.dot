@@ -1,0 +1,26 @@
+digraph graph1{ 
+B -> A [label = "80"];
+C -> D [label = "13"];
+D -> C [label = "45"];
+E -> A [label = "21"];
+E -> H [label = "69"];
+F -> G [label = "17"];
+F -> I [label = "52"];
+G -> D [label = "89"];
+H -> I [label = "71"];
+H -> L [label = "34"];
+I -> J [label = "15"];
+J -> H [label = "21"];
+J -> L [label = "17"];
+J -> P [label = "13"];
+K -> D [label = "28"];
+K -> R [label = "27"];
+L -> H [label = "19"];
+L -> I [label = "21"];
+L -> P [label = "21"];
+M -> J [label = "11"];
+M -> N [label = "27"];
+N -> K [label = "20"];
+O -> P [label = "30"];
+Q -> P [label = "62"];
+ } 
