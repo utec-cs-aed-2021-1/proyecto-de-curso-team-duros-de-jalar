@@ -38,6 +38,39 @@ El proyecto del curso consiste en implementar una estructura de datos de grafo y
 **3.** Ejecutar el programa
 
 
+### Generar gráficos
+
+Para la representación visual usamos Graphviz. Un software de visualización gráfica open source. La visualización  es una forma de representar información estructurada como diagramas de grafos y redes abstractas.
+
+* Descarga: 
+Los paquetes de código fuente para las últimas versiones estables y de desarrollo de Graphviz están disponibles, junto con instrucciones para el acceso anónimo a las fuentes usando Git . [Click aquí](https://graphviz.org/download/)
+
+En el proyecto usamos archivos mediante la librería <fstream>. El uso de archivos fue vital para la generación de gráficos.
+Hicimos métodos en el grafo no dirigido y el dirigido para generar archivos en el lenguaje DOT. La siguiente es una gramática abstracta que define el lenguaje DOT.
+  
+  grafico	:	[ estricto ] ( gráfico | dígrafo ) [ ID ] '{' stmt_list '}'
+stmt_list	:	[ stmt [ ';' ] stmt_list ]
+stmt	:	node_stmt
+        |	edge_stmt
+        |	attr_stmt
+        |	ID '=' ID
+        |	subgrafo
+attr_stmt	:	( gráfico | nodo | borde ) attr_list
+attr_list	:	'[' [ a_list ] ']' [ attr_list ]
+una lista	:	ID '=' ID [( ';' | ',' )] [ a_list ]
+edge_stmt	:	( node_id | subgraph ) edgeRHS [ attr_list ]
+edgeRHS	:	edgeop ( node_id | subgrafo ) [ edgeRHS ]
+node_stmt	:	node_id [ attr_list ]
+node_id	:	ID [ puerto ]
+Puerto	:	':' ID [ ':' compass_pt ]
+        |	':' compass_pt
+subgrafo	:	[ subgrafo [ ID ]] '{' stmt_list '}'
+compass_pt	:	( n | ne | e | se | s | sw | w | nw | c | _ )
+
+ Una vez generado el archivo, se ejecuta el siguiente comando para generar la imagen. 
+ dot -Tpng nombre.dot -onombre.png
+
+
 ## Graph data structure 🚀
 
 * El grafo debe ser dinámico (inserciones. eliminaciones, búsquedas, ...)
