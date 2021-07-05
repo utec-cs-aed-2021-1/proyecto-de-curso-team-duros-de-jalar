@@ -12,11 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d7c6535-c983-4ee9-b003-ff5e06c53fd3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/menu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/menu.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +90,7 @@
       <workItem from="1625337612161" duration="26300000" />
       <workItem from="1625378299339" duration="3944000" />
       <workItem from="1625382868818" duration="223000" />
-      <workItem from="1625453672505" duration="3285000" />
+      <workItem from="1625453672505" duration="5115000" />
     </task>
     <servers />
   </component>

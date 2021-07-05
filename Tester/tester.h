@@ -1,22 +1,23 @@
 
-#ifndef MENU_H
-#define MENU_H
+#ifndef TESTER_H
+#define TESTER_H
+
 #include <iostream>
 #include <cstdlib>
-#include "UndirectedGraph.h"
-#include "DirectedGraph.h"
-#include "Algorithms/prim.h"
-#include "Algorithms/kruskal.h"
-#include "Algorithms/bfs.h"
-#include "Algorithms/dfs.h"
+#include "Graph/UndirectedGraph.h"
+#include "Graph/DirectedGraph.h"
+#include "Graph/Algorithms/prim.h"
+#include "Graph/Algorithms/kruskal.h"
+#include "Graph/Algorithms/bfs.h"
+#include "Graph/Algorithms/dfs.h"
 #include <fstream>
 
 using namespace std;
-struct Menu {
+struct Tester {
     int input_Case{};
     int metodo{};
 
-    void correr_menu()
+    void executeExamples()
     {
         do {
             cout << "\n\nMenu de opciones" << endl;
@@ -129,7 +130,7 @@ struct Menu {
                     }
                     case 2:{
                         if(graph->isDense()){cout<<"Es un grado denso"<<endl;
-                        cout<<"Su densidad es "<<graph->density()<<endl;}
+                            cout<<"Su densidad es "<<graph->density()<<endl;}
                         else{cout<<"No es un grafo denso"<<endl;
                             cout<<"Su densidad es "<<graph->density()<<endl;}
                         break;
@@ -715,4 +716,5 @@ struct Menu {
         }
     }
 };
-#endif
+
+#endif //TESTER_H
