@@ -47,7 +47,8 @@ Los paquetes de código fuente para las últimas versiones estables y de desarro
 
 En el proyecto usamos archivos mediante la librería <fstream>. El uso de archivos fue vital para la generación de gráficos.
 Hicimos métodos en el grafo no dirigido y el dirigido para generar archivos en el lenguaje DOT. La siguiente es una gramática abstracta que define el lenguaje DOT.
-  
+ 
+```
   grafico	:	[ estricto ] ( gráfico | dígrafo ) [ ID ] '{' stmt_list '}'
 stmt_list	:	[ stmt [ ';' ] stmt_list ]
 stmt	:	node_stmt
@@ -66,10 +67,12 @@ Puerto	:	':' ID [ ':' compass_pt ]
         |	':' compass_pt
 subgrafo	:	[ subgrafo [ ID ]] '{' stmt_list '}'
 compass_pt	:	( n | ne | e | se | s | sw | w | nw | c | _ )
-
+```
+  
  Una vez generado el archivo, se ejecuta el siguiente comando para generar la imagen. 
+ ``` 
  dot -Tpng nombre.dot -onombre.png
-
+```
 
 ## Graph data structure 🚀
 
