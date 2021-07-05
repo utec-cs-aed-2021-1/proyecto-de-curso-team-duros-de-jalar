@@ -1,3 +1,0 @@
-C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir
-C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/cmake-build-debug/CMakeFiles/rebuild_cache.dir
