@@ -872,7 +872,7 @@ public:
 ````
 El dfs tiene la misma estructura que el bfs; sin embargo, se distingue de este por usar un stack en lugar de queue.
 
-###Prim
+### Prim
 ```` cpp
 prim(Graph<TV,TE>* &grafo,const string& id){
 
