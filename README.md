@@ -926,7 +926,7 @@ prim(Graph<TV,TE>* &grafo,const string& id){
         return cost;
     }
 ````
-
+El algoritmo de prim utiliza un priority queue con  la finalidad de dejar en el top la menor arista conectada al vértice que se está iterando. La finalidad de este algoritmo es buscar el menor camino posible partiendo del vértice solicitado hasta todos los vértices del grafo, una vez se visite un vértice, ya no se debe volver a comparar las aristas para conseguir un algoritmo eficaz.
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
 
