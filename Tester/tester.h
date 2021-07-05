@@ -13,39 +13,18 @@
 #include <fstream>
 
 using namespace std;
-struct Tester {
+namespace Tester {
     int input_Case{};
     int metodo{};
 
-    void executeExamples()
-    {
-        do {
-            cout << "\n\nMenu de opciones" << endl;
-            cout << "1. Grafo Dirigido" << endl;
-            cout << "2. Grafo No Dirigido" << endl;
-            cout << "3. SALIR" << endl<<endl;
-            cout << "Ingrese una opcion : ";
-            cin >> input_Case;
-            switch (input_Case) {
-                case 1: {
-                    GDirigido();
-                    break;
-                }
-                case 2: {
-                    GNDirigido();
-                    break;
-                }
-            }
 
-        }while (input_Case>3 || 1>input_Case);
-    }
-
-    void GDirigido(){
-        cout<<"Seleccione el grafo (1 al 3) que desee: ";
-        int a; cin>>a;
-        switch(a){
-            case 1:{
-                Graph<int, float>* graph = new DirectedGraph<int,float> ;
+    void GDirigido() {
+        cout << "Seleccione el grafo (1 al 3) que desee: ";
+        int a;
+        cin >> a;
+        switch (a) {
+            case 1: {
+                Graph<int, float> *graph = new DirectedGraph<int, float>;
 
                 graph->insertVertex("A", 1);
                 graph->insertVertex("B", 2);
@@ -113,59 +92,64 @@ struct Tester {
                 // Close the file
                 MyFile.close();
 
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
-                cout << "\n\n Elija el metodo " << endl;
-                cout << "1. Mostrar grafo" << endl;
-                cout << "2. Densidad del grafo" << endl;
-                cout << "3. Es conexo" << endl;
-                cout << "4. Es fuertemente conexo" << endl;
-                cout << "5. BFS" << endl;
-                cout << "6. DFS" << endl;
+                    cin >> metodo;
 
-                cin >> metodo;
-                switch(metodo){
-                    case 1:{
-                        graph->display();
-                        break;
-                    }
-                    case 2:{
-                        if(graph->isDense()){cout<<"Es un grado denso"<<endl;
-                            cout<<"Su densidad es "<<graph->density()<<endl;}
-                        else{cout<<"No es un grafo denso"<<endl;
-                            cout<<"Su densidad es "<<graph->density()<<endl;}
-                        break;
-                    }
-                    case 3:{
-                        if(graph->isConnected()){cout<<"Es un grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo conexo"<<endl;}
-                        break;
-                    }
-                    case 4:{
-                        if(graph->isStronglyConnected()){cout<<"Es un fuertemente grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo fuertemente conexo"<<endl;}
-                        break;
-                    }
-                    case 5:{
-                        cout<<"BFS desde el vertice A"<<endl;
-                        bfs<int,float> bfs_ (graph, "A");
-                        bfs_.apply()->display();
+                    switch (metodo) {
+                        case 1: {
+                            graph->display();
+                            break;
+                        }
+                        case 2: {
+                            if (graph->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << graph->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << graph->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (graph->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (graph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<int, float> bfs_(graph, "A");
+                            bfs_.apply()->display();
 
-                        break;
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<int, float> dfs_(graph, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
                     }
-                    case 6:{
-                        cout<<"DFS desde el vertice A"<<endl;
-                        dfs<int,float> dfs_ (graph, "A");
-                        dfs_.apply()->display();
-                        break;
-                    }
-
-                }while (metodo>6 || 1>metodo);
+                }while (metodo <= 6 && 1 <= metodo);
 
 
                 break;
             }
-            case 2:{
-                Graph<int, float>* graph1 = new DirectedGraph<int,float> ;
+            case 2: {
+                Graph<int, float> *graph1 = new DirectedGraph<int, float>;
 
                 graph1->insertVertex("A", 1);
                 graph1->insertVertex("B", 2);
@@ -232,56 +216,61 @@ struct Tester {
                 // Close the file
                 MyFile.close();
 
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
-                cout << "\n\n Elija el metodo " << endl;
-                cout << "1. Mostrar grafo" << endl;
-                cout << "2. Densidad del grafo" << endl;
-                cout << "3. Es conexo" << endl;
-                cout << "4. Es fuertemente conexo" << endl;
-                cout << "5. BFS" << endl;
-                cout << "6. DFS" << endl;
+                    cin >> metodo;
+                    switch (metodo) {
+                        case 1: {
+                            graph1->display();
+                            break;
+                        }
+                        case 2: {
+                            if (graph1->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << graph1->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << graph1->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (graph1->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (graph1->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<int, float> bfs_(graph1, "A");
+                            bfs_.apply()->display();
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<int, float> dfs_(graph1, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
 
-                cin >> metodo;
-                switch(metodo){
-                    case 1:{
-                        graph1->display();
-                        break;
                     }
-                    case 2:{
-                        if(graph1->isDense()){cout<<"Es un grado denso"<<endl;
-                            cout<<"Su densidad es "<<graph1->density()<<endl;}
-                        else{cout<<"No es un grafo denso"<<endl;
-                            cout<<"Su densidad es "<<graph1->density()<<endl;}
-                        break;
-                    }
-                    case 3:{
-                        if(graph1->isConnected()){cout<<"Es un grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo conexo"<<endl;}
-                        break;
-                    }
-                    case 4:{
-                        if(graph1->isStronglyConnected()){cout<<"Es un fuertemente grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo fuertemente conexo"<<endl;}
-                        break;
-                    }
-                    case 5:{
-                        cout<<"BFS desde el vertice A"<<endl;
-                        bfs<int,float> bfs_ (graph1, "A");
-                        bfs_.apply()->display();
-                        break;
-                    }
-                    case 6:{
-                        cout<<"DFS desde el vertice A"<<endl;
-                        dfs<int,float> dfs_ (graph1, "A");
-                        dfs_.apply()->display();
-                        break;
-                    }
-
-                }while (metodo>6 || 1>metodo);
+                }while (metodo <= 6 && 1 <= metodo);
                 break;
             }
-            case 3:{
-                Graph<int,float>* graph2 = new DirectedGraph<int,float> ;
+            case 3: {
+                Graph<int, float> *graph2 = new DirectedGraph<int, float>;
 
                 graph2->insertVertex("A", 1);
                 graph2->insertVertex("B", 2);
@@ -371,65 +360,70 @@ struct Tester {
                 // Close the file
                 MyFile.close();
 
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
+                    cin >> metodo;
+                    switch (metodo) {
+                        case 1: {
+                            graph2->display();
+                            break;
+                        }
+                        case 2: {
+                            if (graph2->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << graph2->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << graph2->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (graph2->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (graph2->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<int, float> bfs_(graph2, "A");
+                            bfs_.apply()->display();
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<int, float> dfs_(graph2, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
 
-                cout << "\n\n Elija el metodo " << endl;
-                cout << "1. Mostrar grafo" << endl;
-                cout << "2. Densidad del grafo" << endl;
-                cout << "3. Es conexo" << endl;
-                cout << "4. Es fuertemente conexo" << endl;
-                cout << "5. BFS" << endl;
-                cout << "6. DFS" << endl;
-
-                cin >> metodo;
-                switch(metodo){
-                    case 1:{
-                        graph2->display();
-                        break;
                     }
-                    case 2:{
-                        if(graph2->isDense()){cout<<"Es un grado denso"<<endl;
-                            cout<<"Su densidad es "<<graph2->density()<<endl;}
-                        else{cout<<"No es un grafo denso"<<endl;
-                            cout<<"Su densidad es "<<graph2->density()<<endl;}
-                        break;
-                    }
-                    case 3:{
-                        if(graph2->isConnected()){cout<<"Es un grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo conexo"<<endl;}
-                        break;
-                    }
-                    case 4:{
-                        if(graph2->isStronglyConnected()){cout<<"Es un fuertemente grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo fuertemente conexo"<<endl;}
-                        break;
-                    }
-                    case 5:{
-                        cout<<"BFS desde el vertice A"<<endl;
-                        bfs<int,float> bfs_ (graph2, "A");
-                        bfs_.apply()->display();
-                        break;
-                    }
-                    case 6:{
-                        cout<<"DFS desde el vertice A"<<endl;
-                        dfs<int,float> dfs_ (graph2, "A");
-                        dfs_.apply()->display();
-                        break;
-                    }
-
-                }while (metodo>6 || 1>metodo);
+                }while (metodo <= 6 && 1 <= metodo);
                 break;
 
             }
         }
     }
 
-    void GNDirigido(){
-        cout<<"Seleccione el grafo (1 al 3) que desee: ";
-        int a; cin>>a;
-        switch(a){
-            case 1:{
-                Graph<int, float>* graph = new UnDirectedGraph<int,float> ;
+    void GNDirigido() {
+        cout << "Seleccione el grafo (1 al 3) que desee: ";
+        int a;
+        cin >> a;
+        switch (a) {
+            case 1: {
+                Graph<int, float> *graph = new UnDirectedGraph<int, float>;
 
                 graph->insertVertex("A", 1);
                 graph->insertVertex("B", 2);
@@ -459,75 +453,80 @@ struct Tester {
                 // Close the file
                 MyFile.close();
 
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout << "7. Kruskal" << endl;
+                    cout << "8. Prim" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
-                cout << "\n\n Elija el metodo " << endl;
-                cout << "1. Mostrar grafo" << endl;
-                cout << "2. Densidad del grafo" << endl;
-                cout << "3. Es conexo" << endl;
-                cout << "4. Es fuertemente conexo" << endl;
-                cout << "5. BFS" << endl;
-                cout << "6. DFS" << endl;
-                cout << "7. Kruskal" << endl;
-                cout << "8. Prim" << endl;
+                    cin >> metodo;
+                    switch (metodo) {
+                        case 1: {
+                            graph->display();
+                            break;
+                        }
+                        case 2: {
+                            if (graph->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << graph->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << graph->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (graph->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (graph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<int, float> bfs_(graph, "A");
+                            bfs_.apply()->display();
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<int, float> dfs_(graph, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
+                        case 7: {
+                            cout << "Kruskal" << endl;
+                            Kruskal<int, float> kruskal(graph);    /*Undirected graph */
+                            UnDirectedGraph<int, float> *result = kruskal.apply();//return a tree
+                            result->display();
 
-                cin >> metodo;
-                switch(metodo){
-                    case 1:{
-                        graph->display();
-                        break;
-                    }
-                    case 2:{
-                        if(graph->isDense()){cout<<"Es un grado denso"<<endl;
-                            cout<<"Su densidad es "<<graph->density()<<endl;}
-                        else{cout<<"No es un grafo denso"<<endl;
-                            cout<<"Su densidad es "<<graph->density()<<endl;}
-                        break;
-                    }
-                    case 3:{
-                        if(graph->isConnected()){cout<<"Es un grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo conexo"<<endl;}
-                        break;
-                    }
-                    case 4:{
-                        if(graph->isStronglyConnected()){cout<<"Es un fuertemente grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo fuertemente conexo"<<endl;}
-                        break;
-                    }
-                    case 5:{
-                        cout<<"BFS desde el vertice A"<<endl;
-                        bfs<int,float> bfs_ (graph, "A");
-                        bfs_.apply()->display();
-                        break;
-                    }
-                    case 6:{
-                        cout<<"DFS desde el vertice A"<<endl;
-                        dfs<int,float> dfs_ (graph, "A");
-                        dfs_.apply()->display();
-                        break;
-                    }
-                    case 7:{
-                        cout<<"Kruskal"<<endl;
-                        Kruskal<int,float> kruskal(graph);    /*Undirected graph */
-                        UnDirectedGraph<int, float>* result = kruskal.apply();//return a tree
-                        result->display();
+                            break;
+                        }
 
-                        break;
-                    }
+                        case 8: {
+                            cout << "Prim" << endl;
+                            prim<int, float> prim_(graph, "A");    /*Undirected graph */
+                            UnDirectedGraph<int, float> *result = prim_.apply();//return a tree
+                            result->display();
+                            break;
+                        }
 
-                    case 8:{
-                        cout<<"Prim"<<endl;
-                        prim<int,float> prim_(graph, "A");    /*Undirected graph */
-                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
-                        result->display();
-                        break;
                     }
-
-                }while (metodo>8 || 1>metodo);
+                } while (metodo <= 8 && 1 <= metodo);
                 break;
 
             }
-            case 2:{
-                Graph<int, float>* graph1 = new UnDirectedGraph<int,float> ;
+            case 2: {
+                Graph<int, float> *graph1 = new UnDirectedGraph<int, float>;
                 graph1->insertVertex("A", 1);
                 graph1->insertVertex("B", 2);
                 graph1->insertVertex("C", 3);
@@ -555,73 +554,78 @@ struct Tester {
                 // Close the file
                 MyFile.close();
 
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout << "7. Kruskal" << endl;
+                    cout << "8. Prim" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
-                cout << "\n\n Elija el metodo " << endl;
-                cout << "1. Mostrar grafo" << endl;
-                cout << "2. Densidad del grafo" << endl;
-                cout << "3. Es conexo" << endl;
-                cout << "4. Es fuertemente conexo" << endl;
-                cout << "5. BFS" << endl;
-                cout << "6. DFS" << endl;
-                cout << "7. Kruskal" << endl;
-                cout << "8. Prim" << endl;
+                    cin >> metodo;
+                    switch (metodo) {
+                        case 1: {
+                            graph1->display();
+                            break;
+                        }
+                        case 2: {
+                            if (graph1->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << graph1->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << graph1->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (graph1->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (graph1->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<int, float> bfs_(graph1, "A");
+                            bfs_.apply()->display();
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<int, float> dfs_(graph1, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
+                        case 7: {
+                            cout << "Kruskal" << endl;
+                            Kruskal<int, float> kruskal(graph1);    /*Undirected graph */
+                            UnDirectedGraph<int, float> *result = kruskal.apply();//return a tree
+                            result->display();
+                            break;
+                        }
 
-                cin >> metodo;
-                switch(metodo){
-                    case 1:{
-                        graph1->display();
-                        break;
-                    }
-                    case 2:{
-                        if(graph1->isDense()){cout<<"Es un grado denso"<<endl;
-                            cout<<"Su densidad es "<<graph1->density()<<endl;}
-                        else{cout<<"No es un grafo denso"<<endl;
-                            cout<<"Su densidad es "<<graph1->density()<<endl;}
-                        break;
-                    }
-                    case 3:{
-                        if(graph1->isConnected()){cout<<"Es un grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo conexo"<<endl;}
-                        break;
-                    }
-                    case 4:{
-                        if(graph1->isStronglyConnected()){cout<<"Es un fuertemente grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo fuertemente conexo"<<endl;}
-                        break;
-                    }
-                    case 5:{
-                        cout<<"BFS desde el vertice A"<<endl;
-                        bfs<int,float> bfs_ (graph1, "A");
-                        bfs_.apply()->display();
-                        break;
-                    }
-                    case 6:{
-                        cout<<"DFS desde el vertice A"<<endl;
-                        dfs<int,float> dfs_ (graph1, "A");
-                        dfs_.apply()->display();
-                        break;
-                    }
-                    case 7:{
-                        cout<<"Kruskal"<<endl;
-                        Kruskal<int,float> kruskal(graph1);    /*Undirected graph */
-                        UnDirectedGraph<int, float>* result = kruskal.apply();//return a tree
-                        result->display();
-                        break;
-                    }
+                        case 8: {
+                            cout << "Prim" << endl;
+                            prim<int, float> prim_(graph1, "A");    /*Undirected graph */
+                            UnDirectedGraph<int, float> *result = prim_.apply();//return a tree
+                            result->display();
+                            break;
+                        }
 
-                    case 8:{
-                        cout<<"Prim"<<endl;
-                        prim<int,float> prim_(graph1, "A");    /*Undirected graph */
-                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
-                        result->display();
-                        break;
                     }
-
-                }while (metodo>8 || 1>metodo);
+                } while (metodo <= 8 && 1 <= metodo);
                 break;
             }
-            case 3:{
-                Graph<int,float>* graph2 = new UnDirectedGraph<int,float> ;
+            case 3: {
+                Graph<int, float> *graph2 = new UnDirectedGraph<int, float>;
                 graph2->insertVertex("A", 1);
                 graph2->insertVertex("B", 2);
                 graph2->insertVertex("C", 3);
@@ -648,73 +652,102 @@ struct Tester {
                 // Close the file
                 MyFile.close();
 
-                cout << "\n\n Elija el metodo " << endl;
-                cout << "1. Mostrar grafo" << endl;
-                cout << "2. Densidad del grafo" << endl;
-                cout << "3. Es conexo" << endl;
-                cout << "4. Es fuertemente conexo" << endl;
-                cout << "5. BFS" << endl;
-                cout << "6. DFS" << endl;
-                cout << "7. Kruskal" << endl;
-                cout << "8. Prim" << endl;
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout << "7. Kruskal" << endl;
+                    cout << "8. Prim" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
-                cin >> metodo;
-                switch(metodo){
-                    case 1:{
-                        graph2->display();
-                        break;
-                    }
-                    case 2:{
-                        if(graph2->isDense()){cout<<"Es un grado denso"<<endl;
-                            cout<<"Su densidad es "<<graph2->density()<<endl;}
-                        else{cout<<"No es un grafo denso"<<endl;
-                            cout<<"Su densidad es "<<graph2->density()<<endl;}
-                        break;
-                    }
-                    case 3:{
-                        if(graph2->isConnected()){cout<<"Es un grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo conexo"<<endl;}
-                        break;
-                    }
-                    case 4:{
-                        if(graph2->isStronglyConnected()){cout<<"Es un fuertemente grafo conexo"<<endl;}
-                        else{cout<<"No es un grafo fuertemente conexo"<<endl;}
-                        break;
-                    }
-                    case 5:{
-                        cout<<"BFS desde el vertice A"<<endl;
-                        bfs<int,float> bfs_ (graph2, "A");
-                        bfs_.apply()->display();
-                        break;
-                    }
-                    case 6:{
-                        cout<<"DFS desde el vertice A"<<endl;
-                        dfs<int,float> dfs_ (graph2, "A");
-                        dfs_.apply()->display();
-                        break;
-                    }
-                    case 7:{
-                        cout<<"Kruskal"<<endl;
-                        Kruskal<int,float> kruskal(graph2);    /*Undirected graph */
-                        UnDirectedGraph<int, float>* result = kruskal.apply();//return a tree
-                        result->display();
-                        break;
-                    }
+                    cin >> metodo;
+                    switch (metodo) {
+                        case 1: {
+                            graph2->display();
+                            break;
+                        }
+                        case 2: {
+                            if (graph2->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << graph2->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << graph2->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (graph2->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (graph2->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<int, float> bfs_(graph2, "A");
+                            bfs_.apply()->display();
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<int, float> dfs_(graph2, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
+                        case 7: {
+                            cout << "Kruskal" << endl;
+                            Kruskal<int, float> kruskal(graph2);    /*Undirected graph */
+                            UnDirectedGraph<int, float> *result = kruskal.apply();//return a tree
+                            result->display();
+                            break;
+                        }
 
-                    case 8:{
-                        cout<<"Prim"<<endl;
-                        prim<int,float> prim_(graph2, "A");    /*Undirected graph */
-                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
-                        result->display();
-                        break;
-                    }
+                        case 8: {
+                            cout << "Prim" << endl;
+                            prim<int, float> prim_(graph2, "A");    /*Undirected graph */
+                            UnDirectedGraph<int, float> *result = prim_.apply();//return a tree
+                            result->display();
+                            break;
+                        }
 
-                }while (metodo>8 || 1>metodo);
+                    }
+                }while (metodo <= 8 || 1 <= metodo);
                 break;
-
             }
         }
     }
-};
+
+    void executeExamples() {
+        do {
+            cout << "\n\nMenu de opciones" << endl;
+            cout << "1. Grafo Dirigido" << endl;
+            cout << "2. Grafo No Dirigido" << endl;
+            cout << "3. SALIR" << endl << endl;
+            cout<<"Para salir del bucle insertar cualquier numero"<<endl;
+            cout << "Ingrese una opcion : ";
+            cin >> input_Case;
+            switch (input_Case) {
+                case 1: {
+                    GDirigido();
+                    break;
+                }
+                case 2: {
+                    GNDirigido();
+                    break;
+                }
+            }
+        } while (input_Case < 3 || 1 <= input_Case);
+    }
+
+
+}
 
 #endif //TESTER_H
