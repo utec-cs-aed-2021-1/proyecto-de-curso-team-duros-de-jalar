@@ -49,11 +49,9 @@ public:
 
     void display_file(ofstream &filename);
 
-    void displayVertexFile(ofstream &filename, string id);
-
     bool isStronglyConnected() throw();
 
-    ~UnDirectedGraph();
+        ~UnDirectedGraph();
 
 
 };
@@ -170,22 +168,11 @@ bool UnDirectedGraph<TV, TE>::findById(string id) {
     return true;
 }
 
-
 template<typename TV, typename TE>
-void UnDirectedGraph<TV, TE>::displayVertexFile(ofstream &filename, string id) {
-    if (this->vertexes.find(id) == this->vertexes.end())
-        return;
+void UnDirectedGraph<TV, TE>::displayVertex(string id){
 
-    auto all_edges = (this->vertexes[id])->edges;
-    auto ids = id;
-    for (auto i: all_edges) {
-        for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
-            if (it->second == (*i).vertexes[1]) ids = it->first;
-        }
-
-        filename << id <<" -- "<< ids << " [label = \""<< (*i).weight<<"\"];"<<endl;
-        }
 }
+
 
 
 template<typename TV, typename TE>
@@ -213,14 +200,32 @@ void UnDirectedGraph<TV, TE>::display() {
 }
 
 template<typename TV, typename TE>
-void UnDirectedGraph<TV, TE>::display_file(ofstream &filename){
-
+void UnDirectedGraph<TV, TE>::display_file(ofstream &filename) {
     filename <<"graph graph1{ "<<endl;
+    vector<pair<string, string>> visited;
     for (auto i: this->vertexes) {
-        displayVertexFile(filename, i.first);
+        string id = i.first;
+
+        auto all_edges = (this->vertexes[id])->edges;
+        for (auto j: all_edges) {
+            string ids = (j->vertexes[1])->id;
+            bool was_visited = true;
+            for(const auto & i : visited){
+                if((i.first == id && i.second ==ids) || (i.first == ids && i.second ==id)){
+                    was_visited = false;
+                    break;
+                }
+            }
+            if(was_visited) {
+                visited.push_back(make_pair(id,ids));
+                filename << id <<" -- "<< ids << " [label = \""<< (*j).weight<<"\"];"<<endl;
+            }
+        }
     }
     filename <<" } ";
+
 }
+
 
 
 template<typename TV, typename TE>

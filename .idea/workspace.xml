@@ -13,8 +13,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5d7c6535-c983-4ee9-b003-ff5e06c53fd3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/kruskal.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/kruskal.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/prim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/prim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/UndirectedGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/UndirectedGraph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/cmake-build-debug/CLIONPROYECT.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/hola.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/hola.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/prueba1.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/prueba1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/prueba2.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/cmake-build-debug/prueba2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +94,9 @@
       <workItem from="1625076127349" duration="117000" />
       <workItem from="1625243090344" duration="18610000" />
       <workItem from="1625337612161" duration="26300000" />
-      <workItem from="1625378299339" duration="3439000" />
+      <workItem from="1625378299339" duration="3944000" />
+      <workItem from="1625382868818" duration="223000" />
+      <workItem from="1625453672505" duration="1647000" />
     </task>
     <servers />
   </component>
