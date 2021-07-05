@@ -1,0 +1,8 @@
+graph graph1{ 
+A -- D [label = "5"];
+A -- B [label = "7"];
+B -- E [label = "7"];
+E -- C [label = "5"];
+E -- G [label = "9"];
+F -- D [label = "6"];
+ } 

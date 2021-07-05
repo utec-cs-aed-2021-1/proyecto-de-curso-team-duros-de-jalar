@@ -1,0 +1,16 @@
+digraph graph1{ 
+N -> I [label = "1"];
+M -> G [label = "1"];
+B -> D [label = "1"];
+A -> B [label = "1"];
+A -> C [label = "1"];
+G -> H [label = "1"];
+J -> K [label = "1"];
+J -> L [label = "1"];
+J -> M [label = "1"];
+H -> O [label = "1"];
+D -> E [label = "1"];
+D -> F [label = "1"];
+L -> N [label = "1"];
+F -> J [label = "1"];
+ } 
