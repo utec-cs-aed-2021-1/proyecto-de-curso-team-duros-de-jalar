@@ -9,7 +9,7 @@
 template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE> {
 public:
-
+    DirectedGraph() = default;
     DirectedGraph(string id, TV vertex) {
         this->insertVertex(id,vertex);
     }
