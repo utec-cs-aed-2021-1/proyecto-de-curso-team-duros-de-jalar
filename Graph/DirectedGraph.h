@@ -9,6 +9,11 @@
 template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE> {
 public:
+
+    DirectedGraph(string id, TV vertex) {
+        this->insertVertex(id,vertex);
+    }
+    
     int E = 0;
 
     bool insertVertex(string id, TV vertex) override;
