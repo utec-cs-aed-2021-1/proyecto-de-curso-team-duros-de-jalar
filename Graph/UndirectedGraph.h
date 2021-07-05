@@ -134,12 +134,13 @@ bool UnDirectedGraph<TV, TE>::deleteEdges(string id) {
 
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
+    if (this->vertexes.find(start) == this->vertexes.end() && this->vertexes.find(end) == this->vertexes.end())
+        return false;
 
     auto all_edges = &(this->vertexes[start])->edges;
     for (auto i = all_edges->begin(); i != all_edges->end(); i++) {
         if (((*i)->vertexes[1])->id == end) {
             all_edges->erase(i);
-            return true;
         }
     }
 
@@ -147,10 +148,10 @@ bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
     for (auto i = all_edges1->begin(); i != all_edges1->end(); i++) {
         if (((*i)->vertexes[1])->id == start) {
             all_edges1->erase(i);
-            return true;
         }
     }
     E--;
+    return true;
 }
 
 template<typename TV, typename TE>
@@ -202,8 +203,8 @@ void UnDirectedGraph<TV, TE>::display() {
         for (auto j: all_edges) {
             string ids = (j->vertexes[1])->id;
             bool was_visited = true;
-            for(const auto & i : visited){
-                if((i.first == id && i.second ==ids) || (i.first == ids && i.second ==id)){
+            for(const auto & k : visited){
+                if((k.first == id && k.second ==ids) || (k.first == ids && k.second ==id)){
                     was_visited = false;
                     break;
                 }
@@ -303,6 +304,7 @@ bool UnDirectedGraph<TV, TE>::isConnected() {
         }
     }
     if (visited.size() == this->vertexes.size()){return true;}
+    return false;
 }
 
 template<typename TV, typename TE>

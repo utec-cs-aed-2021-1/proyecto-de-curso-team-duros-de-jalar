@@ -4,7 +4,6 @@
 #include <set>
 #include "graph.h"
 #include <iostream>
-#include <fstream>
 
 
 template<typename TV, typename TE>
@@ -212,8 +211,9 @@ void DirectedGraph<TV, TE>::display() {
         for (auto j: all_edges) {
             string ids = (j->vertexes[1])->id;
             bool was_visited = true;
-            for(const auto & i : visited){
-                if((i.first == id && i.second ==ids) || (i.first == ids && i.second ==id)){
+
+            for(const auto & k : visited){
+                if((k.first == id && k.second ==ids) || (k.first == ids && k.second ==id)){
                     was_visited = false;
                     break;
                 }
