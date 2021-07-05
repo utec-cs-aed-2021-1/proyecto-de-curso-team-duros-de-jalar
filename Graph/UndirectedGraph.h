@@ -13,6 +13,10 @@ template<typename TV, typename TE>
 class UnDirectedGraph : public Graph<TV, TE> {
 
 public:
+    UnDirectedGraph(string id, TV vertex) {
+        this->insertVertex(id,vertex);
+    }
+
     int E = 0;
 
     bool insertVertex(string id, TV vertex) override;
