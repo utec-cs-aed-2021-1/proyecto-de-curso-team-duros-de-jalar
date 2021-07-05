@@ -110,34 +110,34 @@ void clear(); // Clears the graph
 
 ### Grafo 1  dirigido
 <figure align="center" class="image">
-  <img src="cmake-build-debug/graph1.png" width="70%" height="60%" style="text-align:center;">
+  <img src="Imagenes/graph1.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
 ### Grafo 2 dirigido
 <figure class="image" align="center">
-  <img src="cmake-build-debug/graph2.png" width="70%" height="100%" style="text-align:center;">
+  <img src="Imagenes/graph2.png" width="70%" height="100%" style="text-align:center;">
 </figure>
 
 ### Grafo 3 dirigido
 <figure class="image" align="center">
-  <img src="cmake-build-debug/graph3.png" width="70%" height="60%" style="text-align:center;">
+  <img src="Imagenes/graph3.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
 
 
 ### Grafo 1 no dirigido
 <figure align="center" class="image">
-  <img src="cmake-build-debug/udgraph1.png" width="30%" height="40%" style="text-align:center;">
+  <img src="Imagenes/udgraph1.png" width="30%" height="40%" style="text-align:center;">
 </figure>
 
 ### Grafo 2 no dirigido
 <figure class="image" align="center">
-  <img src="cmake-build-debug/udgraph2.png" width="30%" height="40%" style="text-align:center;">
+  <img src="Imagenes/udgraph2.png" width="30%" height="40%" style="text-align:center;">
 </figure>
 
 ### Grafo 3 no dirigido
 <figure class="image" align="center">
-  <img src="cmake-build-debug/udgraph3.png" width="30%" height="40%" style="text-align:center;">
+  <img src="Imagenes/udgraph3.png" width="30%" height="40%" style="text-align:center;">
 </figure>
 
 
