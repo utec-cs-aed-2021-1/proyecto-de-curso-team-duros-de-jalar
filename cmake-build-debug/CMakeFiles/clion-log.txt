@@ -1,1 +1,4 @@
-CMakeLists.txt not found in C:\Users\alexandra\Desktop\CICLO_5\Algoritmos y Estrcuturas de datos\Proyecto\proyecto-de-curso-team-duros-de-jalar Select CMakeLists.txt file...
+"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\lagg\Desktop\proyecto-de-curso-team-duros-de-jalar-main
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/cmake-build-debug
