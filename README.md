@@ -4,9 +4,9 @@
 
 ## Integrantes ✒️
 
-- Luis Gutiérrez [Luis-ntonio]
-- Marcos Ayala [Marcos-1001]
-- Alexandra Shulca [Alexandra-SR]
+- Luis Gutiérrez [Luis-ntonio] Participación: 100%
+- Marcos Ayala [Marcos-1001] Participación: 100%
+- Alexandra Shulca [Alexandra-SR] Participación: 100%
 
 ## Profesor 🦾
 
