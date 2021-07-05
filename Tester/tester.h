@@ -4,12 +4,12 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "Graph/UndirectedGraph.h"
-#include "Graph/DirectedGraph.h"
-#include "Graph/Algorithms/prim.h"
-#include "Graph/Algorithms/kruskal.h"
-#include "Graph/Algorithms/bfs.h"
-#include "Graph/Algorithms/dfs.h"
+#include "../Graph/UndirectedGraph.h"
+#include "../Graph/DirectedGraph.h"
+#include "../Graph/Algorithms/prim.h"
+#include "../Graph/Algorithms/kruskal.h"
+#include "../Graph/Algorithms/bfs.h"
+#include "../Graph/Algorithms/dfs.h"
 #include <fstream>
 
 using namespace std;
@@ -719,7 +719,7 @@ namespace Tester {
                         }
 
                     }
-                }while (metodo <= 8 || 1 <= metodo);
+                }while (metodo <= 8 && 1 <= metodo);
                 break;
             }
         }
@@ -744,7 +744,7 @@ namespace Tester {
                     break;
                 }
             }
-        } while (input_Case < 3 || 1 <= input_Case);
+        } while (input_Case < 3 && 1 <= input_Case);
     }
 
 
