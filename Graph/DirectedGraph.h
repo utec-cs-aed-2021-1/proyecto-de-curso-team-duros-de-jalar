@@ -161,15 +161,16 @@ template<typename TV, typename TE>
 void DirectedGraph<TV, TE>::displayVertex(string id) {
     if (this->vertexes.find(id) == this->vertexes.end())
         return;
-
+    auto data = this->vertexes[id];
     auto all_edges = (this->vertexes[id])->edges;
     auto ids = id;
+    cout<<"connections to vertex "<< data->id << " with data " << data->data<<endl;
     for (auto i: all_edges) {
         for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
             if (it->second == (*i).vertexes[1]) ids = it->first;
         }
 
-        std::cout << "weight from vertex " << id << " to vertex " << ids << " is " << (*i).weight << endl;
+        std::cout << " to vertex " << ids << " the weight is " << (*i).weight << endl;
     }
 }
 
@@ -202,8 +203,25 @@ void DirectedGraph<TV, TE>::display_file(ofstream &filename){
 
 template<typename TV, typename TE>
 void DirectedGraph<TV, TE>::display() {
+    vector<pair<string, string>> visited;
     for (auto i: this->vertexes) {
-        displayVertex(i.first);
+        string id = i.first;
+
+        auto all_edges = (this->vertexes[id])->edges;
+        for (auto j: all_edges) {
+            string ids = (j->vertexes[1])->id;
+            bool was_visited = true;
+            for(const auto & i : visited){
+                if((i.first == id && i.second ==ids) || (i.first == ids && i.second ==id)){
+                    was_visited = false;
+                    break;
+                }
+            }
+            if(was_visited) {
+                visited.push_back(make_pair(id,ids));
+                std::cout << "weight from vertex " << id << " to vertex " << ids << " is " << (*j).weight << endl;
+            }
+        }
     }
 }
 
