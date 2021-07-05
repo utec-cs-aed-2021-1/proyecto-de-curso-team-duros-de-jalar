@@ -4,6 +4,7 @@
 #include <set>
 #include "graph.h"
 #include <iostream>
+#include <fstream>
 
 
 template<typename TV, typename TE>
