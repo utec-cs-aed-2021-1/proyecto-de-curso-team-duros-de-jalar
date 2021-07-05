@@ -120,8 +120,6 @@ struct Menu {
                 cout << "4. Es fuertemente conexo" << endl;
                 cout << "5. BFS" << endl;
                 cout << "6. DFS" << endl;
-                cout << "7. Kruskal" << endl;
-                cout << "8. Prim" << endl;
 
                 cin >> metodo;
                 switch(metodo){
@@ -158,23 +156,8 @@ struct Menu {
                         dfs_.apply()->display();
                         break;
                     }
-                    case 7:{
-                        cout<<"Kruskal"<<endl;
-                        Kruskal<int,float> kruskal(graph);    /*Undirected graph */
-                        UnDirectedGraph<int, float>* result = kruskal.apply();//return a tree
-                        result->display();
-                        break;
-                    }
 
-                    case 8:{
-                        cout<<"Prim"<<endl;
-                        prim<int,float> prim_(graph, "A");    /*Undirected graph */
-                        DirectedGraph<int, float>* result = prim_.apply();//return a tree
-                        result->display();
-                        break;
-                    }
-
-                }while (metodo>8 || 1>metodo);
+                }while (metodo>6 || 1>metodo);
 
 
                 break;
@@ -304,7 +287,7 @@ struct Menu {
                     case 8:{
                         cout<<"Prim"<<endl;
                         prim<int,float> prim_(graph1, "A");    /*Undirected graph */
-                        DirectedGraph<int, float>* result = prim_.apply();//return a tree
+                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
                         result->display();
                         break;
                     }
@@ -461,7 +444,7 @@ struct Menu {
                     case 8:{
                         cout<<"Prim"<<endl;
                         prim<int,float> prim_(graph2, "A");    /*Undirected graph */
-                        DirectedGraph<int, float>* result = prim_.apply();//return a tree
+                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
                         result->display();
                         break;
                     }
@@ -565,7 +548,7 @@ struct Menu {
                     case 8:{
                         cout<<"Prim"<<endl;
                         prim<int,float> prim_(graph, "A");    /*Undirected graph */
-                        DirectedGraph<int, float>* result = prim_.apply();//return a tree
+                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
                         result->display();
                         break;
                     }
@@ -660,7 +643,7 @@ struct Menu {
                     case 8:{
                         cout<<"Prim"<<endl;
                         prim<int,float> prim_(graph1, "A");    /*Undirected graph */
-                        DirectedGraph<int, float>* result = prim_.apply();//return a tree
+                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
                         result->display();
                         break;
                     }
@@ -752,7 +735,7 @@ struct Menu {
                     case 8:{
                         cout<<"Prim"<<endl;
                         prim<int,float> prim_(graph2, "A");    /*Undirected graph */
-                        DirectedGraph<int, float>* result = prim_.apply();//return a tree
+                        UnDirectedGraph<int, float>* result = prim_.apply();//return a tree
                         result->display();
                         break;
                     }
