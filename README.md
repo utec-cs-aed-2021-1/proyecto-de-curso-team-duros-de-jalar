@@ -243,7 +243,6 @@ bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
     for (auto i = all_edges->begin(); i != all_edges->end(); i++) {
         if (((*i)->vertexes[1])->id == end) {
             all_edges->erase(i);
-            return true;
         }
     }
 
@@ -251,10 +250,11 @@ bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
     for (auto i = all_edges1->begin(); i != all_edges1->end(); i++) {
         if (((*i)->vertexes[1])->id == start) {
             all_edges1->erase(i);
-            return true;
+            
         }
     }
     E--;
+  return true;
 }
 ```
 Similar al deleteEdges, el deleteEdge realiza la misma acción pero únicamente para una arista
