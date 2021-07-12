@@ -5,9 +5,9 @@
 using namespace std;
 
 
-typedef tuple<string ,int,string> par;
+template<typename TE>
 struct Compare{
-    bool operator()(const par& a, const par& b){
+    bool operator()(const tuple<string ,TE,string>& a, const tuple<string ,TE,string>& b){
         if(get<1>(a) > get<1>(b)){
             return true;
         }
@@ -28,7 +28,7 @@ public:
     prim() = default;
     prim(Graph<TV,TE>* &grafo,const string& id){
 
-        priority_queue<par, vector<par>, Compare> cont;
+        priority_queue<tuple<string ,TE,string>, vector<tuple<string ,TE,string>>, Compare<TE>> cont;
         unordered_set<string> visited;
         primm = new UnDirectedGraph<TV,TE>;
 
