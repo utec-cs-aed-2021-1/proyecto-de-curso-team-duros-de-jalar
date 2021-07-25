@@ -14,16 +14,6 @@
 #include <cmath>
 using namespace rapidjson;
 
-struct City {
-    int id;
-    string name;
-    double latitude;
-    double longitude;
-
-    City() {}
-    City(int id, const string &name, double latitude, double longitude) : id(id), name(name), latitude(latitude), longitude(longitude) {}
-};
-
 struct Airport {
     string id;
     string name;
@@ -35,8 +25,7 @@ struct Airport {
     Airport() {}
 
     Airport(string id, const string &name, const string &city, const string &country, double latitude, double longitude) : id(id), name(name), city(city), country(country), latitude(latitude),
-                                                                                                                        longitude(longitude) {}
-
+                                                                                                                           longitude(longitude) {}
 
 };
 
@@ -59,9 +48,7 @@ public:
 
     double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);
 
-    void clear();
 
-    string getPath();
 
 };
 
@@ -104,18 +91,14 @@ void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double> &graph) {
             // cout<<"destination id"<<" "<<destination.GetString()<<endl;
             string idVertexA = airport["AirportID"].GetString();
             string idVertexB = destination.GetString();
-            cout << graph[idVertexA].latitude << endl;
             double latitude1 = graph[airport["AirportID"].GetString()].latitude;
             double latitude2 = graph[destination.GetString()].latitude;
             double longitude1 = graph[airport["AirportID"].GetString()].longitude;
             double longitude2 = graph[destination.GetString()].longitude;
             double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
-            //cout<<weight<<endl;
             try { graph.createEdge(idVertexA, idVertexB, weight); } catch (...){
                 throw ("Error, Edge not created");
             }
-
-
         }
     }
 }
@@ -139,28 +122,20 @@ void Parser::generateDirectedGraph(DirectedGraph<Airport, double> &graph) {
             // cout<<"destination id"<<" "<<destination.GetString()<<endl;
             string idVertexA = airport["AirportID"].GetString();
             string idVertexB = destination.GetString();
-            cout << graph[idVertexA].latitude << endl;
             double latitude1 = graph[airport["AirportID"].GetString()].latitude;
             double latitude2 = graph[destination.GetString()].latitude;
             double longitude1 = graph[airport["AirportID"].GetString()].longitude;
             double longitude2 = graph[destination.GetString()].longitude;
             double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
-            //cout<<weight<<endl;
-            try { graph.createEdge(idVertexA, idVertexB, weight); } catch (...){
+            cout<<"idVertexA "<<idVertexA<<" "<<"idVertexB "<<idVertexB<<" "<<"weight "<<weight<<endl;
+
+            try { graph.createEdge(idVertexA, idVertexB, weight);} catch (...){
                 throw ("Error, Edge not created");
             }
 
 
         }
     }
-}
-
-void Parser::clear() {
-    document.Clear();
-}
-
-string Parser::getPath() {
-    return path;
 }
 
 #endif //PROYECT_PARSE_H

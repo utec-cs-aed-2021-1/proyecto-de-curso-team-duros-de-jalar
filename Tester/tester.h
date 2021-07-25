@@ -10,13 +10,14 @@
 #include "../Graph/Algorithms/kruskal.h"
 #include "../Graph/Algorithms/bfs.h"
 #include "../Graph/Algorithms/dfs.h"
+#include "../Parser/parse.h"
 #include <fstream>
 
 using namespace std;
 namespace Tester {
     int input_Case{};
     int metodo{};
-
+    static void executeParser(file json_file );
 
     void GDirigido() {
         cout << "Seleccione el grafo (1 al 3) que desee: ";
@@ -748,6 +749,16 @@ namespace Tester {
     }
 
 
+}
+
+
+void Tester::executeParser(file json_file) {
+    Parser parser;
+    parser.generateJson(json_file);
+    UnDirectedGraph<Airport, double> UnDirectedGraph;
+    DirectedGraph<Airport, double> DirectedGraph;
+    parser.generateUndirectedGraph(UnDirectedGraph);
+    parser.generateDirectedGraph(DirectedGraph);
 }
 
 #endif //TESTER_H

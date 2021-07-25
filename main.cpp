@@ -18,7 +18,8 @@ int main() {
 
     UnDirectedGraph<Airport, double> UnDirectedGraph;
     DirectedGraph<Airport, double> DirectedGraph;
-    parser.generateUndirectedGraph(UnDirectedGraph);
+    //parser.generateUndirectedGraph(UnDirectedGraph);
+    parser.generateDirectedGraph(DirectedGraph);
 
     return EXIT_SUCCESS;
 }
