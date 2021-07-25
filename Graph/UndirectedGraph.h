@@ -42,12 +42,14 @@ public:
 
     void clear() override;
 
-    void displayVertex(string id) override;
+    void displayVertex(string id) override{};
 
     bool findById(string id) override;
 
     void display() override;
-    
+
+    TV operator[](string id);
+
     unordered_map<string, Vertex<TV, TE> *> getVertexes(){
         return this->vertexes;
     }
@@ -155,6 +157,14 @@ bool UnDirectedGraph<TV, TE>::deleteEdge(string start, string end){
 }
 
 template<typename TV, typename TE>
+TV UnDirectedGraph<TV, TE>::operator[](string id) {
+    if (this->vertexes.find(id) != this->vertexes.end())
+        return this->vertexes[id]->data;
+    else
+        return TV();
+}
+
+template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::empty() {
     return this->vertexes.size() == 0;
 }
@@ -173,7 +183,7 @@ bool UnDirectedGraph<TV, TE>::findById(string id) {
     if (this->vertexes.find(id) == this->vertexes.end()) return false;
     return true;
 }
-
+/*
 template<typename TV, typename TE>
 void UnDirectedGraph<TV, TE>::displayVertex(string id){
     if (this->vertexes.find(id) == this->vertexes.end())
@@ -191,7 +201,7 @@ void UnDirectedGraph<TV, TE>::displayVertex(string id){
     }
 }
 
-
+*/
 
 template<typename TV, typename TE>
 void UnDirectedGraph<TV, TE>::display() {

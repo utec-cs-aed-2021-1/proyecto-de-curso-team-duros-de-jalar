@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main() {
     std::cout << "================================================" << std::endl;
     std::cout << "MENU GRAPH TESTER" << std::endl;
     std::cout << "================================================" << std::endl;

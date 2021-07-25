@@ -1,3 +1,3 @@
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/cmake-build-debug/CMakeFiles/rebuild_cache.dir

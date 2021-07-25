@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\lagg\Desktop\proyecto-de-curso-team-duros-de-jalar-main
+"C:\Program Files\JetBrains\CLion 2019.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\alexandra\Desktop\CICLO_5\Algoritmos y Estrcuturas de datos\Proyecto2\proyecto-de-curso-team-duros-de-jalar"
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/cmake-build-debug
+-- Build files have been written to: C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/cmake-build-debug

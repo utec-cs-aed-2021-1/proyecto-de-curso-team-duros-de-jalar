@@ -41,13 +41,15 @@ public:
 
     void clear() override;
 
-    void displayVertex(string id) override;
+    void displayVertex(string id) override{};
 
     void displayVertexFile(ofstream &filename, string id) ;
 
     void display_file(ofstream &filename);
 
     bool findById(string id) override;
+
+    TV operator[](string id);
 
     void display() override;
 
@@ -158,6 +160,16 @@ bool DirectedGraph<TV, TE>::findById(string id) {
     return true;
 }
 
+
+template<typename TV, typename TE>
+TV DirectedGraph<TV, TE>::operator[](string id) {
+    if (this->vertexes.find(id) != this->vertexes.end())
+        return this->vertexes[id]->data;
+    else
+        return TV();
+
+}
+/*
 template<typename TV, typename TE>
 void DirectedGraph<TV, TE>::displayVertex(string id) {
     if (this->vertexes.find(id) == this->vertexes.end())
@@ -174,7 +186,7 @@ void DirectedGraph<TV, TE>::displayVertex(string id) {
         std::cout << " to vertex " << ids << " the weight is " << (*i).weight << endl;
     }
 }
-
+*/
 template<typename TV, typename TE>
 void DirectedGraph<TV, TE>::displayVertexFile(ofstream &filename, string id) {
     if (this->vertexes.find(id) == this->vertexes.end())

@@ -86,85 +86,80 @@ double Parser::euclideanDistance(double latitude1, double longitude1, double lat
 }
 
 void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double> &graph) {
-    for(Value &airport: document.GetArray()){
-        string airportId =  airport["AirportID"].GetString();
+    for (Value &airport: document.GetArray()) {
+        string airportId = airport["AirportID"].GetString();
         string name = airport["Name"].GetString();
         string city = airport["City"].GetString();
-        string country =  airport["Country"].GetString();
+        string country = airport["Country"].GetString();
         double latitude = std::stod(airport["Latitude"].GetString());
-        double longitude =   std::stod(airport["Longitude"].GetString());
+        double longitude = std::stod(airport["Longitude"].GetString());
         Airport airportItem(airportId, name, city, country, latitude, longitude);
-       try{ graph.insertVertex(airportId,airportItem); } catch (...) {
-           throw("Error, Vertex not added");
-       }
+        try { graph.insertVertex(airportId, airportItem); } catch (...) {
+            throw ("Error, Vertex not added");
+        }
     }
-    for (Value &airport: document.GetArray()){
-        for(Value &destination: airport["destinations"].GetArray()){
-           // cout<<"airport id"<<" "<<airport["AirportID"].GetString()<<endl;
-           // cout<<"destination id"<<" "<<destination.GetString()<<endl;
-           string idVertexA = airport["AirportID"].GetString();
-           string idVertexB = destination.GetString();
-           cout<<graph[idVertexA].latitude<<endl;
-           double latitude1 = graph[airport["AirportID"].GetString()].latitude;
-           double latitude2 = graph[destination.GetString()].latitude;
-           double longitude1 = graph[airport["AirportID"].GetString()].longitude;
-           double longitude2 = graph[destination.GetString()].longitude;
-           double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
-           //cout<<weight<<endl;
-           try{graph.createEdge(idVertexA, idVertexB, weight)}catch(..){
-               throw("Error, Edge not created");
-           }
+    for (Value &airport: document.GetArray()) {
+        for (Value &destination: airport["destinations"].GetArray()) {
+            // cout<<"airport id"<<" "<<airport["AirportID"].GetString()<<endl;
+            // cout<<"destination id"<<" "<<destination.GetString()<<endl;
+            string idVertexA = airport["AirportID"].GetString();
+            string idVertexB = destination.GetString();
+            cout << graph[idVertexA].latitude << endl;
+            double latitude1 = graph[airport["AirportID"].GetString()].latitude;
+            double latitude2 = graph[destination.GetString()].latitude;
+            double longitude1 = graph[airport["AirportID"].GetString()].longitude;
+            double longitude2 = graph[destination.GetString()].longitude;
+            double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
+            //cout<<weight<<endl;
+            try { graph.createEdge(idVertexA, idVertexB, weight); } catch (...){
+                throw ("Error, Edge not created");
+            }
 
 
         }
     }
-
+}
 void Parser::generateDirectedGraph(DirectedGraph<Airport, double> &graph) {
-//Creating vertexes
-    for (auto &airport: document.GetArray()) {
-        try {
-            graph.insertVertex(airport["Airport_ID"].GetString(), Airport(
-                    (airport["Airport_ID"].GetString()),
-                    airport["Name"].GetString(),
-                    airport["City"].GetString(),
-                    airport["Country"].GetString(),
-                    std::stod(airport["Latitude"].GetString()),
-                    std::stod(airport["Longitude"].GetString())
-                               )
-            );
-        } catch (...) {
-            continue;
+    for (Value &airport: document.GetArray()) {
+        string airportId = airport["AirportID"].GetString();
+        string name = airport["Name"].GetString();
+        string city = airport["City"].GetString();
+        string country = airport["Country"].GetString();
+        double latitude = std::stod(airport["Latitude"].GetString());
+        double longitude = std::stod(airport["Longitude"].GetString());
+        Airport airportItem(airportId, name, city, country, latitude, longitude);
+        try { graph.insertVertex(airportId, airportItem); } catch (...) {
+            throw ("Error, Vertex not added");
         }
     }
     //Creating edges
-    for (auto &airport: document.GetArray()) {
-        for (auto &dest: airport["destinations"].GetArray()) {
-            try {
-                graph.createEdge(
-                        airport["Airport_ID"].GetString(),
-                        dest.GetString(),
-                        //euclidian distance
-                        sqrt(
-                                pow(graph[airport["Airport_ID"].GetString()].latitude -
-                                    graph[dest.GetString()].latitude, 2)
-                                +
-                                pow(graph[airport["Airport_ID"].GetString()].longitude -
-                                    graph[dest.GetString()].longitude, 2)
-                        )
-                );
-            } catch (...) {
-                continue;
+    for (Value &airport: document.GetArray()) {
+        for (Value &destination: airport["destinations"].GetArray()) {
+            // cout<<"airport id"<<" "<<airport["AirportID"].GetString()<<endl;
+            // cout<<"destination id"<<" "<<destination.GetString()<<endl;
+            string idVertexA = airport["AirportID"].GetString();
+            string idVertexB = destination.GetString();
+            cout << graph[idVertexA].latitude << endl;
+            double latitude1 = graph[airport["AirportID"].GetString()].latitude;
+            double latitude2 = graph[destination.GetString()].latitude;
+            double longitude1 = graph[airport["AirportID"].GetString()].longitude;
+            double longitude2 = graph[destination.GetString()].longitude;
+            double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
+            //cout<<weight<<endl;
+            try { graph.createEdge(idVertexA, idVertexB, weight); } catch (...){
+                throw ("Error, Edge not created");
             }
+
+
         }
     }
 }
 
 void Parser::clear() {
     document.Clear();
-    path.clear();
 }
 
-std::string Parser::getPath() {
+string Parser::getPath() {
     return path;
 }
 

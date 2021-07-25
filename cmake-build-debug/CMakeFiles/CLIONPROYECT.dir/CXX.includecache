@@ -6,27 +6,27 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/bfs.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/bfs.h
 queue
 -
 unordered_set
 -
 ../DirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
 ../UndirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/dfs.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dfs.h
 stack
 -
 unordered_set
 -
 ../DirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
 ../UndirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/dsarray.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dsarray.h
 iostream
 -
 vector
@@ -34,45 +34,47 @@ vector
 algorithm
 -
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/kruskal.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/kruskal.h
 ../UndirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
 ../graph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/graph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
 dsarray.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/dsarray.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dsarray.h
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/prim.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/prim.h
 queue
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/queue
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/queue
 ../UndirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
 unordered_map
 -
 tuple
 -
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
 set
 -
 graph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/graph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
 iostream
+-
+fstream
 -
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
 iostream
 -
 set
 -
 graph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/graph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
 set
 -
 fstream
 -
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/graph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/graph.h
 list
 -
 vector
@@ -88,29 +90,299 @@ stack
 unordered_set
 -
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Tester/tester.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/allocators.h
+rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+internal/meta.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/meta.h
+memory
+-
+type_traits
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/document.h
+reader.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/reader.h
+internal/meta.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/meta.h
+internal/strfunc.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/strfunc.h
+memorystream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/memorystream.h
+encodedstream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/encodedstream.h
+new
+-
+limits
+-
+compare
+-
+iterator
+-
+map
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/encodedstream.h
+stream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stream.h
+memorystream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/memorystream.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/encodings.h
+rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/error/error.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/biginteger.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+intrin.h
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/clzll.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+intrin.h
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/diyfp.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+clzll.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/clzll.h
+limits
+-
+intrin.h
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/dtoa.h
+itoa.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/itoa.h
+diyfp.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/diyfp.h
+ieee754.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/ieee754.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/ieee754.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/itoa.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/meta.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+type_traits
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/pow10.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/stack.h
+../allocators.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/allocators.h
+swap.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/swap.h
+cstddef
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/strfunc.h
+../stream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stream.h
+cwchar
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/strtod.h
+ieee754.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/ieee754.h
+biginteger.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/biginteger.h
+diyfp.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/diyfp.h
+pow10.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/pow10.h
+climits
+-
+limits
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/swap.h
+../rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/memorystream.h
+stream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stream.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/msinttypes/inttypes.h
+stdint.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/msinttypes/stdint.h
+inttypes.h
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/msinttypes/stdint.h
+stdint.h
+-
+limits.h
+-
+wchar.h
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+cstdlib
+-
+cstring
+-
+rapidjson/...
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson/...
+string
+-
+msinttypes/stdint.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/msinttypes/stdint.h
+msinttypes/inttypes.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/msinttypes/inttypes.h
+stdint.h
+-
+inttypes.h
+-
+endian.h
+-
+rapidjson/...
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson/...
+cassert
+-
+utility
+-
+cassert
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/reader.h
+allocators.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/allocators.h
+stream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stream.h
+encodedstream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/encodedstream.h
+internal/clzll.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/clzll.h
+internal/meta.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/meta.h
+internal/stack.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/stack.h
+internal/strtod.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/strtod.h
+limits
+-
+intrin.h
+-
+nmmintrin.h
+-
+emmintrin.h
+-
+arm_neon.h
+-
+stdexcept
+-
+rapidjson/error/error.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson/error/error.h
+rapidjson/reader.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson/reader.h
+error/error.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/error/error.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stream.h
+rapidjson.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/rapidjson.h
+encodings.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/encodings.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stringbuffer.h
+stream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stream.h
+internal/stack.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/stack.h
+utility
+-
+internal/stack.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/stack.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/writer.h
+stream.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stream.h
+internal/clzll.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/clzll.h
+internal/meta.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/meta.h
+internal/stack.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/stack.h
+internal/strfunc.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/strfunc.h
+internal/dtoa.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/dtoa.h
+internal/itoa.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/internal/itoa.h
+stringbuffer.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stringbuffer.h
+new
+-
+intrin.h
+-
+nmmintrin.h
+-
+emmintrin.h
+-
+arm_neon.h
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/parse.h
+include/rapidjson/document.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/document.h
+include/rapidjson/writer.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/writer.h
+include/rapidjson/stringbuffer.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stringbuffer.h
+iostream
+-
+../Graph/UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
+../Graph/DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
+fstream
+-
+cmath
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Tester/tester.h
 iostream
 -
 cstdlib
 -
 ../Graph/UndirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
 ../Graph/DirectedGraph.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
 ../Graph/Algorithms/prim.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/prim.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/prim.h
 ../Graph/Algorithms/kruskal.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/kruskal.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/kruskal.h
 ../Graph/Algorithms/bfs.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/bfs.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/bfs.h
 ../Graph/Algorithms/dfs.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Graph/Algorithms/dfs.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dfs.h
 fstream
 -
 
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/main.cpp
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/main.cpp
 iostream
 -
 Tester/tester.h
-C:/Users/lagg/Desktop/proyecto-de-curso-team-duros-de-jalar-main/Tester/tester.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Tester/tester.h
+Parser/parse.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/Parser/parse.h
 
