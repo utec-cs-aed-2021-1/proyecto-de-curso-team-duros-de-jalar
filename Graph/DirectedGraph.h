@@ -73,7 +73,7 @@ bool DirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
 
 template<typename TV, typename TE>
 bool DirectedGraph<TV, TE>::createEdge(string id1, string id2, TE w) {
-    if (this->vertexes.find(id1) == this->vertexes.end() && this->vertexes.find(id2) == this->vertexes.end())
+    if (this->vertexes.find(id1) == this->vertexes.end() || this->vertexes.find(id2) == this->vertexes.end())
         return false;
 
     auto *new_edge = new Edge<TV, TE>;
