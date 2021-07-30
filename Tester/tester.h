@@ -761,4 +761,54 @@ void Tester::executeParser(file json_file) {
     parser.generateDirectedGraph(DirectedGraph);
 }
 
+/*
+ Graph<char, int>* gra = new UnDirectedGraph<char, int>;
+    gra->insertVertex("A", 'A');
+    gra->insertVertex("B",'B');
+    gra->insertVertex("C",'C');
+    gra->insertVertex("D", 'D');
+    gra->insertVertex("E", 'E');
+    gra->insertVertex("F", 'F');
+    gra->insertVertex("G", 'G');
+    gra->insertVertex("H", 'H');
+    gra->insertVertex("I", 'I');
+
+    unordered_map<string, int> heur;
+    heur["A"] = 36;
+    heur["B"] = 39;
+    heur["C"] = 31;
+    heur["D"] = 30;
+    heur["E"] = 34;
+    heur["F"] = 32;
+    heur["G"] = 21;
+    heur["H"] = 19;
+    heur["I"] = 0;
+
+    gra->createEdge("A","B",22);
+    gra->createEdge("A","C",9);
+    gra->createEdge("A","D",12);
+    gra->createEdge("C","B",35);
+    gra->createEdge("C","D",4);
+    gra->createEdge("D","E",33);
+    gra->createEdge("D","I",30);
+    gra->createEdge("B","F",36);
+    gra->createEdge("B","H",34);
+    gra->createEdge("C","F",42);
+    gra->createEdge("C","E",65);
+    gra->createEdge("D","E",33);
+    gra->createEdge("D","I",30);
+    gra->createEdge("E","G",18);
+    gra->createEdge("E","F",23);
+    gra->createEdge("F","H",24);
+    gra->createEdge("G","F",39);
+    gra->createEdge("G","H",25);
+    gra->createEdge("G","I",21);
+    gra->createEdge("I","H",19);
+
+    astar<char,int>* Astarr = new astar<char,int> (gra,"A","I",heur);
+    Astarr->display();
+    Astarr->apply()->display();
+ */
+
+
 #endif //TESTER_H
