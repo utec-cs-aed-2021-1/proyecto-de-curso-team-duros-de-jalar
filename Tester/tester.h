@@ -11,6 +11,7 @@
 #include "../Graph/Algorithms/bfs.h"
 #include "../Graph/Algorithms/dfs.h"
 #include "../Parser/parse.h"
+#include "../Graph/Algorithms/astar.h"
 #include <fstream>
 
 using namespace std;
@@ -25,7 +26,9 @@ namespace Tester {
         cin >> a;
         switch (a) {
             case 1: {
+                executeParser(file::pe);
                 Graph<int, float> *graph = new DirectedGraph<int, float>;
+                DirectedGraph<Airport, double> DirectedGraph;
 
                 graph->insertVertex("A", 1);
                 graph->insertVertex("B", 2);
@@ -520,9 +523,30 @@ namespace Tester {
                             result->display();
                             break;
                         }
+                        case 9: {
+                            cout<< "A*"<<endl;
 
+
+                            unordered_map<string, float> heur;
+                            heur["A"] = 36;
+                            heur["B"] = 39;
+                            heur["C"] = 31;
+                            heur["D"] = 30;
+                            heur["E"] = 34;
+                            heur["F"] = 32;
+                            heur["G"] = 21;
+                            heur["H"] = 19;
+                            heur["I"] = 0;
+
+
+
+                            astar<int,float>* Astarr = new astar<int,float> (graph,"A","I",heur);
+                            Astarr->display();
+                            Astarr->apply()->display();
+
+                        }
                     }
-                } while (metodo <= 8 && 1 <= metodo);
+                }while (metodo <= 9 && 1 <= metodo);
                 break;
 
             }
@@ -620,9 +644,28 @@ namespace Tester {
                             result->display();
                             break;
                         }
+                        case 9: {
+                            cout<< "A*"<<endl;
 
+                            unordered_map<string, float> heur;
+                            heur["A"] = 36;
+                            heur["B"] = 39;
+                            heur["C"] = 31;
+                            heur["D"] = 30;
+                            heur["E"] = 34;
+                            heur["F"] = 32;
+                            heur["G"] = 21;
+                            heur["H"] = 19;
+                            heur["I"] = 0;
+
+
+                            astar<int,float>* Astarr = new astar<int,float> (graph1,"A","I",heur);
+                            Astarr->display();
+                            Astarr->apply()->display();
+
+                        }
                     }
-                } while (metodo <= 8 && 1 <= metodo);
+                }while (metodo <= 9 && 1 <= metodo);
                 break;
             }
             case 3: {
@@ -663,6 +706,7 @@ namespace Tester {
                     cout << "6. DFS" << endl;
                     cout << "7. Kruskal" << endl;
                     cout << "8. Prim" << endl;
+                    cout << "9. A*" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -718,21 +762,39 @@ namespace Tester {
                             result->display();
                             break;
                         }
+                        case 9: {
+                            cout<< "A*"<<endl;
 
+
+                            unordered_map<string, float> heur;
+                            heur["A"] = 36;
+                            heur["B"] = 39;
+                            heur["C"] = 31;
+                            heur["D"] = 30;
+                            heur["E"] = 34;
+                            heur["F"] = 32;
+                            heur["G"] = 21;
+                            heur["H"] = 19;
+                            heur["I"] = 0;
+
+
+                            astar<int,float>* Astarr = new astar<int,float> (graph2,"A","I",heur);
+                            Astarr->display();
+                            Astarr->apply()->display();
+
+                        }
                     }
-                }while (metodo <= 8 && 1 <= metodo);
+                }while (metodo <= 9 && 1 <= metodo);
                 break;
             }
         }
     }
 
-    void executeExamples() {
+    void Ejemplos(){
         do {
-            cout << "\n\nMenu de opciones" << endl;
+            cout << "\n\nSeleccione tipo de Grafo" << endl;
             cout << "1. Grafo Dirigido" << endl;
             cout << "2. Grafo No Dirigido" << endl;
-            cout << "3. SALIR" << endl << endl;
-            cout<<"Para salir del bucle insertar cualquier numero"<<endl;
             cout << "Ingrese una opcion : ";
             cin >> input_Case;
             switch (input_Case) {
@@ -745,6 +807,48 @@ namespace Tester {
                     break;
                 }
             }
+        }
+        while (input_Case < 3 && 1 <= input_Case);
+    }
+
+    void Parsers(){
+        do {
+            cout << "\n\nSeleccione el json a ejecutar" << endl;
+            cout<< "1. Aeropuertos internacionales"<<endl;
+            cout<< "2. Aeropuertos nacionales"<<endl;
+            switch (input_Case) {
+                case 1: {
+                    executeParser(file::airports);
+                    break;
+                }
+                case 2: {
+                    executeParser(file::pe);
+                    break;
+                }
+            }
+        }
+        while (input_Case < 3 && 1 <= input_Case);
+    }
+
+    void executeExamples() {
+        do {
+            cout << "\n\nMenu de opciones" << endl;
+            cout << "1. Ejemplos" << endl;
+            cout << "2. Parser" << endl;
+            cout << "3. SALIR" << endl << endl;
+            cout<<"Para salir del bucle insertar cualquier numero"<<endl;
+            cout << "Ingrese una opcion : ";
+            cin >> input_Case;
+            switch (input_Case) {
+                case 1: {
+                    Ejemplos();
+                    break;
+                }
+                case 2: {
+                    Parsers();
+                    break;
+                }
+            }
         } while (input_Case < 3 && 1 <= input_Case);
     }
 
@@ -752,14 +856,209 @@ namespace Tester {
 }
 
 
+
 void Tester::executeParser(file json_file) {
     Parser parser;
     parser.generateJson(json_file);
-    UnDirectedGraph<Airport, double> UnDirectedGraph;
-    DirectedGraph<Airport, double> DirectedGraph;
-    parser.generateUndirectedGraph(UnDirectedGraph);
+    UnDirectedGraph<Airport, double>* NODirectedGraph;
+    DirectedGraph<Airport, double>* DirectedGraph;
+    parser.generateUndirectedGraph(NODirectedGraph);
     parser.generateDirectedGraph(DirectedGraph);
+    do {
+        cout << "\n\nSeleccione tipo de Grafo" << endl;
+        cout << "1. Grafo No Dirigido" << endl;
+        cout << "2. Grafo Dirigido" << endl;
+        cout << "Ingrese una opcion : ";
+        cin >> input_Case;
+        switch (input_Case) {
+            case 1: {
+                cout << "Seleccione el grafo (1 al 3) que desee: ";
+                int metodo;
+
+                // Create and open a text file
+                ofstream MyFile;
+                MyFile.open("udgraph1.dot");
+                NODirectedGraph->display_file(MyFile);
+                // Close the file
+                MyFile.close();
+
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout << "7. Kruskal" << endl;
+                    cout << "8. Prim" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
+
+                    cin >> metodo;
+                    switch (metodo) {
+                        case 1: {
+                            NODirectedGraph->display();
+                            break;
+                        }
+                        case 2: {
+                            if (NODirectedGraph->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << NODirectedGraph->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << NODirectedGraph->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (NODirectedGraph->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (NODirectedGraph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<Airport, double> bfs_(NODirectedGraph, "A");
+                            bfs_.apply()->display();
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<Airport, double> dfs_(NODirectedGraph, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
+                        case 7: {
+                            cout << "Kruskal" << endl;
+                            Kruskal<Airport, double> kruskal(NODirectedGraph);    /*Undirected graph */
+                            UnDirectedGraph<Airport, double> *result = kruskal.apply();//return a tree
+                            result->display();
+
+                            break;
+                        }
+
+                        case 8: {
+                            cout << "Prim" << endl;
+                            prim<Airport, double> prim_(NODirectedGraph, "A");    /*Undirected graph */
+                            UnDirectedGraph<Airport, double> *result = prim_.apply();//return a tree
+                            result->display();
+                            break;
+                        }
+                        case 9: {
+                            cout<< "A*"<<endl;
+
+                            Graph<char, int>* gra = new UnDirectedGraph<char, int>;
+                            gra->insertVertex("A", 'A');
+                            gra->insertVertex("B",'B');
+                            gra->insertVertex("C",'C');
+                            gra->insertVertex("D", 'D');
+                            gra->insertVertex("E", 'E');
+                            gra->insertVertex("F", 'F');
+
+
+                            unordered_map<string, int> heur;
+                            heur["A"] = 36;
+                            heur["B"] = 39;
+                            heur["C"] = 31;
+                            heur["D"] = 30;
+                            heur["E"] = 34;
+                            heur["F"] = 32;
+                            heur["G"] = 21;
+                            heur["H"] = 19;
+                            heur["I"] = 0;
+
+                            gra->createEdge("A", "B", 1);
+                            gra->createEdge("A", "D", 5);
+                            gra->createEdge("A", "C", 3);
+                            gra->createEdge("B", "D", 6);
+                            gra->createEdge("C", "D", 4);
+                            gra->createEdge("D", "F", 2);
+                            gra->createEdge("G", "H", 8);
+                            gra->createEdge("C", "E", 7);
+                            gra->createEdge("E", "G", 4);
+                            gra->createEdge("E", "F", 9);
+                            gra->createEdge("H", "F", 3);
+
+                            astar<char,int>* Astarr = new astar<char,int> (gra,"A","I",heur);
+                            Astarr->display();
+                            Astarr->apply()->display();
+
+                        }
+                    }
+                }while (metodo <= 9 && 1 <= metodo);
+
+                break;
+            }
+            case 2: {
+                ofstream MyFile;
+                MyFile.open("graph1.dot");
+                DirectedGraph->display_file(MyFile);
+                // Close the file
+                MyFile.close();
+
+                do {
+                    cout << "\n\n Elija el metodo " << endl;
+                    cout << "1. Mostrar grafo" << endl;
+                    cout << "2. Densidad del grafo" << endl;
+                    cout << "3. Es conexo" << endl;
+                    cout << "4. Es fuertemente conexo" << endl;
+                    cout << "5. BFS" << endl;
+                    cout << "6. DFS" << endl;
+                    cout<<"Para salir del bucle insertar cualquier numero"<<endl;
+
+                    cin >> metodo;
+
+                    switch (metodo) {
+                        case 1: {
+                            DirectedGraph->display();
+                            break;
+                        }
+                        case 2: {
+                            if (DirectedGraph->isDense()) {
+                                cout << "Es un grado denso" << endl;
+                                cout << "Su densidad es " << DirectedGraph->density() << endl;
+                            } else {
+                                cout << "No es un grafo denso" << endl;
+                                cout << "Su densidad es " << DirectedGraph->density() << endl;
+                            }
+                            break;
+                        }
+                        case 3: {
+                            if (DirectedGraph->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            else { cout << "No es un grafo conexo" << endl; }
+                            break;
+                        }
+                        case 4: {
+                            if (DirectedGraph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            else { cout << "No es un grafo fuertemente conexo" << endl; }
+                            break;
+                        }
+                        case 5: {
+                            cout << "BFS desde el vertice A" << endl;
+                            bfs<Airport, double> bfs_(DirectedGraph, "A");
+                            bfs_.apply()->display();
+
+                            break;
+                        }
+                        case 6: {
+                            cout << "DFS desde el vertice A" << endl;
+                            dfs<Airport, double> dfs_(DirectedGraph, "A");
+                            dfs_.apply()->display();
+                            break;
+                        }
+                    }
+                }while (metodo <= 6 && 1 <= metodo);
+                break;
+            }
+        }
+    }
+    while (input_Case < 9 && 1 <= input_Case);
 }
+
 
 /*
  Graph<char, int>* gra = new UnDirectedGraph<char, int>;
