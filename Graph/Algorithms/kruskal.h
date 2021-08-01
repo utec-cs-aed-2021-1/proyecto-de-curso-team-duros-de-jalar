@@ -15,6 +15,26 @@ private:
     Graph<TV,TE>* aux_graph;
 public:
     Kruskal()  = default;
+    Kruskal(UnDirectedGraph<TV,TE>* &graph){
+        aux_graph = graph;
+        this->cost = 0;
+        n =0;
+        for (auto i: graph->vertexes) {
+            auto all_edges = i.second->edges;
+            for(auto k: all_edges ){
+                EdgeE<TV, TE> e;
+                e.u = convert(k->vertexes[0]->id);
+                e.v = convert(k->vertexes[1]->id);
+                e.weight = k->weight;
+                edges.push_back(e);
+                n++;
+            }
+        }
+        parent.resize(n);
+        rankA.resize(n);
+        for (int i = 0; i < n; i++)
+            MakeSet(i);
+    }
     Kruskal(Graph<TV,TE>* &graph){
         aux_graph = graph;
         this->cost = 0;
@@ -79,6 +99,7 @@ public:
         }
         return G;
     }
+
 };
 
 #endif
