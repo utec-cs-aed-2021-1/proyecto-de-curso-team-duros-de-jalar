@@ -5,6 +5,7 @@
 #include "include/rapidjson/writer.h"
 #include "include/rapidjson/stringbuffer.h"
 #include <iostream>
+#include <string>
 
 
 #include "../Graph/UndirectedGraph.h"
@@ -15,19 +16,17 @@
 using namespace rapidjson;
 
 struct Airport {
+    string id;
     string name;
     string city;
-    string id;
     string country;
     double latitude;
     double longitude;
-    Airport() {}
 
-    Airport(const string &name, const string &city, const string &id, const string &country) : name(name), city(city), id(id), country(country) {}
+    Airport() {}
 
     Airport(string id, const string &name, const string &city, const string &country, double latitude, double longitude) : id(id), name(name), city(city), country(country), latitude(latitude),
                                                                                                                            longitude(longitude) {}
-    virtual ~Airport() {}
 
 };
 
@@ -42,13 +41,14 @@ private:
 public:
     Parser() = default;
 
-    double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);
-
     void generateJson(file json_file = pe);
 
-    void generateUndirectedGraph(UnDirectedGraph<Airport, double> &graph);
+    void generateUndirectedGraph(UnDirectedGraph<Airport, double>* &graph);
 
-    void generateDirectedGraph(DirectedGraph<Airport, double> &graph);
+    void generateDirectedGraph(DirectedGraph<Airport, double>* &graph);
+
+    double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);
+
 
 
 };
@@ -73,7 +73,7 @@ double Parser::euclideanDistance(double latitude1, double longitude1, double lat
                  pow((longitude1 - longitude2), 2));
 }
 
-void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double> &graph) {
+void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double>* &graph) {
     for (Value &airport: document.GetArray()) {
         string airportId = airport["AirportID"].GetString();
         string name = airport["Name"].GetString();
@@ -82,7 +82,7 @@ void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double> &graph) {
         double latitude = std::stod(airport["Latitude"].GetString());
         double longitude = std::stod(airport["Longitude"].GetString());
         Airport airportItem(airportId, name, city, country, latitude, longitude);
-        try { graph.insertVertex(airportId, airportItem); } catch (...) {
+        try { graph->insertVertex(airportId, airportItem); } catch (...) {
             throw ("Error, Vertex not added");
         }
     }
@@ -92,18 +92,18 @@ void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double> &graph) {
             // cout<<"destination id"<<" "<<destination.GetString()<<endl;
             string idVertexA = airport["AirportID"].GetString();
             string idVertexB = destination.GetString();
-            double latitude1 = graph[airport["AirportID"].GetString()].latitude;
-            double latitude2 = graph[destination.GetString()].latitude;
-            double longitude1 = graph[airport["AirportID"].GetString()].longitude;
-            double longitude2 = graph[destination.GetString()].longitude;
+            double latitude1 = graph->operator[](airport["AirportID"].GetString()).latitude;
+            double latitude2 = graph->operator[](destination.GetString()).latitude;
+            double longitude1 = graph->operator[](airport["AirportID"].GetString()).longitude;
+            double longitude2 = graph->operator[](destination.GetString()).longitude;
             double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
-            try { graph.createEdge(idVertexA, idVertexB, weight); } catch (...){
+            try { graph->createEdge(idVertexA, idVertexB, weight); } catch (...){
                 throw ("Error, Edge not created");
             }
         }
     }
 }
-void Parser::generateDirectedGraph(DirectedGraph<Airport, double> &graph) {
+void Parser::generateDirectedGraph(DirectedGraph<Airport, double>* &graph) {
     for (Value &airport: document.GetArray()) {
         string airportId = airport["AirportID"].GetString();
         string name = airport["Name"].GetString();
@@ -112,26 +112,28 @@ void Parser::generateDirectedGraph(DirectedGraph<Airport, double> &graph) {
         double latitude = std::stod(airport["Latitude"].GetString());
         double longitude = std::stod(airport["Longitude"].GetString());
         Airport airportItem(airportId, name, city, country, latitude, longitude);
-        try { graph.insertVertex(airportId, airportItem); } catch (...) {
+        try { graph->insertVertex(airportId, airportItem); } catch (...) {
             throw ("Error, Vertex not added");
         }
     }
+    //Creating edges
     for (Value &airport: document.GetArray()) {
         for (Value &destination: airport["destinations"].GetArray()) {
             // cout<<"airport id"<<" "<<airport["AirportID"].GetString()<<endl;
             // cout<<"destination id"<<" "<<destination.GetString()<<endl;
             string idVertexA = airport["AirportID"].GetString();
             string idVertexB = destination.GetString();
-            double latitude1 = graph[airport["AirportID"].GetString()].latitude;
-            double latitude2 = graph[destination.GetString()].latitude;
-            double longitude1 = graph[airport["AirportID"].GetString()].longitude;
-            double longitude2 = graph[destination.GetString()].longitude;
+            double latitude1 = graph->operator[](airport["AirportID"].GetString()).latitude;
+            double latitude2 = graph->operator[](destination.GetString()).latitude;
+            double longitude1 = graph->operator[](airport["AirportID"].GetString()).longitude;
+            double longitude2 = graph->operator[](destination.GetString()).longitude;
             double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
             cout<<"idVertexA "<<idVertexA<<" "<<"idVertexB "<<idVertexB<<" "<<"weight "<<weight<<endl;
 
-            try { graph.createEdge(idVertexA, idVertexB, weight);} catch (...){
+            try { graph->createEdge(idVertexA, idVertexB, weight);} catch (...){
                 throw ("Error, Edge not created");
             }
+
 
         }
     }
