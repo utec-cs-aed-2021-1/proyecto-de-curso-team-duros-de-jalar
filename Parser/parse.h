@@ -15,17 +15,19 @@
 using namespace rapidjson;
 
 struct Airport {
-    string id;
     string name;
     string city;
+    string id;
     string country;
     double latitude;
     double longitude;
-
     Airport() {}
+
+    Airport(const string &name, const string &city, const string &id, const string &country) : name(name), city(city), id(id), country(country) {}
 
     Airport(string id, const string &name, const string &city, const string &country, double latitude, double longitude) : id(id), name(name), city(city), country(country), latitude(latitude),
                                                                                                                            longitude(longitude) {}
+    virtual ~Airport() {}
 
 };
 
@@ -40,14 +42,13 @@ private:
 public:
     Parser() = default;
 
+    double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);
+
     void generateJson(file json_file = pe);
 
     void generateUndirectedGraph(UnDirectedGraph<Airport, double> &graph);
 
     void generateDirectedGraph(DirectedGraph<Airport, double> &graph);
-
-    double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);
-
 
 
 };
@@ -115,7 +116,6 @@ void Parser::generateDirectedGraph(DirectedGraph<Airport, double> &graph) {
             throw ("Error, Vertex not added");
         }
     }
-    //Creating edges
     for (Value &airport: document.GetArray()) {
         for (Value &destination: airport["destinations"].GetArray()) {
             // cout<<"airport id"<<" "<<airport["AirportID"].GetString()<<endl;
@@ -132,7 +132,6 @@ void Parser::generateDirectedGraph(DirectedGraph<Airport, double> &graph) {
             try { graph.createEdge(idVertexA, idVertexB, weight);} catch (...){
                 throw ("Error, Edge not created");
             }
-
 
         }
     }

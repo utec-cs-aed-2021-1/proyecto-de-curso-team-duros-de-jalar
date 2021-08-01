@@ -14,12 +14,17 @@ int main() {
     //Tester::executeParser();
     //Tester::executeParser(file::airports);
     Parser parser;
-    parser.generateJson(file::pe);
+    parser.generateJson(file::airports);
 
     UnDirectedGraph<Airport, double> UnDirectedGraph;
     DirectedGraph<Airport, double> DirectedGraph;
-    //parser.generateUndirectedGraph(UnDirectedGraph);
-    parser.generateDirectedGraph(DirectedGraph);
-
+    parser.generateUndirectedGraph(UnDirectedGraph);
+    //parser.generateDirectedGraph(DirectedGraph);
+    //
+    ofstream MyFile;
+    MyFile.open("airportsUndirected.dot");
+    UnDirectedGraph.display_file(MyFile);
+    // Close the file
+    MyFile.close();
     return EXIT_SUCCESS;
 }

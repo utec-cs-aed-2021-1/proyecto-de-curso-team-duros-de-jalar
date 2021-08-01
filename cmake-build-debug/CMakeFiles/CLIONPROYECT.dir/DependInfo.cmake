@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/main.cpp" "C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto2/proyecto-de-curso-team-duros-de-jalar/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/main.cpp.obj"
+  "C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/main.cpp" "C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/cmake-build-debug/CMakeFiles/CLIONPROYECT.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

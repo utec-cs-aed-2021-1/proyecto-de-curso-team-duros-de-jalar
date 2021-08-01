@@ -23189,7 +23189,7 @@
         "Longitude": "14.9245",
         "ICAO": "RAI",
         "Airport ID": "5674",
-        "Latitude": "GVNP",
+        "Latitude": "14.9212",
         "Timezone": "-23.4935",
         "DST": "230",
         "destinations": [
@@ -23219,7 +23219,7 @@
         "Longitude": "14.885",
         "ICAO": "SFL",
         "Airport ID": "5675",
-        "Latitude": "GVSF",
+        "Latitude": "14536",
         "Timezone": "-24.48",
         "DST": "617",
         "destinations": [
@@ -60990,8 +60990,8 @@
         "Longitude": "53.474722",
         "ICAO": "DSA",
         "Airport ID": "5562",
-        "Latitude": "EGCN",
-        "Timezone": "-1.004444",
+        "Latitude": "532828",
+        "Timezone": "-1.0044G44",
         "DST": "55",
         "destinations": [
             "499",
