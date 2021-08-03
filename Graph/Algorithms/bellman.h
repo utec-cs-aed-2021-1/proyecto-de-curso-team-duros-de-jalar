@@ -1,6 +1,7 @@
 #include <queue>
 #include <unordered_set>
 #include <unordered_map>
+#include "..\DirectedGraph.h"
 
 template<typename TV, typename TE>
 class bellmanford{

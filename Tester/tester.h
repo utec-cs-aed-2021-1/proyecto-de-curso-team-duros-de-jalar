@@ -9,9 +9,11 @@
 #include "../Graph/Algorithms/kruskal.h"
 #include "../Graph/Algorithms/bfs.h"
 #include "../Graph/Algorithms/dfs.h"
+#include "../Graph/Algorithms/dijkstra.h"
 #include "../Parser/parse.h"
 #include "../Graph/Algorithms/astar.h"
 #include <fstream>
+#include <Algorithms/bellman.h>
 
 using namespace std;
 namespace Tester {
@@ -892,6 +894,8 @@ void Tester::executeParser(file json_file) {
                     cout << "6. DFS" << endl;
                     cout << "7. Kruskal" << endl;
                     cout << "8. Prim" << endl;
+                    cout << "9. Dijkstra" << endl;
+
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -959,45 +963,17 @@ void Tester::executeParser(file json_file) {
                             break;
                         }
                         case 9: {
-                            cout<< "A*"<<endl;
-
-                            Graph<char, int>* gra = new UnDirectedGraph<char, int>;
-                            gra->insertVertex("A", 'A');
-                            gra->insertVertex("B",'B');
-                            gra->insertVertex("C",'C');
-                            gra->insertVertex("D", 'D');
-                            gra->insertVertex("E", 'E');
-                            gra->insertVertex("F", 'F');
-
-
-                            unordered_map<string, int> heur;
-                            heur["A"] = 36;
-                            heur["B"] = 39;
-                            heur["C"] = 31;
-                            heur["D"] = 30;
-                            heur["E"] = 34;
-                            heur["F"] = 32;
-                            heur["G"] = 21;
-                            heur["H"] = 19;
-                            heur["I"] = 0;
-
-                            gra->createEdge("A", "B", 1);
-                            gra->createEdge("A", "D", 5);
-                            gra->createEdge("A", "C", 3);
-                            gra->createEdge("B", "D", 6);
-                            gra->createEdge("C", "D", 4);
-                            gra->createEdge("D", "F", 2);
-                            gra->createEdge("G", "H", 8);
-                            gra->createEdge("C", "E", 7);
-                            gra->createEdge("E", "G", 4);
-                            gra->createEdge("E", "F", 9);
-                            gra->createEdge("H", "F", 3);
-
-                            astar<char,int>* Astarr = new astar<char,int> (gra,"A","I",heur);
-                            Astarr->display();
-                            Astarr->apply()->display();
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "Dijkstra" << endl;
+                            dijkstra<Airport, double> dijkstra_(unDirectedGraph, input);
+                            DirectedGraph<Airport, double> *result = dijkstra_.apply();
+                            result->display();
+                            break;
 
                         }
+
                     }
                 }while (metodo <= 9 && 1 <= metodo);
 
@@ -1018,6 +994,8 @@ void Tester::executeParser(file json_file) {
                     cout << "4. Es fuertemente conexo" << endl;
                     cout << "5. BFS" << endl;
                     cout << "6. DFS" << endl;
+                    cout << "7. Dijkstra" << endl;
+                    cout << "8. Bellman Ford " << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -1066,8 +1044,29 @@ void Tester::executeParser(file json_file) {
                             dfs_.apply()->display();
                             break;
                         }
+                        case 7: {
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "Dijkstra" << endl;
+                            dijkstra<Airport, double> dijkstra_(directedGraph, input);    /*Undirected graph */
+                            DirectedGraph<Airport, double> *result = dijkstra_.apply();//return a tree
+                            result->display();
+                            break;
+                        }
+                        case 8: {
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "Bellman Ford" << endl;
+                            bellmanford<Airport, double> bellmanford_(directedGraph, input);
+                            DirectedGraph<Airport, double> *result = bellmanford_.apply();
+                            result->display();
+                            break;
+
+                        }
                     }
-                }while (metodo <= 6 && 1 <= metodo);
+                }while (metodo <= 8 && 1 <= metodo);
                 break;
             }
         }

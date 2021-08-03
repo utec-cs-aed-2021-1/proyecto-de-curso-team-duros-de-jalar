@@ -14,11 +14,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a87eda64-2e65-47da-aa2d-85818c4c4fa4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/parse.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/parse.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/bellman.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/bellman.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/dfs.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/dfs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/dijkstra.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/dijkstra.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tester/tester.h" beforeDir="false" afterPath="$PROJECT_DIR$/Tester/tester.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CLIONPROYECT.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CLIONPROYECT.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/udgraph1.dot" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/udgraph1.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +88,7 @@
       <workItem from="1627759850826" duration="3069000" />
       <workItem from="1627839799166" duration="2860000" />
       <workItem from="1627844099828" duration="6482000" />
-      <workItem from="1627958352854" duration="6072000" />
+      <workItem from="1627958352854" duration="8514000" />
     </task>
     <servers />
   </component>

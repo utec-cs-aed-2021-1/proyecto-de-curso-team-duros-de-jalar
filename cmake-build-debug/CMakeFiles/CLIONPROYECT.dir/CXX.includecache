@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+../Graph/Algorithms/bellman.h
+queue
+-
+unordered_set
+-
+unordered_map
+-
+../DirectedGraph.h
+../Graph/DirectedGraph.h
+
 ../Graph/DirectedGraph.h
 set
 -
@@ -55,6 +65,16 @@ unordered_set
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
 ../UndirectedGraph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dijkstra.h
+../UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
+../DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
+unordered_map
+-
+unordered_set
+-
 
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dsarray.h
 iostream
@@ -407,11 +427,15 @@ C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/pr
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/bfs.h
 ../Graph/Algorithms/dfs.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dfs.h
+../Graph/Algorithms/dijkstra.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dijkstra.h
 ../Parser/parse.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Parser/parse.h
 ../Graph/Algorithms/astar.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/astar.h
 fstream
+-
+Algorithms/bellman.h
 -
 
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/main.cpp
