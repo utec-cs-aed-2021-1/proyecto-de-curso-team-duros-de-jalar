@@ -12,13 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a87eda64-2e65-47da-aa2d-85818c4c4fa4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/parse.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/parse.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tester/tester.h" beforeDir="false" afterPath="$PROJECT_DIR$/Tester/tester.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CLIONPROYECT.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CLIONPROYECT.exe" afterDir="false" />
-    </list>
+    <list default="true" id="a87eda64-2e65-47da-aa2d-85818c4c4fa4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +86,7 @@
       <workItem from="1627844099828" duration="6482000" />
       <workItem from="1627958352854" duration="8880000" />
       <workItem from="1627968705391" duration="2234000" />
-      <workItem from="1627975381603" duration="8135000" />
+      <workItem from="1627975381603" duration="8744000" />
     </task>
     <servers />
   </component>

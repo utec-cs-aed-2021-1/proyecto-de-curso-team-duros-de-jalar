@@ -1459,6 +1459,7 @@ El archivo JSON es parseado a un *Document*
   <img src="Imagenes/dom_tree.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
+
 Se implementaron los siguientes métodos para el parser: 
 ### Methods:
 ```cpp
@@ -1491,6 +1492,20 @@ struct Airport {
                                                                                                                            longitude(longitude) {}
 };
 ```
+
+
+## Grafos con parser
+
+### Aeropuertos de nacionales (Perú)
+- Dirigido
+<figure align="center" class="image">
+  <img src="Imagenes/peDirected.jpg" width="70%" height="60%" style="text-align:center;">
+</figure>
+
+-No dirigido
+<figure align="center" class="image">
+  <img src="Imagenes/peUndirected.jpg" width="70%" height="60%" style="text-align:center;">
+</figure>
 
 ## [Git Karma Guidelines](http://karma-runner.github.io/5.2/dev/git-commit-msg.html)
 
