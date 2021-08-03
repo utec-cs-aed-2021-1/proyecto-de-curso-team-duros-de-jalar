@@ -1499,7 +1499,7 @@ struct Airport {
 ### Aeropuertos de nacionales (Perú)
 - Dirigido
 <figure align="center" class="image">
-  <img src="Imagenes/peDirected.jpg" width="70%" height="60%" style="text-align:center;">
+  <img src="Imagenes/peDirected.jpg" width="80%" height="90%" style="text-align:center;">
 </figure>
 
 -No dirigido
