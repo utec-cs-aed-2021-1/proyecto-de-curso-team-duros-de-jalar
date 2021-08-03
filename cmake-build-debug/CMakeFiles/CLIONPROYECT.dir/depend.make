@@ -5,6 +5,7 @@ CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/Algorithms/bellman.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/Algorithms/floyd_warshall.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/DirectedGraph.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/UndirectedGraph.h
+CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/Algorithms/Best_BFS.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/Algorithms/astar.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/Algorithms/bfs.h
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj: ../Graph/Algorithms/dfs.h

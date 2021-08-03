@@ -11,7 +11,6 @@
 #include "../Graph/UndirectedGraph.h"
 #include "../Graph/DirectedGraph.h"
 
-#include <fstream>
 #include <cmath>
 using namespace rapidjson;
 
@@ -87,8 +86,6 @@ void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double>* &graph) {
     }
     for (Value &airport: document.GetArray()) {
         for (Value &destination: airport["destinations"].GetArray()) {
-            // cout<<"airport id"<<" "<<airport["AirportID"].GetString()<<endl;
-            // cout<<"destination id"<<" "<<destination.GetString()<<endl;
             string idVertexA = airport["AirportID"].GetString();
             string idVertexB = destination.GetString();
             double latitude1 = graph->operator[](airport["AirportID"].GetString()).latitude;

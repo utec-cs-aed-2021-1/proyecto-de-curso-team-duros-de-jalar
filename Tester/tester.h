@@ -7,6 +7,7 @@
 #include "../Graph/directedGraph.h"
 #include "../Graph/Algorithms/prim.h"
 #include "../Graph/Algorithms/kruskal.h"
+#include "../Graph/Algorithms/Best_BFS.h"
 #include "../Graph/Algorithms/bfs.h"
 #include "../Graph/Algorithms/dfs.h"
 #include "../Graph/Algorithms/dijkstra.h"
@@ -794,7 +795,6 @@ namespace Tester {
                         case 9: {
                             cout<< "A*"<<endl;
 
-
                             unordered_map<string, float> heur;
                             heur["A"] = 36;
                             heur["B"] = 39;
@@ -918,6 +918,7 @@ void Tester::executeParser(file json_file) {
                     cout << "7. Kruskal" << endl;
                     cout << "8. Prim" << endl;
                     cout << "9. Dijkstra" << endl;
+                    cout << "10. Best BFS" << endl;
 
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
@@ -996,8 +997,19 @@ void Tester::executeParser(file json_file) {
                             break;
 
                         }
+                        case 10: {
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "Best BFS" << endl;
+                            Best_BFS<Airport, double> Best_BFS_(unDirectedGraph, input);
+                            DirectedGraph<Airport, double> *result = Best_BFS_.apply();
+                            result->display();
+                            break;
+
+                        }
                     }
-                }while (metodo <= 9 && 1 <= metodo);
+                }while (metodo <= 10 && 1 <= metodo);
 
                 break;
             }
@@ -1019,6 +1031,7 @@ void Tester::executeParser(file json_file) {
                     cout << "7. Dijkstra" << endl;
                     cout << "8. Bellman Ford " << endl;
                     cout << "9. Floy Warshall" << endl;
+                    cout << "10. Best BFS" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -1096,9 +1109,20 @@ void Tester::executeParser(file json_file) {
                             result->display();
                             break;
                         }
+                        case 10: {
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "Best BFS" << endl;
+                            Best_BFS<Airport, double> Best_BFS_(directedGraph, input);
+                            DirectedGraph<Airport, double> *result = Best_BFS_.apply();
+                            result->display();
+                            break;
+
+                        }
 
                     }
-                }while (metodo <= 8 && 1 <= metodo);
+                }while (metodo <= 10 && 1 <= metodo);
                 break;
             }
         }

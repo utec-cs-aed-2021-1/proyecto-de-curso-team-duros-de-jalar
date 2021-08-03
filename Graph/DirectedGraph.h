@@ -1,5 +1,5 @@
-#ifndef NONDIRECTEDGRAPH_H
-#define NONDIRECTEDGRAPH_H
+#ifndef DIRECTEDGRAPH_H
+#define DIRECTEDGRAPH_H
 
 #include <set>
 #include "graph.h"
@@ -169,24 +169,7 @@ TV DirectedGraph<TV, TE>::operator[](string id) {
         return TV();
 
 }
-/*
-template<typename TV, typename TE>
-void DirectedGraph<TV, TE>::displayVertex(string id) {
-    if (this->vertexes.find(id) == this->vertexes.end())
-        return;
-    auto data = this->vertexes[id];
-    auto all_edges = (this->vertexes[id])->edges;
-    auto ids = id;
-    cout<<"connections to vertex "<< data->id << " with data " << data->data<<endl;
-    for (auto i: all_edges) {
-        for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
-            if (it->second == (*i).vertexes[1]) ids = it->first;
-        }
 
-        std::cout << " to vertex " << ids << " the weight is " << (*i).weight << endl;
-    }
-}
-*/
 template<typename TV, typename TE>
 void DirectedGraph<TV, TE>::displayVertexFile(ofstream &filename, string id) {
     if (this->vertexes.find(id) == this->vertexes.end())
@@ -339,3 +322,47 @@ DirectedGraph<TV, TE>::~DirectedGraph() {
 
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+template<typename TV, typename TE>
+void DirectedGraph<TV, TE>::displayVertex(string id) {
+    if (this->vertexes.find(id) == this->vertexes.end())
+        return;
+    auto data = this->vertexes[id];
+    auto all_edges = (this->vertexes[id])->edges;
+    auto ids = id;
+    cout<<"connections to vertex "<< data->id << " with data " << data->data<<endl;
+    for (auto i: all_edges) {
+        for (auto it = this->vertexes.begin(); it != this->vertexes.end(); ++it) {
+            if (it->second == (*i).vertexes[1]) ids = it->first;
+        }
+
+        std::cout << " to vertex " << ids << " the weight is " << (*i).weight << endl;
+    }
+}
+*/
