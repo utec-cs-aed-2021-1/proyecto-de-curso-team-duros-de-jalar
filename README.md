@@ -1374,6 +1374,68 @@ Dentro del primer for, se recorre las aristas que se conectan al vértice evalua
 Al finalizar el recorrido de las aristas en dist, la posición del id del vértice que se evalúa en el primer for se guarda temp.\
 Luego se hace un triple for, todos recorren los vértices del grafo, ya que van a evaluar las distancias de dist, donde se comparará dist[i][j] > dist[i][k] + dist[k][j], siendo k la variable del primer for; i, la del segundo; y j, la del tercer for.\
 Si esta comprobación es verdadera, se reemplaza el valor en dist[i][j]. Así hasta terminado el primer for.
+ 
+ ###Bellman Ford
+  ````cpp
+template<typename TV, typename TE>
+class bellmanford{
+    unordered_map<string, int> distance;
+    unordered_map<string, pair<string,TE>> papi;
+    DirectedGraph<TV,TE>* result;
+    bool nonnegative{};
+public:
+    bellmanford(DirectedGraph<TV,TE>* grp, const string& start){
+        Vertex<TV,TE>* init = grp->vertexes[start];
+        for(auto i = grp->vertexes.begin(); i!= grp->vertexes.end(); i++){
+            distance[i->first]= INT_MAX;
+        }
+        distance[init->id] = 0;
+        unordered_set<string> stin;
+        queue<string> in;
+        in.push(init->id);
+        stin.insert(init->id);
+        while (!in.empty()){
+            string cur = in.front();
+            Vertex<TV,TE>* current = grp->vertexes[in.front()];
+            in.pop();
+            stin.erase(init->id);
+            for(auto i = current->edges.begin(); i != current->edges.end(); i++){
+                string adj = (*i)->vertexes[1]->id;
+                if(distance[cur] + (*i)->weight < distance[adj]){
+                    distance[adj] =  distance[cur] + (*i)->weight;
+                    papi[adj] = make_pair(cur,(*i)->weight) ;
+                    if(stin.find(adj) == stin.end()){
+                        in.push(adj);
+                        stin.insert(adj);
+                    }
+                }
+            }
+        }
+         for(auto i = papi.begin(); i != papi.end(); i++){
+            if(distance[i->first] != INT_MAX && distance[i->second.first]  > distance[i->first] +  i->second.second){
+                cout<<"HAY CICLOS NEGATIVOS."<<endl;
+                return;
+            }
+        }
+        making_graph(grp);
+    }
+    void making_graph(Graph<TV,TE>* grp){
+    result = new DirectedGraph<TV,TE>;
+    for(auto i = papi.begin(); i!=papi.end(); i++){
+        result->insertVertex(i->first, grp->vertexes[i->first]->data);
+        result->insertVertex(i->second.first, grp->vertexes[i->second.first]->data);
+        result->createEdge(i->second.first, i->first, i->second.second);
+    }
+    }
+    DirectedGraph<TV,TE>* apply(){
+    return result;
+}
+};
+ ````
+ 
+ 
+ 
+ 
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
 
