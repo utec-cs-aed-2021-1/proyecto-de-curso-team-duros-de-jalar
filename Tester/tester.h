@@ -974,6 +974,12 @@ void Tester::executeParser(file json_file) {
                             result->display();
                             break;
 
+                        }   case 10: {
+                            cout << "Floyd Warshall" << endl;
+                            floyd_warshall<Airport, double> floyd_warshall_(unDirectedGraph);
+                            DirectedGraph<Airport, double> *result = floyd_warshall_.apply();
+                            result->display();
+                            break;
                         }
 
                     }
@@ -998,6 +1004,7 @@ void Tester::executeParser(file json_file) {
                     cout << "6. DFS" << endl;
                     cout << "7. Dijkstra" << endl;
                     cout << "8. Bellman Ford " << endl;
+                    cout << "9. Floy Warshall" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -1067,6 +1074,14 @@ void Tester::executeParser(file json_file) {
                             break;
 
                         }
+                        case 9: {
+                            cout << "Floyd Warshall" << endl;
+                            floyd_warshall<Airport, double> floyd_warshall_(directedGraph);
+                            DirectedGraph<Airport, double> *result = floyd_warshall_.apply();
+                            result->display();
+                            break;
+                        }
+
                     }
                 }while (metodo <= 8 && 1 <= metodo);
                 break;

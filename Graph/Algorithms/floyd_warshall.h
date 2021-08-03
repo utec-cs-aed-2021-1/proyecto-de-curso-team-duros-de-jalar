@@ -49,10 +49,8 @@ public:
             }
         }
 
-        int cont = 0;
         for(auto &i : dist) {
-            floyd->insertVertex(i.first,cont);
-            cont++;
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
         }
         for(auto &i:dist){
             for(auto &j: i.second){
@@ -90,10 +88,8 @@ public:
             }
         }
 
-        int cont = 0;
         for(auto &i : dist) {
-            floyd->insertVertex(i.first,cont);
-            cont++;
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
         }
         for(auto &i:dist){
             for(auto &j: i.second){
@@ -131,10 +127,8 @@ public:
             }
         }
 
-        int cont = 0;
         for(auto &i : dist) {
-            floyd->insertVertex(i.first,cont);
-            cont++;
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
         }
         for(auto &i:dist){
             for(auto &j: i.second){
