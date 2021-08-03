@@ -1123,6 +1123,7 @@ vértice del grafo que se está iterando en el primer for, si coinciden se compr
 ubicación del key de l id del vértice del primer for es mayor a la distancia del id del vértice obtenido con Distancemin 
 mas el peso de la arista evaluada, se actualiza el peso.\
 Esto se hace iterativamente hasta terinar el primer for, que se iterara n veces, siendo n la cantidad de vértices del grafo.
+ ### A star
 ````cpp 
  template<typename TV, typename TE>
 struct comparator{
@@ -1224,6 +1225,9 @@ public:
 
 };
 ````
+Creamos un priority_queue ("openset") y dos unordered_set ("openSet1" y "closedSet"), a su vez usamos dos mapas ("gscore" y "fscore"), donde el primero sirve para almacenar el peso del nodo inicial hasta al actual, y el segundo sirve para almacenar las distancias aproximadas dadas por la heurística. 
+ Empezamos colocando el vértice inicial dentro de "openset", y entramos al loop while que se mantendrá mientras que "openset" no esté vacío. Dentro de este loop obtenemos el vértice del id correspondiente, luego pasamos a verificar si es el nodo meta, si es el caso, entonces pasamos a la función construct_path para poder armar el grafo, en caso no lo sea, entonces insertamos el nodo actual a los cerrados, pasamos a verificar cada vértice adyacente al actual. Durante la verificación, almacenamos la suma del peso al nodo adyacente más el peso de todo el recorrido en la variable tentative_gscore, y pasamos ver si el adyacente no se encuentra dentro del "openset". Si este se encuentra, entonces lo colocamos como parte del recorrido, lo añadimos al gscore y a fscore sumando la heurística con tentative_gscore. En caso el adyacente ya se encuentre dentro, revisamos si tentative_gscore es mayor o igual a al gscore del vértice, siendo el caso que este sea falso, este pase a guardarse en el recorrido y actualizar las variables gscore y fscore.
+ 
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
 
