@@ -8,7 +8,7 @@ class bellmanford{
     unordered_map<string, int> distance;
     unordered_map<string, pair<string,TE>> papi;
     DirectedGraph<TV,TE>* result;
-    bool nonnegative{};
+    bool nonnegative{true};
 public:
     bellmanford(DirectedGraph<TV,TE>* grp, const string& start){
         Vertex<TV,TE>* init = grp->vertexes[start];
@@ -40,10 +40,13 @@ public:
          for(auto i = papi.begin(); i != papi.end(); i++){
             if(distance[i->first] != INT_MAX && distance[i->second.first]  > distance[i->first] +  i->second.second){
                 cout<<"HAY CICLOS NEGATIVOS."<<endl;
+                nonnegative=false;
                 return;
             }
         }
-        making_graph(grp);
+        if(nonnegative) {
+            making_graph(grp);
+        }
     }
     void making_graph(Graph<TV,TE>* grp){
     result = new DirectedGraph<TV,TE>;
@@ -54,6 +57,13 @@ public:
     }
     }
     DirectedGraph<TV,TE>* apply(){
-    return result;
-}
+        try {
+            if(nonnegative){
+                return result;
+            }
+            throw false;
+        }catch (bool a){
+            cout<<"Es un grafo con ciclos negativos, no se puede generar"<<endl;
+        }
+    }
 };
