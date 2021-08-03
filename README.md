@@ -1432,9 +1432,7 @@ public:
 }
 };
  ````
- 
- 
- 
+ En un hash ("Distance") le colocamos una distancia de infinito a todos los nodos e inicializamos el nodo de inicio con distancia 0. Luego, creamos un unordered_set ("stin") y un queue ("in") e insertamos el nodo inicial en ambos. Entramos al bucle while, el cual su ejecución depende de que in no esté vacío, sacamos el nodo que está en el front del queue, y vamos revisando todos lo nodos adyacentes. Si la distancia del actual más el peso es menor al actual del adyacente, entonces actualizamos y verificamos si no está en el queue con el fin de insertar el nodo. Luego, recorremos por todo el hash "papi" para verificar si no hay ciclos negativos. 
  
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
