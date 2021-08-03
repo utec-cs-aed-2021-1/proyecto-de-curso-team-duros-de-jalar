@@ -128,7 +128,7 @@ void Parser::generateDirectedGraph(DirectedGraph<Airport, double>* &graph) {
             double longitude1 = graph->operator[](airport["AirportID"].GetString()).longitude;
             double longitude2 = graph->operator[](destination.GetString()).longitude;
             double weight = euclideanDistance(latitude1, longitude1, latitude2, longitude2);
-            cout<<"idVertexA "<<idVertexA<<" "<<"idVertexB "<<idVertexB<<" "<<"weight "<<weight<<endl;
+            //cout<<"idVertexA "<<idVertexA<<" "<<"idVertexB "<<idVertexB<<" "<<"weight "<<weight<<endl;
 
             try { graph->createEdge(idVertexA, idVertexB, weight);} catch (...){
                 throw ("Error, Edge not created");

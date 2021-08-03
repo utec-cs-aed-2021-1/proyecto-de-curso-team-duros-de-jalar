@@ -58,7 +58,7 @@ public:
         G = new DirectedGraph<TV,TE>;
         G->insertVertex(vertexid, aux->data);
 
-        visited.insert(vertexid); //PREGUNTAR AL PROFE
+        visited.insert(vertexid);
 
         for(auto& i : aux->edges){
             Vertex<TV,TE>* ax = i->vertexes[1];

@@ -6,6 +6,36 @@
 
 #IncludeRegexTransform: 
 
+../Graph/DirectedGraph.h
+set
+-
+graph.h
+../Graph/graph.h
+iostream
+-
+fstream
+-
+
+../Graph/UndirectedGraph.h
+iostream
+-
+set
+-
+graph.h
+../Graph/graph.h
+set
+-
+fstream
+-
+
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/astar.h
+DirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/DirectedGraph.h
+UndirectedGraph.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/UndirectedGraph.h
+map
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/map
+
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/bfs.h
 queue
 -
@@ -349,6 +379,8 @@ include/rapidjson/stringbuffer.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Parser/include/rapidjson/stringbuffer.h
 iostream
 -
+string
+-
 ../Graph/UndirectedGraph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
 ../Graph/DirectedGraph.h
@@ -365,7 +397,7 @@ cstdlib
 -
 ../Graph/UndirectedGraph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/UndirectedGraph.h
-../Graph/DirectedGraph.h
+../Graph/directedGraph.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/DirectedGraph.h
 ../Graph/Algorithms/prim.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/prim.h
@@ -377,6 +409,8 @@ C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/pr
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/dfs.h
 ../Parser/parse.h
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Parser/parse.h
+../Graph/Algorithms/astar.h
+C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/astar.h
 fstream
 -
 

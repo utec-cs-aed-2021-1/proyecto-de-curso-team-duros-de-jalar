@@ -1,11 +1,10 @@
-
 #ifndef TESTER_H
 #define TESTER_H
 
 #include <iostream>
 #include <cstdlib>
 #include "../Graph/UndirectedGraph.h"
-#include "../Graph/DirectedGraph.h"
+#include "../Graph/directedGraph.h"
 #include "../Graph/Algorithms/prim.h"
 #include "../Graph/Algorithms/kruskal.h"
 #include "../Graph/Algorithms/bfs.h"
@@ -539,7 +538,6 @@ namespace Tester {
                             heur["I"] = 0;
 
 
-
                             astar<int,float>* Astarr = new astar<int,float> (graph,"A","I",heur);
                             Astarr->display();
                             Astarr->apply()->display();
@@ -816,6 +814,7 @@ namespace Tester {
             cout << "\n\nSeleccione el json a ejecutar" << endl;
             cout<< "1. Aeropuertos internacionales"<<endl;
             cout<< "2. Aeropuertos nacionales"<<endl;
+            cin >> input_Case;
             switch (input_Case) {
                 case 1: {
                     executeParser(file::airports);
@@ -860,10 +859,11 @@ namespace Tester {
 void Tester::executeParser(file json_file) {
     Parser parser;
     parser.generateJson(json_file);
-    UnDirectedGraph<Airport, double>* NODirectedGraph;
-    DirectedGraph<Airport, double>* DirectedGraph;
-    parser.generateUndirectedGraph(NODirectedGraph);
-    parser.generateDirectedGraph(DirectedGraph);
+    UnDirectedGraph<Airport, double>* unDirectedGraph = new UnDirectedGraph<Airport, double>;
+    DirectedGraph<Airport, double>* directedGraph = new DirectedGraph<Airport, double>;
+
+    parser.generateUndirectedGraph(unDirectedGraph);
+    parser.generateDirectedGraph(directedGraph);
     do {
         cout << "\n\nSeleccione tipo de Grafo" << endl;
         cout << "1. Grafo No Dirigido" << endl;
@@ -878,7 +878,7 @@ void Tester::executeParser(file json_file) {
                 // Create and open a text file
                 ofstream MyFile;
                 MyFile.open("udgraph1.dot");
-                NODirectedGraph->display_file(MyFile);
+                unDirectedGraph->display_file(MyFile);
                 // Close the file
                 MyFile.close();
 
@@ -897,44 +897,51 @@ void Tester::executeParser(file json_file) {
                     cin >> metodo;
                     switch (metodo) {
                         case 1: {
-                            NODirectedGraph->display();
+                            unDirectedGraph->display();
                             break;
                         }
                         case 2: {
-                            if (NODirectedGraph->isDense()) {
+                            if (unDirectedGraph->isDense()) {
                                 cout << "Es un grado denso" << endl;
-                                cout << "Su densidad es " << NODirectedGraph->density() << endl;
+                                cout << "Su densidad es " << unDirectedGraph->density() << endl;
                             } else {
                                 cout << "No es un grafo denso" << endl;
-                                cout << "Su densidad es " << NODirectedGraph->density() << endl;
+                                cout << "Su densidad es " << unDirectedGraph->density() << endl;
                             }
                             break;
                         }
                         case 3: {
-                            if (NODirectedGraph->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            if (unDirectedGraph->isConnected()) { cout << "Es un grafo conexo" << endl; }
                             else { cout << "No es un grafo conexo" << endl; }
                             break;
                         }
                         case 4: {
-                            if (NODirectedGraph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            if (unDirectedGraph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
                             else { cout << "No es un grafo fuertemente conexo" << endl; }
                             break;
                         }
                         case 5: {
-                            cout << "BFS desde el vertice A" << endl;
-                            bfs<Airport, double> bfs_(NODirectedGraph, "A");
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "BFS " << endl;
+                            bfs<Airport, double> bfs_(unDirectedGraph, input);
                             bfs_.apply()->display();
                             break;
                         }
                         case 6: {
-                            cout << "DFS desde el vertice A" << endl;
-                            dfs<Airport, double> dfs_(NODirectedGraph, "A");
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "DFS " << endl;
+                            dfs<Airport, double> dfs_(unDirectedGraph, input);
                             dfs_.apply()->display();
                             break;
                         }
                         case 7: {
+
                             cout << "Kruskal" << endl;
-                            Kruskal<Airport, double> kruskal(NODirectedGraph);    /*Undirected graph */
+                            Kruskal<Airport, double> kruskal(unDirectedGraph);    /*Undirected graph */
                             UnDirectedGraph<Airport, double> *result = kruskal.apply();//return a tree
                             result->display();
 
@@ -942,8 +949,11 @@ void Tester::executeParser(file json_file) {
                         }
 
                         case 8: {
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
                             cout << "Prim" << endl;
-                            prim<Airport, double> prim_(NODirectedGraph, "A");    /*Undirected graph */
+                            prim<Airport, double> prim_(unDirectedGraph, input);    /*Undirected graph */
                             UnDirectedGraph<Airport, double> *result = prim_.apply();//return a tree
                             result->display();
                             break;
@@ -996,7 +1006,7 @@ void Tester::executeParser(file json_file) {
             case 2: {
                 ofstream MyFile;
                 MyFile.open("graph1.dot");
-                DirectedGraph->display_file(MyFile);
+                directedGraph->display_file(MyFile);
                 // Close the file
                 MyFile.close();
 
@@ -1014,39 +1024,45 @@ void Tester::executeParser(file json_file) {
 
                     switch (metodo) {
                         case 1: {
-                            DirectedGraph->display();
+                            directedGraph->display();
                             break;
                         }
                         case 2: {
-                            if (DirectedGraph->isDense()) {
+                            if (directedGraph->isDense()) {
                                 cout << "Es un grado denso" << endl;
-                                cout << "Su densidad es " << DirectedGraph->density() << endl;
+                                cout << "Su densidad es " << directedGraph->density() << endl;
                             } else {
                                 cout << "No es un grafo denso" << endl;
-                                cout << "Su densidad es " << DirectedGraph->density() << endl;
+                                cout << "Su densidad es " << directedGraph->density() << endl;
                             }
                             break;
                         }
                         case 3: {
-                            if (DirectedGraph->isConnected()) { cout << "Es un grafo conexo" << endl; }
+                            if (directedGraph->isConnected()) { cout << "Es un grafo conexo" << endl; }
                             else { cout << "No es un grafo conexo" << endl; }
                             break;
                         }
                         case 4: {
-                            if (DirectedGraph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
+                            if (directedGraph->isStronglyConnected()) { cout << "Es un fuertemente grafo conexo" << endl; }
                             else { cout << "No es un grafo fuertemente conexo" << endl; }
                             break;
                         }
                         case 5: {
-                            cout << "BFS desde el vertice A" << endl;
-                            bfs<Airport, double> bfs_(DirectedGraph, "A");
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "BFS" << endl;
+                            bfs<Airport, double> bfs_(directedGraph, input);
                             bfs_.apply()->display();
 
                             break;
                         }
                         case 6: {
-                            cout << "DFS desde el vertice A" << endl;
-                            dfs<Airport, double> dfs_(DirectedGraph, "A");
+                            string input;
+                            cout<<"Por favor ingrese el ID del aeropuerto"<<endl;
+                            cin>>input;
+                            cout << "DFS" << endl;
+                            dfs<Airport, double> dfs_(directedGraph, input);
                             dfs_.apply()->display();
                             break;
                         }
