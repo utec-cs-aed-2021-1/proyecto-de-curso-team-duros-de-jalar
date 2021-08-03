@@ -1025,8 +1025,7 @@ public:
 ````
 Utilizamos un unordered_set de nombre visited para poder almacenar todos los nodos por los que ya se han pasado, y un priority_queue ("cola") que nos permitirá organizar mediante pesos. Insertamos el vértice inicial en visited, y luego insertamos todos los vértices adyacentes en "cola". Después, entramos a un while que se mantiene mientras que la "cola" no esté vacía. Mientras que se ejecuta el while vamos verificando si ya hemos pasado por el vértices, en caso de que no se haya visitado insertamos en visited el id del vértice, luego pasamos a insertar todos los vértices adyacentes que no hayan sido visitados.
 
-###Dijkstra
-
+### Dijkstra
 ````cpp
 template <typename TV, typename  TE>
 string Distancemin (Graph<TV,TE>* & grafo, unordered_map<string,int>& dist, unordered_map<string,bool>& spt){
