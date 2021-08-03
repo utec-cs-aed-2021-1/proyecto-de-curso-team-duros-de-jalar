@@ -1127,17 +1127,59 @@ Esto se hace iterativamente hasta terinar el primer for, que se iterara n veces,
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
 
+Para la implementación del parser se uso la libreria **rapidjson**.
+La libreia es facilmente usada mediante en el comando #include en los archivos necesarios.
+No depende de bibliotecas externas como BOOST. Incluso no depende de STL
 
+#####Documentación [rapidJSON](http://rapidjson.org/)
+
+El flujo que se seguirá para el parseo será el siguiente:
+
+- A partir del archivo .json, se abre el archivo,  se lee el contenido y se pasa a un string
+- Del JSON string se realiza la conversión a un documento DOM (Document Object Model).
+  El formato DOM nos permite acceder y modificar la data facilmente. 
+
+Cada valor JSON es guardado en un tipo de dato llamado *Value*. 
+Así mismo, usamos el tipo de dato *Document* que representa al DOM, contiene el *Value* raíz del árbol DOM. 
+
+El archivo JSON es parseado a un *Document*  
+
+### Árbol DOM 
+<figure align="center" class="image">
+  <img src="Imagenes/dom_tree.png" width="70%" height="60%" style="text-align:center;">
+</figure>
+
+Se implementaron los siguientes métodos para el parser: 
 ### Methods:
 ```cpp
 void clear(); // Clears parser saved atributes
 
-void readJSON(); // Parses JSON file and saves data into class
+void generateJson(file json_file ); // Parses JSON file and saves data into class
 // NOTE: each derived class has its own readJSON method
 
-void uGraphMake(UndirectedGraph<string, double> &tempGraph); // Adds the parsed data into the specified undirected graph
+void generateUndirectedGraph(UnDirectedGraph<Airport, double>* &graph); // Adds the parsed data into the specified undirected graph
 
-void dGraphMake(DirectedGraph<string, double> &tempGraph); // Adds the parsed data into the specified directed graph
+ void generateDirectedGraph(DirectedGraph<Airport, double>* &graph); // Adds the parsed data into the specified directed graph
+
+double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);// Calculates the euclidean distance for the weight of the edges
+```
+
+Así mismo, se creo un **struct** Airport que será usado para representar un nodo en el grafo.
+
+```cpp
+struct Airport {
+    string id;
+    string name;
+    string city;
+    string country;
+    double latitude;
+    double longitude;
+
+    Airport() {}
+
+    Airport(string id, const string &name, const string &city, const string &country, double latitude, double longitude) : id(id), name(name), city(city), country(country), latitude(latitude),
+                                                                                                                           longitude(longitude) {}
+};
 ```
 
 ## [Git Karma Guidelines](http://karma-runner.github.io/5.2/dev/git-commit-msg.html)

@@ -38,6 +38,8 @@ class Parser {
 private:
     Document document;
     string path;
+    double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);
+
 public:
     Parser() = default;
 
@@ -47,9 +49,7 @@ public:
 
     void generateDirectedGraph(DirectedGraph<Airport, double>* &graph);
 
-    double euclideanDistance(double latitude1, double longitude1, double latitude2, double longitude2);
-
-
+    void clear();
 
 };
 
@@ -79,8 +79,8 @@ void Parser::generateUndirectedGraph(UnDirectedGraph<Airport, double>* &graph) {
         string name = airport["Name"].GetString();
         string city = airport["City"].GetString();
         string country = airport["Country"].GetString();
-        double latitude = std::stod(airport["Latitude"].GetString());
-        double longitude = std::stod(airport["Longitude"].GetString());
+        double latitude = stod(airport["Latitude"].GetString());
+        double longitude = stod(airport["Longitude"].GetString());
         Airport airportItem(airportId, name, city, country, latitude, longitude);
         try { graph->insertVertex(airportId, airportItem); } catch (...) {
             throw ("Error, Vertex not added");
@@ -109,14 +109,14 @@ void Parser::generateDirectedGraph(DirectedGraph<Airport, double>* &graph) {
         string name = airport["Name"].GetString();
         string city = airport["City"].GetString();
         string country = airport["Country"].GetString();
-        double latitude = std::stod(airport["Latitude"].GetString());
-        double longitude = std::stod(airport["Longitude"].GetString());
+        double latitude = stod(airport["Latitude"].GetString());
+        double longitude = stod(airport["Longitude"].GetString());
         Airport airportItem(airportId, name, city, country, latitude, longitude);
         try { graph->insertVertex(airportId, airportItem); } catch (...) {
             throw ("Error, Vertex not added");
         }
     }
-    //Creating edges
+
     for (Value &airport: document.GetArray()) {
         for (Value &destination: airport["destinations"].GetArray()) {
             // cout<<"airport id"<<" "<<airport["AirportID"].GetString()<<endl;
@@ -137,6 +137,11 @@ void Parser::generateDirectedGraph(DirectedGraph<Airport, double>* &graph) {
 
         }
     }
+
+}
+
+void Parser::clear() {
+    document.Clear();
 }
 
 #endif //PROYECT_PARSE_H

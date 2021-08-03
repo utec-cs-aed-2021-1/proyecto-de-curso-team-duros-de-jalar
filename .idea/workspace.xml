@@ -14,7 +14,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a87eda64-2e65-47da-aa2d-85818c4c4fa4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/Algorithms/floyd_warshall.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/Algorithms/floyd_warshall.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/parse.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/parse.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tester/tester.h" beforeDir="false" afterPath="$PROJECT_DIR$/Tester/tester.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CLIONPROYECT.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CLIONPROYECT.exe" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,10 +44,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Imagenes" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexandra\Desktop\CICLO_5\Algoritmos y Estrcuturas de datos\Proyecto\proyecto-de-curso-team-duros-de-jalar\Imagenes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\alexandra\Desktop\CICLO_5\Algoritmos y Estrcuturas de datos\Proyecto\proyecto-de-curso-team-duros-de-jalar\Imagenes" />
     </key>
@@ -85,7 +91,8 @@
       <workItem from="1627839799166" duration="2860000" />
       <workItem from="1627844099828" duration="6482000" />
       <workItem from="1627958352854" duration="8880000" />
-      <workItem from="1627968705391" duration="1903000" />
+      <workItem from="1627968705391" duration="2234000" />
+      <workItem from="1627975381603" duration="8135000" />
     </task>
     <servers />
   </component>
