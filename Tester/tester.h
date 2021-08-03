@@ -1014,6 +1014,7 @@ void Tester::executeParser(file json_file) {
                             directedGraph->display();
                             break;
                         }
+
                         case 2: {
                             if (directedGraph->isDense()) {
                                 cout << "Es un grado denso" << endl;
