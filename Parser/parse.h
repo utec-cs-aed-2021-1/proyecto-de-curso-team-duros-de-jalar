@@ -27,7 +27,6 @@ struct Airport {
 
     Airport(string id, const string &name, const string &city, const string &country, double latitude, double longitude) : id(id), name(name), city(city), country(country), latitude(latitude),
                                                                                                                            longitude(longitude) {}
-
 };
 
 enum file {

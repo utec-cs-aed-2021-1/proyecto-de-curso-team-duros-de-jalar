@@ -12,7 +12,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a87eda64-2e65-47da-aa2d-85818c4c4fa4" name="Default Changelist" comment="" />
+    <list default="true" id="a87eda64-2e65-47da-aa2d-85818c4c4fa4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Parser/parse.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/parse.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +89,7 @@
       <workItem from="1627844099828" duration="6482000" />
       <workItem from="1627958352854" duration="8880000" />
       <workItem from="1627968705391" duration="2234000" />
-      <workItem from="1627975381603" duration="8991000" />
+      <workItem from="1627975381603" duration="9236000" />
     </task>
     <servers />
   </component>
