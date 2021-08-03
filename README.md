@@ -1375,7 +1375,7 @@ Al finalizar el recorrido de las aristas en dist, la posición del id del vérti
 Luego se hace un triple for, todos recorren los vértices del grafo, ya que van a evaluar las distancias de dist, donde se comparará dist[i][j] > dist[i][k] + dist[k][j], siendo k la variable del primer for; i, la del segundo; y j, la del tercer for.\
 Si esta comprobación es verdadera, se reemplaza el valor en dist[i][j]. Así hasta terminado el primer for.
  
- ### Bellman Ford
+ ### Bellman Ford (En la prueba Parser)
   ````cpp
 template<typename TV, typename TE>
 class bellmanford{
