@@ -1023,111 +1023,107 @@ public:
     }
 };
 ````
-Utilizamos un unordered_set de nombre visited para poder almacenar todos los nodos por los que ya se han pasado, y un priority_queue ("cola") que nos permitirá organizar mediante pesos. Insertamos el vértice inicial en visited, y luego insertamos todos los vértices adyacentes en "cola". Después, entramos a un while que se mantiene mientras que la "cola" no esté vacía. Mientras que se ejecuta el while vamos verificando si ya hemos pasado por el vértices, en caso de que no se haya visitado insertamos en visited el id del vértice, luego pasamos a insertar todos los vértices adyacentes que no hayan sido visitados. 
+Utilizamos un unordered_set de nombre visited para poder almacenar todos los nodos por los que ya se han pasado, y un priority_queue ("cola") que nos permitirá organizar mediante pesos. Insertamos el vértice inicial en visited, y luego insertamos todos los vértices adyacentes en "cola". Después, entramos a un while que se mantiene mientras que la "cola" no esté vacía. Mientras que se ejecuta el while vamos verificando si ya hemos pasado por el vértices, en caso de que no se haya visitado insertamos en visited el id del vértice, luego pasamos a insertar todos los vértices adyacentes que no hayan sido visitados.
 
- ````cpp
- template<typename TV, typename TE>
-struct comparator{
-    bool operator()(const pair<Vertex<TV,TE>*,TE>& a, const pair<Vertex<TV,TE>*,TE>& b){
-        if(a.second > b.second){
-            return true;
+###Dijkstra
+
+````cpp
+template <typename TV, typename  TE>
+string Distancemin (Graph<TV,TE>* & grafo, unordered_map<string,int>& dist, unordered_map<string,bool>& spt){
+    int num = INT32_MAX;
+    string index;
+
+    for (auto & i : grafo->vertexes) {
+
+        if (dist[i.second->id] <= num && !spt[i.second->id]){
+            num = dist[i.second->id],
+            index = i.second->id;
         }
-        return false;
     }
-};
+    return index;
+}
 
-template<typename TV,typename TE>
-class astar{
-private:
-    map<string, string> cameFrom;
-    deque<string> path;
-    UnDirectedGraph<TV,TE>* result;
+template <typename TV, typename  TE>
+
+class dijkstra{
+    DirectedGraph<TV,TE>* dijksstra;
+
 public:
-    explicit astar(Graph<TV,TE>* inpgr, string start, string goal, unordered_map<string,TE> heuristic){
-        priority_queue<pair<Vertex<TV,TE>*, TE>,vector<pair<Vertex<TV,TE>*,TE>>, comparator<TV,TE>> openSet;
-        unordered_set<string> openSet1;
-        unordered_set<string> closedSet;
+    dijkstra() = default;
+    dijkstra(Graph<TV,TE>* & grafo, const string& id){
+        dijksstra = new DirectedGraph<TV,TE>;
+        unordered_map<string,int> dist;
+        unordered_map<string,bool> sptSet;
+        unordered_map<string,pair<Vertex<TV,TE>*,string>> distancia_vertice;
 
-
-        map<string, TE> gscore;
-        gscore[start] = 0;
-        map<string, TE> fscore;
-        fscore[start] = heuristic[start];
-
-        openSet.push(make_pair(inpgr->vertexes[start],fscore[start]));
-        while (!openSet.empty()){
-            Vertex<TV,TE>* current = openSet.top().first;
-            openSet.pop();
-            if(current->id == goal){
-                cout<<current->id<<" "<<gscore[current->id]<<" "<<fscore[current->id]<<endl;
-                construct_path(current->id,inpgr,start);
-                return;
+        for(auto &i : grafo->vertexes){
+            if (i.second->id == id) {
+                dist[i.second->id] = 0;
             }
-            closedSet.insert(current->id);
-            for(auto i = current->edges.begin(); i != current->edges.end(); i++ ){
-                string ax = (*i)->vertexes[1]->id;
-                if(closedSet.find(ax) != closedSet.end()){
-                    continue;
-                }
-                TE tentative_gscore = gscore[current->id]  +  (*i)->weight;
+            else {
+                dist[i.second->id] = INT32_MAX;
+            }
+            sptSet[i.second->id] = false;
+            pair<Vertex<TV,TE>*,string> aux (i.second,i.second->id);
+            distancia_vertice[i.second->id] = aux;
+            dijksstra->insertVertex(i.second->id,i.second->data);
+        }
+        for (int i = 0; i < grafo->vertexes.size() - 1; ++i) {
+            string u = Distancemin(grafo,dist,sptSet);
+            sptSet[u] = true;
+            for (auto j : grafo->vertexes) {
+                if (!sptSet[j.second->id] && dist[u] != INT32_MAX){
+                    auto aristas = distancia_vertice[u].first;
+                    for (auto k : aristas->edges) {
+                        if (k->vertexes[1]->id == j.second->id){
+                            if (dist[j.second->id] > dist[u] + k->weight){
+                                dist[j.second->id] = dist[u] + k->weight;
+                                pair<Vertex<TV,TE>*,string> aux(distancia_vertice[j.second->id].first,u);
+                                distancia_vertice[j.second->id] = aux;
+                            }
 
-                if(openSet1.find(ax) == openSet1.end()) {
-                    cameFrom[ax] = current->id;
-                    gscore[ax] = tentative_gscore;
-                    fscore[ax] = tentative_gscore + heuristic[ax];
-                    openSet.push(make_pair((*i)->vertexes[1],fscore[ax]));
-                    openSet1.insert(ax);
-                    continue;
-                }
-
-                if(tentative_gscore>=gscore[(*i)->vertexes[1]->id]){continue;}
-
-                cameFrom[ax] = current->id;
-                gscore[ax] = tentative_gscore;
-                fscore[ax] = tentative_gscore + heuristic[(*i)->vertexes[1]->id];
+                        }
+                    }
+                };
+            }
+        }
+        auto x = *distancia_vertice.begin();
+        for(auto& i : distancia_vertice){
+            if (i.first !=  x.first) {
+                auto j = i.second;
+                auto size = dist[i.second.first->id];
+                if (j.first->id != j.second)
+                    size -= dist[j.second];
+                dijksstra->createEdge(j.second,j.first->id,size);
             }
         }
     }
-    void construct_path(string current, Graph<TV,TE>* inpgr, const string& start){
-        path.push_front(current);
-        result = new UnDirectedGraph<TV,TE>;
-        while (cameFrom.find(current) != cameFrom.end() && current!=start){
 
-            Vertex<TV,TE>* n1 = inpgr->vertexes[current];
 
-            result->insertVertex(n1->id,n1->data);
-
-            current = cameFrom[current];
-
-            Vertex<TV,TE>* n2 = inpgr->vertexes[current];
-            result->insertVertex(n2->id,n2->data);
-            TE W=0;
-            for(auto i = n1->edges.begin(); i!=n1->edges.end();i++){
-                if(current == (*i)->vertexes[1]->id){
-                    W = (*i)->weight;
-                }
-            }
-            result->createEdge(n1->id,n2->id,W);
-            cout<<n1->id<<" "<<n2->id<<endl;
-
-            path.push_front(current);
-        }
+    DirectedGraph<TV,TE>* apply(){
+        return dijksstra;
     }
 
-    void display(){
-        for(auto & i : path){
-            cout<<i<<" ";
-        }
-        cout<<endl;
-    }
-    UnDirectedGraph<TV,TE>* apply(){
-        return result;
-    }
 
-};
+
 ````
- 
- 
+
+El algoritmo de dijkstra funciona para grafos no dirigidos o dirigidos, esta estructura inicializa las variables dist
+(guarda las distancias entre vertices adyacentes), sptSet(para verificar si se ha visitado o no un vértice) y 
+distancia_vertice(guarda la distancia que existe entre el nodo padre al vúrtice y su respectivo id)\
+Para guardar datos dentro de las variables se recorre los vértices  del grafo ingresado, si el id del vértice coincide
+con el punto de inicio, se guarda la distancia como 0; caso contrario, se coloca el max entero de 32 bits.
+Posteriormente, se marca como falso el vértice evaluado en el sptSet y se crea una tupla con la data del vértice
+y su id para insertar en distancia_vértice.\
+Con las variables inicializadas se ingresa a un for y con la ayuda de la función Distancemin hallamos el id del 
+menor vértice no visitado, se marca en el sptSet como visitado.\
+Siguientemente, se inicia otro for que recorre los 
+vértices del grafo y se crea una variable aristas donde se guardarán las aristas del vértice obtenido por Distancemin.\
+Finalmente se ingresa a un for que recorre las aristas y verifica si el id de la arista coincide con el id del 
+vértice del grafo que se está iterando en el primer for, si coinciden se comprueba si la distancia guardada en la
+ubicación del key de l id del vértice del primer for es mayor a la distancia del id del vértice obtenido con Distancemin 
+mas el peso de la arista evaluada, se actualiza el peso.\
+Esto se hace iterativamente hasta terinar el primer for, que se iterara n veces, siendo n la cantidad de vértices del grafo.
  
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
