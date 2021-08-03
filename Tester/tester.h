@@ -28,7 +28,6 @@ namespace Tester {
         cin >> a;
         switch (a) {
             case 1: {
-                executeParser(file::pe);
                 Graph<int, float> *graph = new DirectedGraph<int, float>;
                 DirectedGraph<Airport, double> DirectedGraph;
 
@@ -106,6 +105,7 @@ namespace Tester {
                     cout << "4. Es fuertemente conexo" << endl;
                     cout << "5. BFS" << endl;
                     cout << "6. DFS" << endl;
+                    cout << "7. A*" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -148,8 +148,35 @@ namespace Tester {
                             dfs_.apply()->display();
                             break;
                         }
+                        case 7: {
+                            cout<< "A*"<<endl;
+
+
+                            unordered_map<string, float> heur;
+                            heur["A"] = 36;
+                            heur["B"] = 39;
+                            heur["C"] = 31;
+                            heur["D"] = 30;
+                            heur["E"] = 34;
+                            heur["F"] = 32;
+                            heur["G"] = 21;
+                            heur["H"] = 19;
+                            heur["I"] = 30;
+                            heur["J"] = 34;
+                            heur["K"] = 32;
+                            heur["L"] = 21;
+                            heur["M"] = 19;
+                            heur["N"] = 19;
+                            heur["O"] = 30;
+
+                            astar<int,float>* Astarr = new astar<int,float> (graph,"A","O",heur);
+                            Astarr->apply()->display();
+
+                        }
+
+
                     }
-                }while (metodo <= 6 && 1 <= metodo);
+                }while (metodo <= 7 && 1 <= metodo);
 
 
                 break;
@@ -230,6 +257,7 @@ namespace Tester {
                     cout << "4. Es fuertemente conexo" << endl;
                     cout << "5. BFS" << endl;
                     cout << "6. DFS" << endl;
+                    cout << "7. A*" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -271,8 +299,38 @@ namespace Tester {
                             break;
                         }
 
+                        case 7: {
+                            cout<< "A*"<<endl;
+
+
+                            unordered_map<string, float> heur;
+                            heur["A"] = 36;
+                            heur["B"] = 39;
+                            heur["C"] = 31;
+                            heur["D"] = 30;
+                            heur["E"] = 34;
+                            heur["F"] = 32;
+                            heur["G"] = 21;
+                            heur["H"] = 19;
+                            heur["I"] = 30;
+                            heur["J"] = 34;
+                            heur["K"] = 32;
+                            heur["L"] = 21;
+                            heur["M"] = 19;
+                            heur["N"] = 19;
+                            heur["O"] = 30;
+                            heur["P"] = 36;
+                            heur["Q"] = 39;
+                            heur["R"] = 31;
+
+                            astar<int,float>* Astarr = new astar<int,float> (graph1,"M","R",heur);
+                            Astarr->apply()->display();
+
+                        }
+
+
                     }
-                }while (metodo <= 6 && 1 <= metodo);
+                }while (metodo <= 7 && 1 <= metodo);
                 break;
             }
             case 3: {
@@ -374,6 +432,7 @@ namespace Tester {
                     cout << "4. Es fuertemente conexo" << endl;
                     cout << "5. BFS" << endl;
                     cout << "6. DFS" << endl;
+                    cout << "7. A*" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -414,9 +473,39 @@ namespace Tester {
                             dfs_.apply()->display();
                             break;
                         }
+                        case 7: {
+                            cout<< "A*"<<endl;
+
+
+                            unordered_map<string, float> heur;
+                            heur["A"] = 36;
+                            heur["B"] = 39;
+                            heur["C"] = 31;
+                            heur["D"] = 30;
+                            heur["E"] = 34;
+                            heur["F"] = 32;
+                            heur["G"] = 21;
+                            heur["H"] = 19;
+                            heur["I"] = 30;
+                            heur["J"] = 34;
+                            heur["K"] = 32;
+                            heur["L"] = 21;
+                            heur["M"] = 19;
+                            heur["N"] = 19;
+                            heur["O"] = 30;
+                            heur["P"] = 36;
+                            heur["Q"] = 39;
+                            heur["R"] = 31;
+
+
+                            astar<int,float>* Astarr = new astar<int,float> (graph2,"B","N",heur);
+                            Astarr->apply()->display();
+
+                        }
+
 
                     }
-                }while (metodo <= 6 && 1 <= metodo);
+                }while (metodo <= 7 && 1 <= metodo);
                 break;
 
             }
@@ -469,6 +558,7 @@ namespace Tester {
                     cout << "6. DFS" << endl;
                     cout << "7. Kruskal" << endl;
                     cout << "8. Prim" << endl;
+                    cout << "9. A*" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -538,11 +628,10 @@ namespace Tester {
                             heur["F"] = 32;
                             heur["G"] = 21;
                             heur["H"] = 19;
-                            heur["I"] = 0;
 
 
-                            astar<int,float>* Astarr = new astar<int,float> (graph,"A","I",heur);
-                            Astarr->display();
+
+                            astar<int,float>* Astarr = new astar<int,float> (graph,"A","H",heur);
                             Astarr->apply()->display();
 
                         }
@@ -590,6 +679,7 @@ namespace Tester {
                     cout << "6. DFS" << endl;
                     cout << "7. Kruskal" << endl;
                     cout << "8. Prim" << endl;
+                    cout << "9. A*" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -656,12 +746,9 @@ namespace Tester {
                             heur["E"] = 34;
                             heur["F"] = 32;
                             heur["G"] = 21;
-                            heur["H"] = 19;
-                            heur["I"] = 0;
 
 
-                            astar<int,float>* Astarr = new astar<int,float> (graph1,"A","I",heur);
-                            Astarr->display();
+                            astar<int,float>* Astarr = new astar<int,float> (graph1,"A","G",heur);
                             Astarr->apply()->display();
 
                         }
@@ -774,13 +861,8 @@ namespace Tester {
                             heur["D"] = 30;
                             heur["E"] = 34;
                             heur["F"] = 32;
-                            heur["G"] = 21;
-                            heur["H"] = 19;
-                            heur["I"] = 0;
 
-
-                            astar<int,float>* Astarr = new astar<int,float> (graph2,"A","I",heur);
-                            Astarr->display();
+                            astar<int,float>* Astarr = new astar<int,float> (graph2,"A","F",heur);
                             Astarr->apply()->display();
 
                         }
