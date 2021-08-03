@@ -1228,6 +1228,152 @@ public:
 Creamos un priority_queue ("openset") y dos unordered_set ("openSet1" y "closedSet"), a su vez usamos dos mapas ("gscore" y "fscore"), donde el primero sirve para almacenar el peso del nodo inicial hasta al actual, y el segundo sirve para almacenar las distancias aproximadas dadas por la heurística. 
  Empezamos colocando el vértice inicial dentro de "openset", y entramos al loop while que se mantendrá mientras que "openset" no esté vacío. Dentro de este loop obtenemos el vértice del id correspondiente, luego pasamos a verificar si es el nodo meta, si es el caso, entonces pasamos a la función construct_path para poder armar el grafo, en caso no lo sea, entonces insertamos el nodo actual a los cerrados, pasamos a verificar cada vértice adyacente al actual. Durante la verificación, almacenamos la suma del peso al nodo adyacente más el peso de todo el recorrido en la variable tentative_gscore, y pasamos ver si el adyacente no se encuentra dentro del "openset". Si este se encuentra, entonces lo colocamos como parte del recorrido, lo añadimos al gscore y a fscore sumando la heurística con tentative_gscore. En caso el adyacente ya se encuentre dentro, revisamos si tentative_gscore es mayor o igual a al gscore del vértice, siendo el caso que este sea falso, este pase a guardarse en el recorrido y actualizar las variables gscore y fscore.
  
+ 
+ ````cpp
+ 
+
+bool check_key(unordered_map<string,int> m, string key){
+    return m.find(key) != m.end();
+}
+
+
+template <typename TV, typename TE>
+class floyd_warshall{
+    DirectedGraph<TV,TE>* floyd ;
+
+public:
+    floyd_warshall() = default;
+    floyd_warshall(Graph<TV,TE>* &grafo){
+        floyd = new DirectedGraph<TV,TE>;
+        unordered_map<string,unordered_map<string,int>> dist;
+
+        for(auto &i : grafo->vertexes){
+            unordered_map<string,int> temp;
+            for (auto &o: i.second->edges){
+                temp[o->vertexes[1]->id] = o->weight;
+            }
+            dist[i.first] = temp;
+        }
+
+        auto y = grafo;
+        for(auto &a :grafo->vertexes){
+            auto k = a.first;
+            for(auto &b :grafo->vertexes){
+                auto  i = b.first;
+                for(auto &c :grafo->vertexes){
+                    auto j = c.first;
+                    auto check_k = check_key(dist[i],k);
+                    auto check_i = check_key(dist[i],i);
+                    auto check_j = check_key(dist[i],j);
+
+                    if (check_i && check_j && check_k && dist[i][j] > dist[i][k] + dist[k][j]){
+                        dist[i][j] =  dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        for(auto &i : dist) {
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
+        }
+        for(auto &i:dist){
+            for(auto &j: i.second){
+                floyd->createEdge(i.first,j.first,j.second);
+            }
+        }
+    }
+    floyd_warshall(DirectedGraph<TV,TE>* &grafo){
+        floyd = new DirectedGraph<TV,TE>;
+        unordered_map<string,unordered_map<string,int>> dist;
+
+        for(auto &i : grafo->vertexes){
+            unordered_map<string,int> temp;
+            for (auto &o: i.second->edges){
+                temp[o->vertexes[1]->id] = o->weight;
+            }
+            dist[i.first] = temp;
+        }
+
+        auto y = grafo;
+        for(auto &a :grafo->vertexes){
+            auto k = a.first;
+            for(auto &b :grafo->vertexes){
+                auto  i = b.first;
+                for(auto &c :grafo->vertexes){
+                    auto j = c.first;
+                    auto check_k = check_key(dist[i],k);
+                    auto check_i = check_key(dist[i],i);
+                    auto check_j = check_key(dist[i],j);
+
+                    if (check_i && check_j && check_k && dist[i][j] > dist[i][k] + dist[k][j]){
+                        dist[i][j] =  dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        for(auto &i : dist) {
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
+        }
+        for(auto &i:dist){
+            for(auto &j: i.second){
+                floyd->createEdge(i.first,j.first,j.second);
+            }
+        }
+    }
+    floyd_warshall(UnDirectedGraph<TV,TE>* &grafo){
+        floyd = new DirectedGraph<TV,TE>;
+        unordered_map<string,unordered_map<string,int>> dist;
+
+        for(auto &i : grafo->vertexes){
+            unordered_map<string,int> temp;
+            for (auto &o: i.second->edges){
+                temp[o->vertexes[1]->id] = o->weight;
+            }
+            dist[i.first] = temp;
+        }
+
+        auto y = grafo;
+        for(auto &a :grafo->vertexes){
+            auto k = a.first;
+            for(auto &b :grafo->vertexes){
+                auto  i = b.first;
+                for(auto &c :grafo->vertexes){
+                    auto j = c.first;
+                    auto check_k = check_key(dist[i],k);
+                    auto check_i = check_key(dist[i],i);
+                    auto check_j = check_key(dist[i],j);
+
+                    if (check_i && check_j && check_k && dist[i][j] > dist[i][k] + dist[k][j]){
+                        dist[i][j] =  dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        for(auto &i : dist) {
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
+        }
+        for(auto &i:dist){
+            for(auto &j: i.second){
+                floyd->createEdge(i.first,j.first,j.second);
+            }
+        }
+    }
+
+
+    DirectedGraph<TV,TE>* apply(){
+        return floyd;
+    }
+};
+
+ ````
+El floyd warshall recibe un grafo dirigido y se instancia una varibale de tipo unordered_map<string,unordered_map<string,int>> dist, que lo usamos para guardar, por cada vértice, los vértices que se conectan a este.\
+Para su inicialización se recorre los vértices del grafo y se crea un unordered_map temp que posteriormente se insertará en dist.\
+Dentro del primer for, se recorre las aristas que se conectan al vértice evaluado y el id y el peso de la arista se guarda en temp.\
+Al finalizar el recorrido de las aristas en dist, la posición del id del vértice que se evalúa en el primer for se guarda temp.\
+Luego se hace un triple for, todos recorren los vértices del grafo, ya que van a evaluar las distancias de dist, donde se comparará dist[i][j] > dist[i][k] + dist[k][j], siendo k la variable del primer for; i, la del segundo; y j, la del tercer for.\
+Si esta comprobación es verdadera, se reemplaza el valor en dist[i][j]. Así hasta terminado el primer for.
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
 
