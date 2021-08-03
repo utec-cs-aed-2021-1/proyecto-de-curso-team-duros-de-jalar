@@ -14,6 +14,7 @@
 #include "../Graph/Algorithms/astar.h"
 #include <fstream>
 #include <Algorithms/bellman.h>
+#include <Algorithms/floyd_warshall.h>
 
 using namespace std;
 namespace Tester {
@@ -895,6 +896,7 @@ void Tester::executeParser(file json_file) {
                     cout << "7. Kruskal" << endl;
                     cout << "8. Prim" << endl;
                     cout << "9. Dijkstra" << endl;
+                    cout << "10. Floyd Warshall" << endl;
 
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
@@ -975,7 +977,7 @@ void Tester::executeParser(file json_file) {
                         }
 
                     }
-                }while (metodo <= 9 && 1 <= metodo);
+                }while (metodo <= 10 && 1 <= metodo);
 
                 break;
             }

@@ -16,6 +16,18 @@ unordered_map
 ../DirectedGraph.h
 ../Graph/DirectedGraph.h
 
+../Graph/Algorithms/floyd_warshall.h
+../UndirectedGraph.h
+../Graph/UndirectedGraph.h
+../DirectedGraph.h
+../Graph/DirectedGraph.h
+unordered_map
+-
+unordered_set
+-
+vector
+-
+
 ../Graph/DirectedGraph.h
 set
 -
@@ -436,6 +448,8 @@ C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/pr
 fstream
 -
 Algorithms/bellman.h
+-
+Algorithms/floyd_warshall.h
 -
 
 C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/main.cpp

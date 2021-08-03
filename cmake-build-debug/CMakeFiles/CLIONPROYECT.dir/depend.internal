@@ -3,6 +3,7 @@
 
 CMakeFiles/CLIONPROYECT.dir/main.cpp.obj
  ../Graph/Algorithms/bellman.h
+ ../Graph/Algorithms/floyd_warshall.h
  ../Graph/DirectedGraph.h
  ../Graph/UndirectedGraph.h
  C:/Users/alexandra/Desktop/CICLO_5/Algoritmos y Estrcuturas de datos/Proyecto/proyecto-de-curso-team-duros-de-jalar/Graph/Algorithms/astar.h
