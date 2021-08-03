@@ -1123,6 +1123,316 @@ vértice del grafo que se está iterando en el primer for, si coinciden se compr
 ubicación del key de l id del vértice del primer for es mayor a la distancia del id del vértice obtenido con Distancemin 
 mas el peso de la arista evaluada, se actualiza el peso.\
 Esto se hace iterativamente hasta terinar el primer for, que se iterara n veces, siendo n la cantidad de vértices del grafo.
+ ### A star
+````cpp 
+ template<typename TV, typename TE>
+struct comparator{
+    bool operator()(const pair<Vertex<TV,TE>*,TE>& a, const pair<Vertex<TV,TE>*,TE>& b){
+        if(a.second > b.second){
+            return true;
+        }
+        return false;
+    }
+};
+
+template<typename TV,typename TE>
+class astar{
+private:
+    map<string, string> cameFrom;
+    deque<string> path;
+    UnDirectedGraph<TV,TE>* result;
+public:
+    explicit astar(Graph<TV,TE>* inpgr, string start, string goal, unordered_map<string,TE> heuristic){
+        priority_queue<pair<Vertex<TV,TE>*, TE>,vector<pair<Vertex<TV,TE>*,TE>>, comparator<TV,TE>> openSet;
+        unordered_set<string> openSet1;
+        unordered_set<string> closedSet;
+
+
+        map<string, TE> gscore;
+        gscore[start] = 0;
+        map<string, TE> fscore;
+        fscore[start] = heuristic[start];
+
+        openSet.push(make_pair(inpgr->vertexes[start],fscore[start]));
+        while (!openSet.empty()){
+            Vertex<TV,TE>* current = openSet.top().first;
+            openSet.pop();
+            if(current->id == goal){
+                cout<<current->id<<" "<<gscore[current->id]<<" "<<fscore[current->id]<<endl;
+                construct_path(current->id,inpgr,start);
+                return;
+            }
+            closedSet.insert(current->id);
+            for(auto i = current->edges.begin(); i != current->edges.end(); i++ ){
+                string ax = (*i)->vertexes[1]->id;
+                if(closedSet.find(ax) != closedSet.end()){
+                    continue;
+                }
+                TE tentative_gscore = gscore[current->id]  +  (*i)->weight;
+
+                if(openSet1.find(ax) == openSet1.end()) {
+                    cameFrom[ax] = current->id;
+                    gscore[ax] = tentative_gscore;
+                    fscore[ax] = tentative_gscore + heuristic[ax];
+                    openSet.push(make_pair((*i)->vertexes[1],fscore[ax]));
+                    openSet1.insert(ax);
+                    continue;
+                }
+
+                if(tentative_gscore>=gscore[(*i)->vertexes[1]->id]){continue;}
+
+                cameFrom[ax] = current->id;
+                gscore[ax] = tentative_gscore;
+                fscore[ax] = tentative_gscore + heuristic[(*i)->vertexes[1]->id];
+            }
+        }
+    }
+    void construct_path(string current, Graph<TV,TE>* inpgr, const string& start){
+        path.push_front(current);
+        result = new UnDirectedGraph<TV,TE>;
+        while (cameFrom.find(current) != cameFrom.end() && current!=start){
+
+            Vertex<TV,TE>* n1 = inpgr->vertexes[current];
+
+            result->insertVertex(n1->id,n1->data);
+
+            current = cameFrom[current];
+
+            Vertex<TV,TE>* n2 = inpgr->vertexes[current];
+            result->insertVertex(n2->id,n2->data);
+            TE W=0;
+            for(auto i = n1->edges.begin(); i!=n1->edges.end();i++){
+                if(current == (*i)->vertexes[1]->id){
+                    W = (*i)->weight;
+                }
+            }
+            result->createEdge(n1->id,n2->id,W);
+            cout<<n1->id<<" "<<n2->id<<endl;
+
+            path.push_front(current);
+        }
+    }
+
+    void display(){
+        for(auto & i : path){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+    }
+    UnDirectedGraph<TV,TE>* apply(){
+        return result;
+    }
+
+};
+````
+Creamos un priority_queue ("openset") y dos unordered_set ("openSet1" y "closedSet"), a su vez usamos dos mapas ("gscore" y "fscore"), donde el primero sirve para almacenar el peso del nodo inicial hasta al actual, y el segundo sirve para almacenar las distancias aproximadas dadas por la heurística. 
+ Empezamos colocando el vértice inicial dentro de "openset", y entramos al loop while que se mantendrá mientras que "openset" no esté vacío. Dentro de este loop obtenemos el vértice del id correspondiente, luego pasamos a verificar si es el nodo meta, si es el caso, entonces pasamos a la función construct_path para poder armar el grafo, en caso no lo sea, entonces insertamos el nodo actual a los cerrados, pasamos a verificar cada vértice adyacente al actual. Durante la verificación, almacenamos la suma del peso al nodo adyacente más el peso de todo el recorrido en la variable tentative_gscore, y pasamos ver si el adyacente no se encuentra dentro del "openset". Si este se encuentra, entonces lo colocamos como parte del recorrido, lo añadimos al gscore y a fscore sumando la heurística con tentative_gscore. En caso el adyacente ya se encuentre dentro, revisamos si tentative_gscore es mayor o igual a al gscore del vértice, siendo el caso que este sea falso, este pase a guardarse en el recorrido y actualizar las variables gscore y fscore.
+ 
+ 
+ ````cpp
+ 
+
+bool check_key(unordered_map<string,int> m, string key){
+    return m.find(key) != m.end();
+}
+
+
+template <typename TV, typename TE>
+class floyd_warshall{
+    DirectedGraph<TV,TE>* floyd ;
+
+public:
+    floyd_warshall() = default;
+    floyd_warshall(Graph<TV,TE>* &grafo){
+        floyd = new DirectedGraph<TV,TE>;
+        unordered_map<string,unordered_map<string,int>> dist;
+
+        for(auto &i : grafo->vertexes){
+            unordered_map<string,int> temp;
+            for (auto &o: i.second->edges){
+                temp[o->vertexes[1]->id] = o->weight;
+            }
+            dist[i.first] = temp;
+        }
+
+        auto y = grafo;
+        for(auto &a :grafo->vertexes){
+            auto k = a.first;
+            for(auto &b :grafo->vertexes){
+                auto  i = b.first;
+                for(auto &c :grafo->vertexes){
+                    auto j = c.first;
+                    auto check_k = check_key(dist[i],k);
+                    auto check_i = check_key(dist[i],i);
+                    auto check_j = check_key(dist[i],j);
+
+                    if (check_i && check_j && check_k && dist[i][j] > dist[i][k] + dist[k][j]){
+                        dist[i][j] =  dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        for(auto &i : dist) {
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
+        }
+        for(auto &i:dist){
+            for(auto &j: i.second){
+                floyd->createEdge(i.first,j.first,j.second);
+            }
+        }
+    }
+    floyd_warshall(DirectedGraph<TV,TE>* &grafo){
+        floyd = new DirectedGraph<TV,TE>;
+        unordered_map<string,unordered_map<string,int>> dist;
+
+        for(auto &i : grafo->vertexes){
+            unordered_map<string,int> temp;
+            for (auto &o: i.second->edges){
+                temp[o->vertexes[1]->id] = o->weight;
+            }
+            dist[i.first] = temp;
+        }
+
+        auto y = grafo;
+        for(auto &a :grafo->vertexes){
+            auto k = a.first;
+            for(auto &b :grafo->vertexes){
+                auto  i = b.first;
+                for(auto &c :grafo->vertexes){
+                    auto j = c.first;
+                    auto check_k = check_key(dist[i],k);
+                    auto check_i = check_key(dist[i],i);
+                    auto check_j = check_key(dist[i],j);
+
+                    if (check_i && check_j && check_k && dist[i][j] > dist[i][k] + dist[k][j]){
+                        dist[i][j] =  dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        for(auto &i : dist) {
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
+        }
+        for(auto &i:dist){
+            for(auto &j: i.second){
+                floyd->createEdge(i.first,j.first,j.second);
+            }
+        }
+    }
+    floyd_warshall(UnDirectedGraph<TV,TE>* &grafo){
+        floyd = new DirectedGraph<TV,TE>;
+        unordered_map<string,unordered_map<string,int>> dist;
+
+        for(auto &i : grafo->vertexes){
+            unordered_map<string,int> temp;
+            for (auto &o: i.second->edges){
+                temp[o->vertexes[1]->id] = o->weight;
+            }
+            dist[i.first] = temp;
+        }
+
+        auto y = grafo;
+        for(auto &a :grafo->vertexes){
+            auto k = a.first;
+            for(auto &b :grafo->vertexes){
+                auto  i = b.first;
+                for(auto &c :grafo->vertexes){
+                    auto j = c.first;
+                    auto check_k = check_key(dist[i],k);
+                    auto check_i = check_key(dist[i],i);
+                    auto check_j = check_key(dist[i],j);
+
+                    if (check_i && check_j && check_k && dist[i][j] > dist[i][k] + dist[k][j]){
+                        dist[i][j] =  dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        for(auto &i : dist) {
+            floyd->insertVertex(i.first,grafo->vertexes[i.first]->data);
+        }
+        for(auto &i:dist){
+            for(auto &j: i.second){
+                floyd->createEdge(i.first,j.first,j.second);
+            }
+        }
+    }
+
+
+    DirectedGraph<TV,TE>* apply(){
+        return floyd;
+    }
+};
+
+ ````
+El floyd warshall recibe un grafo dirigido y se instancia una varibale de tipo unordered_map<string,unordered_map<string,int>> dist, que lo usamos para guardar, por cada vértice, los vértices que se conectan a este.\
+Para su inicialización se recorre los vértices del grafo y se crea un unordered_map temp que posteriormente se insertará en dist.\
+Dentro del primer for, se recorre las aristas que se conectan al vértice evaluado y el id y el peso de la arista se guarda en temp.\
+Al finalizar el recorrido de las aristas en dist, la posición del id del vértice que se evalúa en el primer for se guarda temp.\
+Luego se hace un triple for, todos recorren los vértices del grafo, ya que van a evaluar las distancias de dist, donde se comparará dist[i][j] > dist[i][k] + dist[k][j], siendo k la variable del primer for; i, la del segundo; y j, la del tercer for.\
+Si esta comprobación es verdadera, se reemplaza el valor en dist[i][j]. Así hasta terminado el primer for.
+ 
+ ###Bellman Ford
+  ````cpp
+template<typename TV, typename TE>
+class bellmanford{
+    unordered_map<string, int> distance;
+    unordered_map<string, pair<string,TE>> papi;
+    DirectedGraph<TV,TE>* result;
+    bool nonnegative{};
+public:
+    bellmanford(DirectedGraph<TV,TE>* grp, const string& start){
+        Vertex<TV,TE>* init = grp->vertexes[start];
+        for(auto i = grp->vertexes.begin(); i!= grp->vertexes.end(); i++){
+            distance[i->first]= INT_MAX;
+        }
+        distance[init->id] = 0;
+        unordered_set<string> stin;
+        queue<string> in;
+        in.push(init->id);
+        stin.insert(init->id);
+        while (!in.empty()){
+            string cur = in.front();
+            Vertex<TV,TE>* current = grp->vertexes[in.front()];
+            in.pop();
+            stin.erase(init->id);
+            for(auto i = current->edges.begin(); i != current->edges.end(); i++){
+                string adj = (*i)->vertexes[1]->id;
+                if(distance[cur] + (*i)->weight < distance[adj]){
+                    distance[adj] =  distance[cur] + (*i)->weight;
+                    papi[adj] = make_pair(cur,(*i)->weight) ;
+                    if(stin.find(adj) == stin.end()){
+                        in.push(adj);
+                        stin.insert(adj);
+                    }
+                }
+            }
+        }
+         for(auto i = papi.begin(); i != papi.end(); i++){
+            if(distance[i->first] != INT_MAX && distance[i->second.first]  > distance[i->first] +  i->second.second){
+                cout<<"HAY CICLOS NEGATIVOS."<<endl;
+                return;
+            }
+        }
+        making_graph(grp);
+    }
+    void making_graph(Graph<TV,TE>* grp){
+    result = new DirectedGraph<TV,TE>;
+    for(auto i = papi.begin(); i!=papi.end(); i++){
+        result->insertVertex(i->first, grp->vertexes[i->first]->data);
+        result->insertVertex(i->second.first, grp->vertexes[i->second.first]->data);
+        result->createEdge(i->second.first, i->first, i->second.second);
+    }
+    }
+    DirectedGraph<TV,TE>* apply(){
+    return result;
+}
+};
+ ````
+ En un hash ("Distance") le colocamos una distancia de infinito a todos los nodos e inicializamos el nodo de inicio con distancia 0. Luego, creamos un unordered_set ("stin") y un queue ("in") e insertamos el nodo inicial en ambos. Entramos al bucle while, el cual su ejecución depende de que in no esté vacío, sacamos el nodo que está en el front del queue, y vamos revisando todos lo nodos adyacentes. Si la distancia del actual más el peso es menor al actual del adyacente, entonces actualizamos y verificamos si no está en el queue con el fin de insertar el nodo. Luego, recorremos por todo el hash "papi" para verificar si no hay ciclos negativos. 
  
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 

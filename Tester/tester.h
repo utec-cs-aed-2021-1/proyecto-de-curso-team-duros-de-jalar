@@ -29,7 +29,6 @@ namespace Tester {
         switch (a) {
             case 1: {
                 Graph<int, float> *graph = new DirectedGraph<int, float>;
-                DirectedGraph<Airport, double> DirectedGraph;
 
                 graph->insertVertex("A", 1);
                 graph->insertVertex("B", 2);
@@ -105,7 +104,7 @@ namespace Tester {
                     cout << "4. Es fuertemente conexo" << endl;
                     cout << "5. BFS" << endl;
                     cout << "6. DFS" << endl;
-                    cout << "7. A*" << endl;
+                    cout << "7. Floyd Warshall" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -149,28 +148,11 @@ namespace Tester {
                             break;
                         }
                         case 7: {
-                            cout<< "A*"<<endl;
-
-
-                            unordered_map<string, float> heur;
-                            heur["A"] = 36;
-                            heur["B"] = 39;
-                            heur["C"] = 31;
-                            heur["D"] = 30;
-                            heur["E"] = 34;
-                            heur["F"] = 32;
-                            heur["G"] = 21;
-                            heur["H"] = 19;
-                            heur["I"] = 30;
-                            heur["J"] = 34;
-                            heur["K"] = 32;
-                            heur["L"] = 21;
-                            heur["M"] = 19;
-                            heur["N"] = 19;
-                            heur["O"] = 30;
-
-                            astar<int,float>* Astarr = new astar<int,float> (graph,"A","O",heur);
-                            Astarr->apply()->display();
+                            cout << "Floyd Warshall" << endl;
+                            floyd_warshall<int, float> floyd_warshall_(graph);
+                            DirectedGraph<int, float> *result = floyd_warshall_.apply();
+                            result->display();
+                            break;
 
                         }
 
@@ -257,7 +239,7 @@ namespace Tester {
                     cout << "4. Es fuertemente conexo" << endl;
                     cout << "5. BFS" << endl;
                     cout << "6. DFS" << endl;
-                    cout << "7. A*" << endl;
+                    cout << "7. Floyd Warshall" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -300,31 +282,11 @@ namespace Tester {
                         }
 
                         case 7: {
-                            cout<< "A*"<<endl;
-
-
-                            unordered_map<string, float> heur;
-                            heur["A"] = 36;
-                            heur["B"] = 39;
-                            heur["C"] = 31;
-                            heur["D"] = 30;
-                            heur["E"] = 34;
-                            heur["F"] = 32;
-                            heur["G"] = 21;
-                            heur["H"] = 19;
-                            heur["I"] = 30;
-                            heur["J"] = 34;
-                            heur["K"] = 32;
-                            heur["L"] = 21;
-                            heur["M"] = 19;
-                            heur["N"] = 19;
-                            heur["O"] = 30;
-                            heur["P"] = 36;
-                            heur["Q"] = 39;
-                            heur["R"] = 31;
-
-                            astar<int,float>* Astarr = new astar<int,float> (graph1,"M","R",heur);
-                            Astarr->apply()->display();
+                            cout << "Floyd Warshall" << endl;
+                            floyd_warshall<int, float> floyd_warshall_(graph1);
+                            DirectedGraph<int, float> *result = floyd_warshall_.apply();
+                            result->display();
+                            break;
 
                         }
 
@@ -432,7 +394,7 @@ namespace Tester {
                     cout << "4. Es fuertemente conexo" << endl;
                     cout << "5. BFS" << endl;
                     cout << "6. DFS" << endl;
-                    cout << "7. A*" << endl;
+                    cout << "7. Floyd Warshall" << endl;
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
                     cin >> metodo;
@@ -474,32 +436,11 @@ namespace Tester {
                             break;
                         }
                         case 7: {
-                            cout<< "A*"<<endl;
-
-
-                            unordered_map<string, float> heur;
-                            heur["A"] = 36;
-                            heur["B"] = 39;
-                            heur["C"] = 31;
-                            heur["D"] = 30;
-                            heur["E"] = 34;
-                            heur["F"] = 32;
-                            heur["G"] = 21;
-                            heur["H"] = 19;
-                            heur["I"] = 30;
-                            heur["J"] = 34;
-                            heur["K"] = 32;
-                            heur["L"] = 21;
-                            heur["M"] = 19;
-                            heur["N"] = 19;
-                            heur["O"] = 30;
-                            heur["P"] = 36;
-                            heur["Q"] = 39;
-                            heur["R"] = 31;
-
-
-                            astar<int,float>* Astarr = new astar<int,float> (graph2,"B","N",heur);
-                            Astarr->apply()->display();
+                            cout << "Floyd Warshall" << endl;
+                            floyd_warshall<int, float> floyd_warshall_(graph2);
+                            DirectedGraph<int, float> *result = floyd_warshall_.apply();
+                            result->display();
+                            break;
 
                         }
 
@@ -957,7 +898,6 @@ void Tester::executeParser(file json_file) {
         cin >> input_Case;
         switch (input_Case) {
             case 1: {
-                cout << "Seleccione el grafo (1 al 3) que desee: ";
                 int metodo;
 
                 // Create and open a text file
@@ -978,7 +918,6 @@ void Tester::executeParser(file json_file) {
                     cout << "7. Kruskal" << endl;
                     cout << "8. Prim" << endl;
                     cout << "9. Dijkstra" << endl;
-                    cout << "10. Floyd Warshall" << endl;
 
                     cout<<"Para salir del bucle insertar cualquier numero"<<endl;
 
@@ -1056,16 +995,9 @@ void Tester::executeParser(file json_file) {
                             result->display();
                             break;
 
-                        }   case 10: {
-                            cout << "Floyd Warshall" << endl;
-                            floyd_warshall<Airport, double> floyd_warshall_(unDirectedGraph);
-                            DirectedGraph<Airport, double> *result = floyd_warshall_.apply();
-                            result->display();
-                            break;
                         }
-
                     }
-                }while (metodo <= 10 && 1 <= metodo);
+                }while (metodo <= 9 && 1 <= metodo);
 
                 break;
             }
