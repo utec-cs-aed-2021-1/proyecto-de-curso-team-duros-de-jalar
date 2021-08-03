@@ -166,7 +166,7 @@ insertarlo en el unordered_map.
 
 template<typename TV, typename TE>
 bool UnDirectedGraph<TV, TE>::createEdge(string id1, string id2, TE w) {
-    if (this->vertexes.find(id1) == this->vertexes.end() && this->vertexes.find(id2) == this->vertexes.end())
+    if (this->vertexes.find(id1) == this->vertexes.end() || this->vertexes.find(id2) == this->vertexes.end())
         return false;
 
     auto *new_edge = new Edge<TV, TE>;
@@ -963,6 +963,69 @@ prim(Graph<TV,TE>* &grafo,const string& id){
     }
 ````
 El algoritmo de prim utiliza un priority queue con  la finalidad de dejar en el top la menor arista conectada al vértice que se está iterando. La finalidad de este algoritmo es buscar el menor camino posible partiendo del vértice solicitado hasta todos los vértices del grafo, una vez se visite un vértice, ya no se debe volver a comparar las aristas para conseguir un algoritmo eficaz.
+ 
+### Best BFS
+````cpp 
+template<typename TV, typename TE>
+struct Compare1{
+    bool operator()(const tuple<string ,TE,Vertex<TV,TE>*>& a, const tuple<string ,TE,Vertex<TV,TE>*>& b){
+        if(get<1>(a) > get<1>(b)){
+            return true;
+        }
+        return false;
+    }
+};
+ 
+template<typename TV, typename TE>
+class Best_BFS{
+    DirectedGraph<TV,TE>* out;
+public:
+    Best_BFS(Graph<TV,TE>* grafo, const string& start){
+
+        std::unordered_set<string> visited;
+        std::priority_queue<tuple<string, TE,Vertex<TV,TE>*>, vector<tuple<string, TE, Vertex<TV,TE>*>>,Compare1<TV,TE>> cola;
+
+        auto aux = grafo->vertexes[start];
+        out = new DirectedGraph<TV,TE>;
+        out->insertVertex(start, aux->data);
+        visited.insert(start);
+
+        for(auto i : aux->edges){
+            Vertex<TV,TE>* ax = i->vertexes[1];
+            if(visited.find(ax->id) ==visited.end()){
+                cola.push(make_tuple( aux->id,i->weight ,ax));
+            }
+        }
+        while(!cola.empty()){
+            tuple<string,TE,Vertex<TV,TE>*> res = cola.top();
+            cola.pop();
+            string id; Vertex<TV,TE>* to_insert;
+            id = get<0>(res);
+            TE cost = get<1>(res);
+            to_insert = get<2>(res);
+
+            if(visited.find(to_insert->id) ==visited.end()) {
+                visited.insert(to_insert->id);
+                out->insertVertex(to_insert->id, to_insert->data);
+                out->createEdge(id, to_insert->id, cost);
+            }
+            for(auto i : to_insert->edges){
+                Vertex<TV,TE>* ax = i->vertexes[1];
+                if(visited.find(ax->id) ==visited.end()){
+                    cola.push(make_tuple(to_insert->id,i->weight,ax));
+                }
+            }
+        }
+
+    }
+    DirectedGraph<TV,TE>* apply(){
+        return out;
+    }
+};
+````
+Utilizamos un unordered_set de nombre visited para poder almacenar todos los nodos por los que ya se han pasado, y un priority_queue ("cola") que nos permitirá organizar mediante pesos. Insertamos el vértice inicial en visited, y luego insertamos todos los vértices adyacentes en "cola". Después, entramos a un while que se mantiene mientras que la "cola" no esté vacía. Mientras que se ejecuta el while vamos verificando si ya hemos pasado por el vértices, en caso de que no se haya visitado insertamos en visited el id del vértice, luego pasamos a insertar todos los vértices adyacentes que no hayan sido visitados. 
+
+ 
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
 
